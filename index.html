@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oral Bridge OBT</title>
+    <title>Oral Bridge OBT - Tripod Studio v2</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -25,465 +25,289 @@
             --agent2: #0891B2;
             --agent3: #059669;
             --agent4: #DC2626;
+            --agent5: #6B21A8;
+            --validator-primary: #319795;
+            --validator-bg: #E6FFFA;
+            --validator-border: #81E6D9;
+            --mentor-primary: #805AD5;
+            --mentor-bg: #FAF5FF;
+            --mentor-border: #D6BCFA;
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
             --radius: 8px;
             --radius-lg: 12px;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-icon svg {
-            width: 28px;
-            height: 28px;
-            fill: white;
-        }
-
-        h1 {
-            font-family: 'Source Serif 4', serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-top: 0.25rem;
-        }
-
-        /* Setup Section */
-        .setup-section {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .setup-row {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: flex-end;
-        }
-
-        .input-group {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .input-group label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .input-group input, .input-group select {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            font-size: 1rem;
-            font-family: inherit;
-            background: var(--bg-primary);
-        }
-
-        .input-group input:focus, .input-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: var(--bg-secondary);
-        }
-
-        .help-text {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        /* Progress Steps */
-        .progress-steps {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.625rem 1rem;
-            background: var(--bg-secondary);
-            border: 2px solid var(--border);
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            transition: all 0.3s ease;
-        }
-
-        .step-number {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .step.active {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: var(--accent-light);
-        }
-
-        .step.active .step-number {
-            background: var(--accent);
-            color: white;
-        }
-
-        .step.completed {
-            border-color: var(--success);
-            color: var(--success);
-            background: var(--success-bg);
-        }
-
-        .step.completed .step-number {
-            background: var(--success);
-            color: white;
-        }
-
-        /* Main Card */
-        .main-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 1.5rem;
-        }
-
-        .card-header {
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .step-badge {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 1rem;
-            color: white;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+        .logo { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+        .logo-icon { width: 48px; height: 48px; background: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .logo-icon svg { width: 28px; height: 28px; fill: white; }
+        h1 { font-family: 'Source Serif 4', serif; font-size: 2rem; font-weight: 600; }
+        .subtitle { color: var(--text-secondary); font-size: 1rem; margin-top: 0.25rem; }
+        
+        .setup-section { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm); }
+        .setup-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; }
+        .input-group { flex: 1; min-width: 180px; }
+        .input-group label { display: block; font-weight: 500; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .input-group input, .input-group select { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 1rem; font-family: inherit; background: var(--bg-primary); }
+        .input-group input:focus, .input-group select:focus { outline: none; border-color: var(--accent); background: var(--bg-secondary); }
+        
+        .progress-steps { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .step { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.875rem; background: var(--bg-secondary); border: 2px solid var(--border); border-radius: 25px; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); transition: all 0.3s ease; cursor: pointer; }
+        .step:hover { background: var(--bg-tertiary); }
+        .step-number { width: 22px; height: 22px; border-radius: 50%; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+        .step.active { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+        .step.active .step-number { background: var(--accent); color: white; }
+        .step.completed { border-color: var(--success); color: var(--success); background: var(--success-bg); }
+        .step.completed .step-number { background: var(--success); color: white; }
+        
+        .main-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); margin-bottom: 1.5rem; }
+        .card-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.75rem; }
+        .step-badge { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1rem; color: white; }
         .step-1 .step-badge { background: var(--agent1); }
         .step-2 .step-badge { background: var(--agent2); }
         .step-3 .step-badge { background: var(--agent3); }
         .step-4 .step-badge { background: var(--agent4); }
-
-        .card-title h2 {
+        .step-5 .step-badge { background: var(--agent5); }
+        .card-title h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.125rem; }
+        .card-title p { font-size: 0.9rem; color: var(--text-secondary); }
+        .card-body { padding: 1.5rem; }
+        
+        .text-box { width: 100%; min-height: 150px; padding: 1rem; border: 1px solid var(--border); border-radius: var(--radius); font-family: inherit; font-size: 0.95rem; line-height: 1.7; resize: vertical; background: var(--bg-primary); }
+        .text-box:focus { outline: none; border-color: var(--accent); background: var(--bg-secondary); }
+        .text-box.output { background: var(--bg-tertiary); font-family: 'Source Serif 4', serif; font-size: 1.05rem; }
+        .text-box.json-output { font-family: monospace; font-size: 0.85rem; background: #1a1a1a; color: #e0e0e0; border: none; }
+        .text-label { display: block; font-weight: 500; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .section-gap { margin-top: 1.5rem; }
+        
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: var(--radius); font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; font-family: inherit; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .btn-large { padding: 1rem 2rem; font-size: 1.1rem; border-radius: var(--radius-lg); }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .btn-primary:disabled { background: var(--text-muted); cursor: not-allowed; transform: none; }
+        .btn-secondary { background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border); }
+        .btn-secondary:hover { background: var(--border); }
+        .btn-success { background: var(--success); color: white; }
+        .btn-success:hover { background: #14532d; }
+        .btn-small { padding: 0.5rem 1rem; font-size: 0.85rem; }
+        .button-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .button-row-center { justify-content: center; }
+        
+        .loading { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem; gap: 1rem; }
+        .spinner { width: 48px; height: 48px; border: 4px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { font-size: 1.1rem; color: var(--text-secondary); }
+        
+        .message { padding: 1rem 1.25rem; border-radius: var(--radius); margin-bottom: 1rem; font-size: 0.95rem; }
+        .message-error { background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B; }
+        .message-success { background: var(--success-bg); border: 1px solid #86EFAC; color: var(--success); }
+        .message-info { background: var(--accent-light); border: 1px solid #FCD34D; color: #92400E; }
+        
+        .hidden { display: none !important; }
+        footer { text-align: center; padding: 1.5rem 0; color: var(--text-muted); font-size: 0.85rem; }
+        
+        /* Studio Tabs */
+        .studio-tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 1.5rem; }
+        .studio-tab { padding: 0.875rem 1.5rem; border: none; background: var(--bg-tertiary); color: var(--text-secondary); font-weight: 600; cursor: pointer; border-radius: var(--radius) var(--radius) 0 0; margin-right: 0.5rem; transition: all 0.2s; font-size: 1rem; }
+        .studio-tab.active { color: white; }
+        .studio-tab.validator-tab.active { background: var(--validator-primary); }
+        .studio-tab.mentor-tab.active { background: var(--mentor-primary); }
+        .studio-tab:hover:not(.active) { background: var(--border); }
+        .studio-view { display: none; }
+        .studio-view.active { display: block; }
+        
+        /* Approval Panel */
+        .approval-panel { background: linear-gradient(135deg, #f7fafc, #edf2f7); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+        .approval-badges { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .approval-badge { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+        .approval-badge.pending { background: #fed7d7; color: #c53030; }
+        .approval-badge.active { background: #fef3c7; color: #c05621; }
+        .approval-badge.approved { background: #c6f6d5; color: #276749; }
+        .approval-badge.waiting { background: #e2e8f0; color: #718096; }
+        
+        /* Validator View - Audio Only */
+        .validator-audio-panel { 
+            background: var(--validator-bg); 
+            border: 2px solid var(--validator-border); 
+            border-radius: var(--radius-lg); 
+            padding: 2rem; 
+            text-align: center;
+        }
+        
+        /* Large Play Button */
+        .main-play-btn {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--validator-primary), #285e61);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+        .main-play-btn:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(49, 151, 149, 0.4); }
+        .main-play-btn:active { transform: scale(0.98); }
+        .main-play-btn svg { width: 50px; height: 50px; fill: white; }
+        .main-play-btn.playing { background: linear-gradient(135deg, #e53e3e, #c53030); }
+        
+        /* Segment Navigation - Visual Only (No Text) */
+        .segment-nav { 
+            display: flex; 
+            height: 60px; 
+            border-radius: var(--radius-lg); 
+            overflow: hidden; 
+            margin: 1.5rem 0; 
+            border: 2px solid var(--validator-border);
+            background: white;
+        }
+        .segment-block {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .segment-block:hover { filter: brightness(0.92); }
+        .segment-block.playing::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: currentColor;
+            border-radius: 50%;
+            animation: pulse 1s ease-in-out infinite;
+        }
+        .segment-block.selected { box-shadow: inset 0 0 0 3px rgba(0,0,0,0.3); }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        
+        /* Progress Bar */
+        .audio-progress { 
+            height: 10px; 
+            background: #b2f5ea; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        .audio-progress-fill { height: 100%; background: var(--validator-primary); border-radius: 5px; width: 0%; transition: width 0.1s; }
+        
+        /* Recording Interface */
+        .recording-panel {
+            background: linear-gradient(135deg, var(--mentor-bg), #E9D8FD);
+            border: 2px solid var(--mentor-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        .record-btn {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #805AD5, #553C9A);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem auto;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+        .record-btn:hover { transform: scale(1.05); }
+        .record-btn.recording { 
+            background: linear-gradient(135deg, #e53e3e, #c53030); 
+            animation: recording-pulse 1.5s ease-in-out infinite;
+        }
+        .record-btn svg { width: 40px; height: 40px; fill: white; }
+        @keyframes recording-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.7); } 50% { box-shadow: 0 0 0 20px rgba(229, 62, 62, 0); } }
+        
+        .status-indicator {
             font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.125rem;
+            margin: 1rem 0;
+            min-height: 2rem;
         }
-
-        .card-title p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+        
+        /* Time Display */
+        .time-display {
+            font-family: 'DM Sans', monospace;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--validator-primary);
+            margin: 1rem 0;
         }
-
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        /* Text Areas */
-        .text-box {
-            width: 100%;
-            min-height: 180px;
-            padding: 1rem;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            font-family: inherit;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            resize: vertical;
-            background: var(--bg-primary);
-        }
-
-        .text-box:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: var(--bg-secondary);
-        }
-
-        .text-box.output {
-            background: var(--bg-tertiary);
-            font-family: 'Source Serif 4', serif;
-            font-size: 1.05rem;
-        }
-
-        .text-box.json-output {
-            font-family: monospace;
-            font-size: 0.85rem;
-            background: #1a1a1a;
-            color: #e0e0e0;
-            border: none;
-        }
-
-        .text-label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .section-gap {
-            margin-top: 1.5rem;
-        }
-
-        /* Buttons */
-        .btn {
-            padding: 0.875rem 1.75rem;
-            border: none;
-            border-radius: var(--radius);
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: inherit;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .btn-large {
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
+        
+        /* Segment Colors */
+        .seg-color-0 { background: #bee3f8; color: #2b6cb0; }
+        .seg-color-1 { background: #c6f6d5; color: #22543d; }
+        .seg-color-2 { background: #fefcbf; color: #744210; }
+        .seg-color-3 { background: #fed7d7; color: #c53030; }
+        .seg-color-4 { background: #e9d8fd; color: #553c9a; }
+        .seg-color-5 { background: #b2f5ea; color: #234e52; }
+        
+        /* Mentor View */
+        .mentor-text-panel {
+            background: var(--mentor-bg);
+            border: 2px solid var(--mentor-border);
             border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
-
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-primary:disabled {
-            background: var(--text-muted);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .btn-secondary {
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--border);
-        }
-
-        .btn-success {
-            background: var(--success);
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #14532d;
-        }
-
-        .button-row {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .button-row-center {
-            justify-content: center;
-        }
-
-        /* Loading State */
-        .loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem;
-            gap: 1rem;
-        }
-
-        .spinner {
-            width: 48px;
-            height: 48px;
-            border: 4px solid var(--border);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .loading-text {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-        }
-
-        /* Messages */
-        .message {
-            padding: 1rem 1.25rem;
+        .mentor-text-display {
+            background: white;
+            border: 1px solid var(--mentor-border);
             border-radius: var(--radius);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .message-error {
-            background: #FEF2F2;
-            border: 1px solid #FECACA;
-            color: #991B1B;
-        }
-
-        .message-success {
-            background: var(--success-bg);
-            border: 1px solid #86EFAC;
-            color: var(--success);
-        }
-
-        .message-info {
-            background: var(--accent-light);
-            border: 1px solid #FCD34D;
-            color: #92400E;
-        }
-
-        /* Start Screen */
-        .start-screen {
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        .start-screen h2 {
+            padding: 1.5rem;
             font-family: 'Source Serif 4', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            min-height: 150px;
         }
-
-        .start-screen p {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+        
+        /* Faithfulness Results */
+        .faithfulness-result { border-radius: var(--radius); padding: 1rem; margin-bottom: 0.75rem; }
+        .faithfulness-result.pass { background: #f0fff4; border: 2px solid #68d391; }
+        .faithfulness-result.warning { background: #fffbeb; border: 2px solid #f6ad55; }
+        .faithfulness-result.fail { background: #fff5f5; border: 2px solid #fc8181; }
+        
+        /* Edit History */
+        .edit-history {
+            background: #f7fafc;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 0.9rem;
         }
-
-        /* Hidden */
-        .hidden {
-            display: none !important;
+        .edit-item {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border);
         }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 1.5rem 0;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* Responsive */
+        .edit-item:last-child { border-bottom: none; }
+        
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            h1 {
-                font-size: 1.5rem;
-            }
-            
-            .setup-row {
-                flex-direction: column;
-            }
-            
-            .input-group {
-                width: 100%;
-            }
-
-            .step {
-                padding: 0.5rem 0.75rem;
-                font-size: 0.8rem;
-            }
-
-            .step-number {
-                width: 20px;
-                height: 20px;
-                font-size: 0.7rem;
-            }
+            .container { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+            .setup-row { flex-direction: column; }
+            .input-group { width: 100%; }
+            .step { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
+            .main-play-btn { width: 100px; height: 100px; }
+            .main-play-btn svg { width: 40px; height: 40px; }
         }
     </style>
 </head>
@@ -492,751 +316,1133 @@
         <header>
             <div class="logo">
                 <div class="logo-icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                 </div>
                 <h1>Oral Bridge OBT</h1>
             </div>
-            <p class="subtitle">AI-Assisted Bible Translation</p>
+            <p class="subtitle">AI-Assisted Bible Translation with Voice-First Tripod Studio</p>
         </header>
 
-        <!-- Setup Section -->
         <div class="setup-section">
             <div class="setup-row">
                 <div class="input-group">
-                    <label for="apiKey">API Key</label>
-                    <input type="password" id="apiKey" placeholder="Enter your Claude API key">
+                    <label for="apiKey">Anthropic API Key</label>
+                    <input type="password" id="apiKey" placeholder="sk-ant-...">
                 </div>
-                <div class="input-group" style="max-width: 200px;">
-                    <label for="modelSelect">AI Model</label>
+                <div class="input-group">
+                    <label for="elevenLabsKey">ElevenLabs API Key</label>
+                    <input type="password" id="elevenLabsKey" placeholder="For audio generation">
+                </div>
+                <div class="input-group" style="max-width: 180px;">
+                    <label for="modelSelect">Model</label>
                     <select id="modelSelect">
-                        <option value="claude-opus-4-5-20251101">Claude Opus 4.5</option>
-                        <option value="claude-opus-4-1-20250805">Claude Opus 4.1</option>
-                        <option value="claude-sonnet-4-5-20250929">Claude Sonnet 4.5</option>
                         <option value="claude-sonnet-4-20250514">Claude Sonnet 4</option>
+                        <option value="claude-opus-4-5-20251101">Claude Opus 4.5</option>
                     </select>
                 </div>
             </div>
-            <p class="help-text">Your API key is saved in your browser and kept private.</p>
-        </div>
-
-        <!-- Input Section -->
-        <div class="setup-section">
-            <div class="setup-row">
+            <div class="setup-row" style="margin-top: 1rem;">
                 <div class="input-group">
-                    <label for="biblicalRef">Bible Passage</label>
-                    <input type="text" id="biblicalRef" placeholder="Example: Ruth 1:1-5">
+                    <label for="biblicalRef">Biblical Reference</label>
+                    <input type="text" id="biblicalRef" placeholder="e.g., Ruth 1:1-5">
                 </div>
                 <div class="input-group">
                     <label for="targetLang">Target Language</label>
-                    <input type="text" id="targetLang" placeholder="Example: Portuguese" value="Portuguese">
+                    <select id="targetLang">
+                        <option value="english">English (Oral)</option>
+                        <option value="portuguese_sertanejo">Portuguese (Sertanejo)</option>
+                        <option value="hindi">Hindi (बोलचाल)</option>
+                        <option value="spanish">Spanish (Coloquial)</option>
+                        <option value="korean">Korean (구어체)</option>
+                        <option value="indonesian">Bahasa Indonesia</option>
+                    </select>
                 </div>
                 <div class="input-group">
                     <label for="targetAudience">Target Audience</label>
-                    <input type="text" id="targetAudience" placeholder="Example: Rural Brazil" value="Rural Brazil / Sertanejo">
+                    <input type="text" id="targetAudience" placeholder="e.g., Rural farmers">
                 </div>
             </div>
-            <div class="button-row button-row-center">
-                <button class="btn btn-primary btn-large" id="startBtn" onclick="startPipeline()">
-                    Start Translation
-                </button>
+            <div class="button-row button-row-center" style="margin-top: 1.5rem;">
+                <button class="btn btn-primary btn-large" onclick="startTranslation()">Begin Translation</button>
             </div>
         </div>
 
-        <!-- Progress Steps -->
-        <div class="progress-steps hidden" id="progressSteps">
-            <div class="step" id="step1">
-                <span class="step-number">1</span>
-                Meaning Map
-            </div>
-            <div class="step" id="step2">
-                <span class="step-number">2</span>
-                Discourse
-            </div>
-            <div class="step" id="step3">
-                <span class="step-number">3</span>
-                Translation
-            </div>
-            <div class="step" id="step4">
-                <span class="step-number">4</span>
-                Review
-            </div>
+        <div id="progressSteps" class="progress-steps hidden">
+            <div class="step" id="step1Ind" onclick="goToStep(1)"><span class="step-number">1</span><span>Map</span></div>
+            <div class="step" id="step2Ind" onclick="goToStep(2)"><span class="step-number">2</span><span>Discourse</span></div>
+            <div class="step" id="step3Ind" onclick="goToStep(3)"><span class="step-number">3</span><span>Translate</span></div>
+            <div class="step" id="step4Ind" onclick="goToStep(4)"><span class="step-number">4</span><span>Review</span></div>
+            <div class="step" id="step5Ind" onclick="goToStep(5)"><span class="step-number">5</span><span>Studio</span></div>
         </div>
 
-        <!-- Main Work Area -->
-        <div class="main-card hidden" id="workArea">
-            <!-- Content will be dynamically inserted here -->
-        </div>
+        <div id="workArea" class="main-card hidden"></div>
 
-        <footer>
-            Oral Bridge OBT • Ready Vessels Project
-        </footer>
+        <footer><p>Ready Vessels Project • Tripod Method v5.2 • Voice-First Studio</p></footer>
     </div>
 
-    <script>
-        // Agent System Prompts
-        const AGENT_PROMPTS = {
-            1: `ROLE
-You are the Event Architect (Agent 1) in the Tripod pipeline.
+    <!-- Voice Config Modal -->
+    <div id="voiceModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:2000; align-items:center; justify-content:center;">
+        <div style="background:white; padding:2rem; border-radius:12px; max-width:500px; width:90%; max-height:80vh; overflow-y:auto;">
+            <h3 style="margin-bottom:1rem;">🎙️ Configure Voice</h3>
+            <div id="voiceConfigList"></div>
+            <div class="button-row" style="justify-content:flex-end;">
+                <button class="btn btn-secondary" onclick="hideVoiceModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveVoiceConfig()">Save</button>
+            </div>
+        </div>
+    </div>
 
-MISSION
-Convert the user-provided input text into a structured Meaning Map JSON by:
-1) registering Frames (scene-setting time/place headers),
-2) registering Participants (entities),
-3) decomposing the text into atomic Event Cores + role bindings,
-4) encoding nuance via Modifiers and Bundles,
-while preventing translationese, lexical bias, and hallucinated additions.
+<script>
+// ============================================================
+// STATE
+// ============================================================
+let currentStep = 0;
+let outputs = {};
+let studio = {
+    text: '',
+    segments: [],
+    selectedIdx: -1,
+    playingIdx: -1,
+    isPlaying: false,
+    approval: { validator: false, mentor: false, community: false },
+    faithfulness: [],
+    editHistory: [],
+    audioBlobs: {}, // Store audio blobs per segment
+    fullAudioUrl: null
+};
+let voiceConfig = {};
 
-CORE PRINCIPLE (Distributed Semantics)
-- Do NOT write a translation.
-- Use a SMALL closed set of Event Cores (primitives) + roles + modifiers/bundles.
-- When the source is underspecified, keep it underspecified (do not guess).
+// Speech recognition
+let speechRecognition = null;
+let isRecording = false;
+let recordedFeedback = '';
 
-INPUT CONTRACT (User always provides the text)
-1) Biblical pericope input:
-- The input contains an explicit biblical reference (e.g., "Ruth 1:1–7") AND the passage text.
-- Map ONLY from the passage text the user provided (sealed environment).
-- DO NOT fetch, reconstruct, "fill in," or harmonize text from memory/training.
-- Preferred: original biblical languages (hbo/arc/grc).
-If a biblical reference is present BUT the provided text is not in Hebrew/Aramaic/Greek:
-- Still map from the provided text (do not reject),
-- Add quality flag: "BIBLICAL_REF_BUT_TEXT_NOT_ORIGINAL_LANGUAGE".
+const LANGS = {
+    english: { name: "English (Oral)", instruction: "Generate in natural, spoken English using oral storytelling register. Include oral markers: 'Now listen...', 'Then...'. Avoid formal Bible-speak.", speechLang: 'en-US' },
+    portuguese_sertanejo: { name: "Portuguese (Sertanejo)", instruction: "Gere em português do Sertão Nordestino, registro oral. Use marcadores: 'Escuta só...', 'Aí...'.", speechLang: 'pt-BR' },
+    hindi: { name: "Hindi (बोलचाल)", instruction: "हिंदी की बोलचाल की भाषा में लिखें। मौखिक चिह्नक उपयोग करें।", speechLang: 'hi-IN' },
+    spanish: { name: "Spanish (Coloquial)", instruction: "Genera en español coloquial hablado. Usa marcadores orales.", speechLang: 'es-ES' },
+    korean: { name: "Korean (구어체)", instruction: "한국어 구어체로 생성하세요. 구술 표지를 사용하세요.", speechLang: 'ko-KR' },
+    indonesian: { name: "Bahasa Indonesia", instruction: "Tulis dalam Bahasa Indonesia lisan sehari-hari.", speechLang: 'id-ID' }
+};
 
-2) Non-biblical input:
-- The input has NO biblical reference.
-- Map from the provided text in its own language as-is.
+const PROMPTS = {
+    1: `You are the Event Architect. Convert the biblical passage into a Meaning Map JSON with: meta, frames, participants, events. Use closed Event Cores, semantic roles, and modifiers. Return ONLY valid JSON.`,
+    2: `You are the Discourse Weaver. Add discourse structure to the Meaning Map: functional_genre, literary_form, thematic_spine, peak_event_id, and for each event add discourse_function (SET/BG/MAIN/EVAL), peak flag, and discourse_logic relations. Return the enhanced JSON only.`,
+    3: `You are the Oral Storyteller. Transform the Meaning Map into natural oral narrative in the target language. RULES: 1) Use ONLY participants and events from the map. 2) Transliterate names phonetically. 3) Don't upgrade terms to religious jargon. 4) Make it sound like a spoken story. Output ONLY the narrative text.`,
+    4: `You are a Bible Translation Consultant. Review the translation for: 1) Exegetical accuracy vs source text, 2) Cultural appropriateness for the audience, 3) Oral naturalness. Provide a markdown report with Executive Summary, Issues Found, and Suggestions.`
+};
 
-LANGUAGE DETECTION
-- Detect script(s) from the PROVIDED text only.
-- Set meta.source_lang to:
-  - "hbo" if Hebrew script dominates,
-  - "grc" if Greek script dominates,
-  - "arc" only if the user labels it Aramaic OR the text is clearly Aramaic,
-  - otherwise best-effort BCP47 tag or "und".
+const SEGMENT_COLORS = [
+    { bg: '#bee3f8', color: '#2b6cb0' },
+    { bg: '#c6f6d5', color: '#22543d' },
+    { bg: '#fefcbf', color: '#744210' },
+    { bg: '#fed7d7', color: '#c53030' },
+    { bg: '#e9d8fd', color: '#553c9a' },
+    { bg: '#b2f5ea', color: '#234e52' }
+];
 
-SEALED-SYSTEM RULE (No Addition / No Subtraction)
-- The input text is the only evidence.
-- No external backstory, theology, smoothing, or "what the verse usually says".
-- No omission: every semantic unit must be represented (participants, predicates, quantifiers, negations, purpose infinitives, causal markers like כי, etc.).
-
-EVIDENCE / ANCHORING RULE
-- Every Participant and every Event MUST include ≥1 anchor.
-- Anchors MUST quote exact surface form from the user's provided text.
-- If the input includes verse markers (digits, Hebrew letters א ב ג..., etc.), you may omit the marker from the anchor "form" but MUST capture verse reference in "ref" when possible.
-
-OUTPUT FORMAT
-- Return JSON only. No commentary. No markdown.
-
-I. TOP-LEVEL JSON STRUCTURE (v3.5.1)
-{
-  "meta": {
-    "protocol": "Tripod v3.5.1",
-    "agent": "Event Architect",
-    "input_type": "biblical|non_biblical",
-    "text_ref": "string|null",
-    "source_lang": "hbo|arc|grc|...|und",
-    "detected_scripts": ["Hebrew","Greek","Latin","..."],
-    "quality_flags": [],
-    "status": "OK|OK_WITH_FLAGS"
-  },
-  "frames": [],
-  "participants": [],
-  "events": []
+// ============================================================
+// UI FUNCTIONS
+// ============================================================
+function startTranslation() {
+    const apiKey = document.getElementById('apiKey').value;
+    const ref = document.getElementById('biblicalRef').value;
+    if (!apiKey) return alert('Please enter your API key.');
+    if (!ref) return alert('Please enter a biblical reference.');
+    
+    localStorage.setItem('anthropic_api_key', apiKey);
+    const el = document.getElementById('elevenLabsKey');
+    if (el.value) localStorage.setItem('elevenlabs_api_key', el.value);
+    
+    currentStep = 1;
+    document.getElementById('progressSteps').classList.remove('hidden');
+    document.getElementById('workArea').classList.remove('hidden');
+    updateProgress(1);
+    showStep(1);
 }
 
-II. FRAMES (Time/Place/Setting headers)
-Frame schema:
-{
-  "id": "f_*",
-  "frame_type": "time|place|setting|discourse",
-  "value": "FRAME:*",
-  "anchors": [ { "lang": "...", "form": "...", "ref": "..." } ]
+function updateProgress(step) {
+    for (let i = 1; i <= 5; i++) {
+        const ind = document.getElementById(`step${i}Ind`);
+        ind.classList.remove('active', 'completed');
+        if (i < step && outputs[i]) ind.classList.add('completed');
+        else if (i === step) ind.classList.add('active');
+    }
 }
 
-III. PARTICIPANTS (Entities / Nouns)
-Allowed participant types (closed): person, group, divine, item, substance, location, abstract
-
-Participant schema:
-{
-  "id": "p_*|g_*|loc_*|it_*|abs_*|sub_*",
-  "type": "person|group|divine|item|substance|location|abstract",
-  "value": "ONT:*",
-  "quantity": "1|2|3|few|many|all|mass",
-  "is_body_part": true|false,
-  "implicit": true|false,
-  "member_of": "g_*|null",
-  "members": ["p_*", "..."],
-  "anchors": [ { "lang": "...", "form": "...", "ref": "..." } ]
+function showStep(step) {
+    const workArea = document.getElementById('workArea');
+    const ref = document.getElementById('biblicalRef').value;
+    const lang = document.getElementById('targetLang').value;
+    const langName = LANGS[lang]?.name || lang;
+    
+    if (step === 1) {
+        workArea.innerHTML = `
+            <div class="card-header step-1"><div class="step-badge">1</div><div class="card-title"><h2>Create Meaning Map</h2><p>Analyze ${ref} and create semantic structure</p></div></div>
+            <div class="card-body">
+                <div class="button-row"><button class="btn btn-primary btn-large" onclick="runStep(1)">Create Meaning Map</button></div>
+                <div id="output1" class="section-gap"></div>
+            </div>`;
+    } else if (step === 2) {
+        workArea.innerHTML = `
+            <div class="card-header step-2"><div class="step-badge">2</div><div class="card-title"><h2>Add Discourse Structure</h2><p>Add narrative flow and connections</p></div></div>
+            <div class="card-body">
+                <label class="text-label">Meaning Map</label>
+                <textarea class="text-box json-output" id="input2" rows="8">${outputs[1] || ''}</textarea>
+                <div class="button-row"><button class="btn btn-primary btn-large" onclick="runStep(2)">Add Discourse</button></div>
+                <div id="output2" class="section-gap"></div>
+            </div>`;
+    } else if (step === 3) {
+        workArea.innerHTML = `
+            <div class="card-header step-3"><div class="step-badge">3</div><div class="card-title"><h2>Generate Translation</h2><p>Create oral translation in ${langName}</p></div></div>
+            <div class="card-body">
+                <label class="text-label">Meaning Map with Discourse</label>
+                <textarea class="text-box json-output" id="input3" rows="6">${outputs[2] || ''}</textarea>
+                <div class="button-row"><button class="btn btn-primary btn-large" onclick="runStep(3)">Generate Translation</button></div>
+                <div id="output3" class="section-gap"></div>
+            </div>`;
+    } else if (step === 4) {
+        workArea.innerHTML = `
+            <div class="card-header step-4"><div class="step-badge">4</div><div class="card-title"><h2>Quality Review</h2><p>Check accuracy and naturalness</p></div></div>
+            <div class="card-body">
+                <label class="text-label">Translation</label>
+                <textarea class="text-box output" id="input4" rows="6">${outputs[3] || ''}</textarea>
+                <div class="button-row"><button class="btn btn-primary btn-large" onclick="runStep(4)">Review Translation</button></div>
+                <div id="output4" class="section-gap"></div>
+            </div>`;
+    } else if (step === 5) {
+        workArea.innerHTML = buildStudioUI();
+        initStudio();
+    }
 }
 
-IV. EVENTS (Predicates)
-Event schema:
-{
-  "id": "e*",
-  "category": "STATE|PHYSICAL|INTERNAL|SPEECH",
-  "event_core": "exist|be_located|remain|connect|move|enter|exit|return|approach|flee|ascend|descend|do|make|destroy|impact|take|give|receive|send|bring|lose|find|die|rise|perceive_see|perceive_hear|know|think|decide|remember|feel|want|say|ask|command",
-  "roles": { },
-  "modifiers": { },
-  "bundles": { },
-  "link_hints": { },
-  "anchors": [ { "lang": "...", "form": "...", "ref": "..." } ]
-}
-
-A) CLOSED ROLE KEYS: initiator, affected, experiencer, recipient, addressee, content (string), content_ref (event id), source, goal, location, time, instrument, accompaniment, beneficiary
-
-B) ROLE CONSTRAINTS:
-- die: the entity who dies MUST be in "affected" (not initiator).
-- perceive_hear / perceive_see / know / think (when complement exists): represent the complement as content_ref to another event.
-- move/enter/exit/return: use source/goal/location when the text provides them.
-
-C) MODIFIERS (closed values):
-{
-  "polarity": "positive|negative",
-  "reality": "actual|potential|hypothetical|counterfactual",
-  "time_frame": "retrospective|immediate|prospective|gnomic",
-  "volition": "willful|automatic|unspecified",
-  "intensity": "low|medium|high|extreme|unspecified",
-  "duration": "string",
-  "frequency": "string",
-  "approx": true|false
-}
-
-D) BUNDLES (nuance without lexical bundling):
-"bundles": {
-  "state_bundle": {
-    "domain": "internal|social|mixed",
-    "affect_valence": "positive|negative|mixed|underspecified",
-    "tension_status": "resolved|unresolved|underspecified",
-    "intensity": "low|medium|high|extreme|underspecified"
-  },
-  "social_bundle": {
-    "relation": "optional_string",
-    "notes": "optional_string"
-  }
-}
-
-E) LINK_HINTS (minimal explicit subordination):
-{
-  "subordinate_type": "purpose|reason|result|condition|simultaneous|manner|temporal",
-  "matrix_event_id": "e*",
-  "subordinate_event_id": "e*"
-}
-
-V. REQUIRED COVERAGE RULES (No omission)
-- Appositions and identity/membership descriptors as connect events with connection_type=membership/origin
-- Relational nouns/inalienable relations explicitly stated (wife, sons, daughters-in-law): encode as connect events
-
-VI. PRE-OUTPUT AUDIT
-Before outputting JSON, verify:
-1) Coverage: every predicate/semantic unit in the input is represented
-2) Anchors: every participant and event has ≥1 anchor from PROVIDED text
-3) Closed sets: category, event_core, roles, modifiers adhere to allowed lists
-4) die uses affected; hear/know with complements use content_ref
-5) mass quantity only for substances
-6) No external knowledge added
-
-OUTPUT: Return only the JSON object. No explanations.`,
-
-            2: `Role:
-You are the Discourse Weaver (Agent 2) in the Tripod Meaning Maps pipeline.
-
-Mission:
-You receive a Meaning Map JSON produced by the Event Architect (Agent 1).
-Your task is to add discourse structure (global metadata + inter-event relations + discourse functions) WITHOUT changing the meaning decomposition already encoded.
-
-Core Commitments:
-- Preserve underspecification.
-- Preserve delayed resolution.
-- Encode discourse structure WITHOUT adding interpretation.
-- Sealed-system: treat the input JSON as the complete data environment.
-
-INPUT CONTRACT (CRITICAL)
-You receive ONE JSON object with: meta, frames, participants, events
-
-Agent 1 has already:
-- registered participants/frames
-- decomposed events into event_core + roles + modifiers (+ optional bundles)
-- anchored every participant/event to surface forms
-
-You MUST NOT:
-- add new participants
-- add new events
-- delete anything
-- change event_core, roles, modifiers, bundles, anchors
-- "repair" semantic analysis (that is Agent 1's job)
-
-You MAY ONLY:
-- add discourse-level fields to meta
-- add discourse annotation fields to events (and optionally frames)
-- add quality flags (append-only)
-
-OUTPUT RULES
-- Output JSON only. No commentary. No explanations.
-- Return the same JSON object, merged with your additions.
-- Do not rename or remove existing fields.
-
-GLOBAL DISCOURSE METADATA (Root meta additions)
-Add these fields under meta:
-- meta.functional_genre: "narrative" | "procedural" | "hortatory" | "explanatory"
-- meta.literary_form: "prose" | "poetry" | "song" | "list" | "epistle" | "prophecy"
-- meta.social_register: "intimate" | "casual" | "consultative" | "formal" | "frozen"
-- meta.thematic_spine: A single sentence summary of core meaning. DESCRIPTIVE, not interpretive.
-- meta.peak_event_id: Must be an existing event id. If unclear, set to null AND add quality flag.
-- meta.focal_participants: Array of participant ids that are discourse-central.
-
-Provenance:
-- Add meta.agent2 = "Discourse Weaver"
-- If meta.agents exists, append "Discourse Weaver"; else add meta.agents = ["Event Architect","Discourse Weaver"]
-
-DISCOURSE FUNCTIONS (Event-level information structure)
-For EACH event, add:
-- event.discourse_function: "SET" | "BG" | "MAIN" | "EVAL" | "QUOTE_MARGIN"
-- event.peak: true|false
-
-DISCOURSE RELATIONS (Inter-event links)
-For EACH event with index > 0, add:
-event.discourse_logic: {
-  "relation_type": "sequence" | "simultaneous" | "cause" | "result" | "purpose" | "condition" | "contrast" | "concession" | "elaboration" | "evidence" | "restatement",
-  "relative_to_event_id": "e*",
-  "relation_license": "explicit" | "constructional" | "genre_conventional" | "inferred_possible"
-}
-
-Relation licensing:
-A) explicit - Overt connective/discourse marker is present
-B) constructional - Subordination encoded by construction
-C) genre_conventional - Default narrative chaining
-D) inferred_possible - Only when plausible but NOT clearly signaled (use sparingly)
-
-PARTICIPANT TRACKING
-For EACH event, add:
-event.same_subject: true|false
-
-AGENT 2 FINAL CHECK
-Before outputting JSON, verify:
-1) I did not change participants/frames/events semantics from Agent 1.
-2) Every event (index > 0) has a discourse_logic relation to a prior event.
-3) Every discourse relation has a relation_license.
-4) I did NOT upgrade purpose/cause/result without explicit or constructional licensing.
-5) peak_event_id points to an existing event id.
-6) Output JSON only.`,
-
-            3: `Agent Name: Tripod Studio
-Role: The Oral Storyteller (The Elder)
-Input: JSON Meaning Map (Tripod Protocol v3.5.1) — Produced by The Discourse Weaver.
-Output: PURE NARRATIVE TEXT ONLY (Target Language).
-
-1. THE "LEGACY BAN" (Strict Naming & Knowledge Protocol)
-Theological Amnesia: You possess NO external knowledge of biblical history, theology, or tradition. You do not know who "Moses," "Jesus," or "David" are. You strictly recognize only the participants list provided in the JSON.
-
-The Phonological Engine (Proper Names):
-Transliterate, Do Not Translate: Map the sounds of the surface_form or gloss into the Target Language's phonology.
-Bad (Translation): Beit_Lechem → "Bethlehem" / "House of Bread".
-Good (Transliteration - Portuguese): Beit_Lechem → "Bete-Lequem".
-Good (Transliteration - English): Yehoshua → "Yeh-hosh-ua".
-Foreignness: If a name sounds foreign, preserve that quality. Do not domesticate it.
-
-2. THE SEMANTIC RENDERING (Distributed Semantics)
-Atomic Fidelity: You are receiving a map of atomic meanings (Event Cores), not "words."
-Rule: Do NOT "re-bundle" or "upgrade" simple concepts into high-register religious terms unless explicitly triggered by modifiers.
-Example: If event_core: "speak" + topic: "God", say "He spoke about God." DO NOT say "He preached."
-Example: If event_core: "immersed" + liquid: "water", say "He dipped him in water." DO NOT say "He baptized."
-Modifiers as Adverbs/Adjectives: Render modifiers explicitly in the narrative flow.
-
-3. THE DISCOURSE ENGINE (Logic & Flow)
-You must strictly adhere to the discourse_layer field for every event.
-Logic Mapping (Connectors):
-- "sequential" / "temporal_sequence" → "Then...", "After that..."
-- "simultaneous" → "While...", "At the same time..."
-- "result" / "inference" → "So...", "Because of that..."
-- "purpose" → "In order to...", "Para..."
-- "concession" → "Even though...", "But..."
-- "elaboration" → "That is...", "Meaning..."
-
-Function Handling:
-- "BG" (Background) → Use background tenses (Imperfect, Past Continuous). Lower the narrative urgency.
-- "MAIN" (Main Line) → Use primary narrative tenses (Simple Past, Preterite).
-- "SET" (Setting) → Establish time/place clearly at the start.
-- "QUOTE_MARGIN" → Speech frame. Connect it naturally to the content of the speech.
-
-Peak & Tone:
-Check global_metadata.peak_event_id. When you reach this event ID, slow down the pacing or increase intensity to mark the climax.
-
-4. THE "NO ORPHAN" PROTOCOL (Mandatory Casting)
-Rule of Inclusion: Every participant defined in the JSON participants list MUST appear in the narrative text at least once.
-
-5. THE ARCHIVE PROTOCOL (Grammar & Syntax)
-- syntax_lock: Do NOT mirror the syntactic structure of the JSON.
-- connector_check: Do not use default connectors. Use natural discourse markers.
-- voice_restriction: Prefer Active Voice.
-
-6. THE LOGIC OF ORALITY (Style & Syntax)
-The Campfire Test: The output must sound like a spoken story told by an elder, not a written text.
-Parataxis: Use additive connectors typical of the oral dialect. Avoid complex subordination unless the logic field demands it.
-Repetition: Repeat names for clarity rather than relying on long chains of ambiguous pronouns.
-
-7. MANDATORY OUTPUT FORMAT (Strict Constraints)
-Content: Output ONLY the narrative story in the Target Language.
-Prohibited Elements:
-- NO JSON artifacts.
-- NO Meta-data or introductory text (e.g., "Here is the story...").
-- NO Explanations, footnotes, or translator notes.
-- NO Markdown headers (# Title).
-
-Execution: Read the JSON. Translate the Meaning Map into Oral Narrative. Stop.`,
-
-            4: `Role:
-You are an expert Bible Translation Consultant specializing in Oral Bible Translation (OBT). You possess deep proficiency in Biblical Hebrew (Masoretic Text) and Biblical Greek (Nestle-Aland), as well as principles of missiology, linguistics, and oral storytelling traditions.
-
-Objective:
-Your task is to review a translated passage generated by the "Tripod Studio Agent." You must evaluate this draft against the original biblical text to ensure accuracy, theological integrity, and stylistic naturalness for a specific target audience.
-
-Your Mindset:
-You are a partner to the human reviewer. Do not issue final verdicts (e.g., "This is wrong"). Instead, provide observations, risk assessments, and constructive recommendations. You value Dynamic Equivalence (meaning-based translation) over Formal Equivalence (word-for-word), provided the original intent is preserved.
-
-Analysis Protocol
-When you receive a draft, perform the following three-step analysis:
-
-1. Exegetical & Theological Check (The Source)
-- Compare: Check the draft against the original Hebrew/Greek text.
-- Intent: Does the draft convey the communicative intent of the original author?
-- Key Terms: Are major theological terms (Sin, Covenant, Redemption, Grace, YHWH) handled correctly?
-- Note: In OBT, complex terms often require descriptive phrases. Ensure these descriptions are accurate.
-- Additions/Omissions:
-  - Flag any unwarranted additions (ideas not present or implied in the text).
-  - Flag any harmful omissions (dropping details that alter the plot or theology).
-  - Exception: Do not flag "Implicit Information made Explicit" as an error, as this is necessary for OBT.
-
-2. Cultural & Stylistic Check (The Audience)
-- Register: Does the language fit the requested persona?
-- Orality: Is the text "ear-friendly"?
-  - Look for visual markers that need to be audible.
-  - Check for connectives that help flow.
-- Idioms: Are idioms natural?
-
-3. Output Generation (The Report)
-Organize your response into the following markdown structure:
-
-A. Executive Summary
-A 2-3 sentence overview of the draft's quality.
-
-B. Exegetical & Theological Analysis
-Use a list format to highlight specific issues.
-- Verse/Segment: [Reference]
-- Hebrew/Greek Concept: [Original Term/Meaning]
-- Draft Rendering: [What the agent wrote]
-- Analysis: Explain the gap between the two. Is it a loss of meaning? A theological risk?
-- Recommendation: Suggest a fix or a question for the human reviewer to consider.
-
-C. Style & Naturalness Notes
-- Praise: Point out excellent cultural adaptations.
-- Critique: Point out clunky phrasing, transliteration errors, or "Translationese."
-
-D. Suggested Revision
-Provide a rewritten version of the segment that incorporates your recommendations while maintaining the intended style/dialect.
-
-Important Constraints
-- Do not be pedantic. If a change is minor and doesn't affect meaning, let it slide.
-- Transliteration Warning: Be hyper-vigilant about Hebrew/Greek words being transliterated instead of translated.
-- Divine Names: Pay attention to how God is addressed. Ensure it aligns with the target audience's religious context.`
-        };
-
-        const STEP_TITLES = {
-            1: { title: 'Creating Meaning Map', desc: 'Analyzing the biblical text structure' },
-            2: { title: 'Adding Discourse', desc: 'Building narrative connections' },
-            3: { title: 'Generating Translation', desc: 'Creating the oral translation' },
-            4: { title: 'Quality Review', desc: 'Checking accuracy and naturalness' }
-        };
-
-        // State
-        let currentStep = 0;
-        const outputs = { 1: '', 2: '', 3: '', 4: '' };
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedKey = localStorage.getItem('claudeApiKey');
-            if (savedKey) {
-                document.getElementById('apiKey').value = savedKey;
-            }
-
-            const savedModel = localStorage.getItem('claudeModel');
-            if (savedModel) {
-                document.getElementById('modelSelect').value = savedModel;
-            }
-
-            document.getElementById('apiKey').addEventListener('change', (e) => {
-                localStorage.setItem('claudeApiKey', e.target.value);
-            });
-
-            document.getElementById('modelSelect').addEventListener('change', (e) => {
-                localStorage.setItem('claudeModel', e.target.value);
-            });
-        });
-
-        function updateProgress(step) {
-            for (let i = 1; i <= 4; i++) {
-                const el = document.getElementById(`step${i}`);
-                el.classList.remove('active', 'completed');
-                if (i < step) {
-                    el.classList.add('completed');
-                } else if (i === step) {
-                    el.classList.add('active');
-                }
-            }
-        }
-
-        function startPipeline() {
-            const apiKey = document.getElementById('apiKey').value;
-            const biblicalRef = document.getElementById('biblicalRef').value;
-
-            if (!apiKey) {
-                alert('Please enter your API key');
-                return;
-            }
-
-            if (!biblicalRef) {
-                alert('Please enter a Bible passage');
-                return;
-            }
-
-            // Reset
-            for (let i = 1; i <= 4; i++) {
-                outputs[i] = '';
-            }
-
-            currentStep = 1;
-            document.getElementById('progressSteps').classList.remove('hidden');
-            updateProgress(1);
-
-            // Show step 1
-            showStep(1);
-        }
-
-        function showStep(step) {
-            const workArea = document.getElementById('workArea');
-            workArea.classList.remove('hidden');
-
-            const biblicalRef = document.getElementById('biblicalRef').value;
-            const targetLang = document.getElementById('targetLang').value;
-            const targetAudience = document.getElementById('targetAudience').value;
-
-            let content = '';
-
-            if (step === 1) {
-                content = `
-                    <div class="card-header step-1">
-                        <div class="step-badge">1</div>
-                        <div class="card-title">
-                            <h2>Create Meaning Map</h2>
-                            <p>The AI will analyze the biblical text and create a structured meaning map</p>
-                        </div>
+// ============================================================
+// TRIPOD STUDIO - VOICE FIRST
+// ============================================================
+function buildStudioUI() {
+    return `
+        <div class="card-header step-5"><div class="step-badge">5</div><div class="card-title"><h2>🎬 Tripod Studio</h2><p>Voice-First Validation Workflow</p></div></div>
+        <div class="card-body">
+            <div class="approval-panel">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                    <strong>📋 Approval Chain</strong>
+                    <div class="approval-badges">
+                        <div id="valBadge" class="approval-badge pending">⏳ Validator</div>
+                        <div id="menBadge" class="approval-badge waiting">⏸️ Mentor</div>
+                        <div id="comBadge" class="approval-badge waiting">⏸️ Community</div>
                     </div>
-                    <div class="card-body">
-                        <label class="text-label">Bible Passage: <strong>${biblicalRef}</strong></label>
-                        <div class="button-row">
-                            <button class="btn btn-primary btn-large" onclick="runStep(1)">
-                                Create Meaning Map
-                            </button>
-                        </div>
-                        <div id="output1" class="section-gap"></div>
-                    </div>
-                `;
-            } else if (step === 2) {
-                content = `
-                    <div class="card-header step-2">
-                        <div class="step-badge">2</div>
-                        <div class="card-title">
-                            <h2>Add Discourse Structure</h2>
-                            <p>The AI will add narrative flow and connections to the meaning map</p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <label class="text-label">Meaning Map from Step 1</label>
-                        <textarea class="text-box json-output" id="input2" rows="8">${outputs[1]}</textarea>
-                        <div class="button-row">
-                            <button class="btn btn-primary btn-large" onclick="runStep(2)">
-                                Add Discourse
-                            </button>
-                        </div>
-                        <div id="output2" class="section-gap"></div>
-                    </div>
-                `;
-            } else if (step === 3) {
-                content = `
-                    <div class="card-header step-3">
-                        <div class="step-badge">3</div>
-                        <div class="card-title">
-                            <h2>Generate Translation</h2>
-                            <p>The AI will create an oral translation in ${targetLang} for ${targetAudience}</p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <label class="text-label">Complete Meaning Map from Step 2</label>
-                        <textarea class="text-box json-output" id="input3" rows="6">${outputs[2]}</textarea>
-                        <div class="button-row">
-                            <button class="btn btn-primary btn-large" onclick="runStep(3)">
-                                Generate Translation
-                            </button>
-                        </div>
-                        <div id="output3" class="section-gap"></div>
-                    </div>
-                `;
-            } else if (step === 4) {
-                content = `
-                    <div class="card-header step-4">
-                        <div class="step-badge">4</div>
-                        <div class="card-title">
-                            <h2>Quality Review</h2>
-                            <p>The AI will check accuracy and suggest improvements</p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <label class="text-label">Translation from Step 3</label>
-                        <textarea class="text-box output" id="input4" rows="6">${outputs[3]}</textarea>
-                        <div class="button-row">
-                            <button class="btn btn-primary btn-large" onclick="runStep(4)">
-                                Review Translation
-                            </button>
-                        </div>
-                        <div id="output4" class="section-gap"></div>
-                    </div>
-                `;
-            }
-
-            workArea.innerHTML = content;
-        }
-
-        async function runStep(step) {
-            const apiKey = document.getElementById('apiKey').value;
-            const model = document.getElementById('modelSelect').value;
-            const biblicalRef = document.getElementById('biblicalRef').value;
-            const targetLang = document.getElementById('targetLang').value;
-            const targetAudience = document.getElementById('targetAudience').value;
-
-            const outputDiv = document.getElementById(`output${step}`);
-            
-            // Show loading
-            outputDiv.innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <div class="loading-text">${STEP_TITLES[step].title}...</div>
                 </div>
-            `;
-
-            // Build the user message
-            let userMessage = '';
-            if (step === 1) {
-                userMessage = `Biblical Reference: ${biblicalRef}
-
-Please retrieve the Hebrew/Greek text for this passage and create the Meaning Map JSON following the protocol.`;
-            } else if (step === 2) {
-                const input = document.getElementById('input2').value;
-                userMessage = input;
-            } else if (step === 3) {
-                const input = document.getElementById('input3').value;
-                userMessage = `Target Language: ${targetLang}
-Target Audience: ${targetAudience}
-
-${input}`;
-            } else if (step === 4) {
-                const input = document.getElementById('input4').value;
-                userMessage = `Pericope: ${biblicalRef}
-Target Language: ${targetLang}
-Target Audience: ${targetAudience}
-
-Draft Translation:
-${input}`;
-            }
-
-            try {
-                const response = await fetch('https://api.anthropic.com/v1/messages', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-api-key': apiKey,
-                        'anthropic-version': '2023-06-01',
-                        'anthropic-dangerous-direct-browser-access': 'true'
-                    },
-                    body: JSON.stringify({
-                        model: model,
-                        max_tokens: 8192,
-                        system: AGENT_PROMPTS[step],
-                        messages: [
-                            { role: 'user', content: userMessage }
-                        ]
-                    })
-                });
-
-                if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.error?.message || 'Request failed');
-                }
-
-                const data = await response.json();
-                const output = data.content?.[0]?.text || 'No output generated';
-
-                outputs[step] = output;
-                currentStep = step;
-                updateProgress(step + 1);
-
-                // Show output
-                const isJson = step <= 2;
-                const outputClass = isJson ? 'json-output' : 'output';
+            </div>
+            
+            <div class="studio-tabs">
+                <button id="tabVal" class="studio-tab validator-tab active" onclick="switchTab('validator')">🎧 Validator (Audio Only)</button>
+                <button id="tabMen" class="studio-tab mentor-tab" onclick="switchTab('mentor')">📝 Mentor (Text View)</button>
+            </div>
+            
+            <!-- ======================= -->
+            <!-- VALIDATOR VIEW - AUDIO ONLY -->
+            <!-- ======================= -->
+            <div id="validatorView" class="studio-view active">
                 
-                outputDiv.innerHTML = `
-                    <div class="message message-success">✓ Step ${step} completed successfully</div>
-                    <label class="text-label">Result:</label>
-                    <textarea class="text-box ${outputClass}" rows="10" readonly>${output}</textarea>
-                    <div class="button-row">
-                        <button class="btn btn-secondary" onclick="copyText('${step}')">Copy</button>
-                        ${step < 4 ? `<button class="btn btn-success btn-large" onclick="goToStep(${step + 1})">Continue to Step ${step + 1}</button>` : `<button class="btn btn-success btn-large" onclick="startOver()">Start New Translation</button>`}
+                <!-- Generate Section -->
+                <div style="background:#f0fff4; border:1px solid #9ae6b4; border-radius:var(--radius-lg); padding:1.5rem; margin-bottom:1.5rem;">
+                    <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap; justify-content:center;">
+                        <select id="studioLang" style="padding:0.75rem; border:2px solid #9ae6b4; border-radius:var(--radius); min-width:200px;">
+                            ${Object.entries(LANGS).map(([k,v]) => `<option value="${k}">${v.name}</option>`).join('')}
+                        </select>
+                        <button class="btn btn-success btn-large" onclick="generateRehearsal()">🎯 Generate Oral Scripture</button>
+                        <button class="btn btn-secondary" onclick="showVoiceModal()">⚙️ Voice Config</button>
                     </div>
-                `;
-
-            } catch (error) {
-                console.error('API Error:', error);
-                let errorMsg = error.message;
+                </div>
                 
-                outputDiv.innerHTML = `
-                    <div class="message message-error">
-                        <strong>Something went wrong</strong><br><br>
-                        ${errorMsg}<br><br>
-                        <strong>What to try:</strong><br>
-                        • Check your API key is correct<br>
-                        • Try a different model from the dropdown<br>
-                        • Make sure you have credits in your Anthropic account
+                <!-- Main Audio Panel - NO TEXT VISIBLE -->
+                <div id="audioPanel" class="validator-audio-panel" style="display:none;">
+                    <h3 style="color:var(--validator-primary); margin-bottom:0.5rem;">🔊 Listen to Oral Scripture</h3>
+                    <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:1rem;">Click segments to listen. Record voice feedback to request changes.</p>
+                    
+                    <!-- Segment Navigation -->
+                    <div id="segmentNav" class="segment-nav">
+                        <div style="flex:1; display:flex; align-items:center; justify-content:center; color:#666;">Generate audio first</div>
+                    </div>
+                    
+                    <!-- Main Play Button -->
+                    <button id="mainPlayBtn" class="main-play-btn" onclick="toggleMainPlay()">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    
+                    <!-- Time Display -->
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="audio-progress" onclick="seekAudio(event)">
+                        <div id="progressFill" class="audio-progress-fill"></div>
+                    </div>
+                    
+                    <div style="display:flex; gap:0.75rem; justify-content:center; margin-top:1rem;">
+                        <button class="btn btn-secondary btn-small" onclick="skipSegment(-1)">⏮️ Prev</button>
+                        <button class="btn btn-secondary btn-small" onclick="restartAudio()">🔄 Restart</button>
+                        <button class="btn btn-secondary btn-small" onclick="skipSegment(1)">⏭️ Next</button>
+                    </div>
+                    
+                    <div id="audioStatus" style="margin-top:1rem; font-size:0.9rem; color:var(--text-secondary);"></div>
+                    
+                    <audio id="audioPlayer" style="display:none;"></audio>
+                </div>
+                
+                <!-- Selected Segment Feedback Panel -->
+                <div id="feedbackPanel" class="recording-panel" style="display:none;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                        <h4 style="color:var(--mentor-primary);">🎯 Selected: <span id="selectedSegLabel">Segment 1</span></h4>
+                        <button class="btn btn-secondary btn-small" onclick="playSelectedSegment()">▶️ Replay</button>
+                    </div>
+                    
+                    <p style="color:var(--text-secondary); margin-bottom:1rem;">Speak your feedback. Describe what to change.</p>
+                    
+                    <!-- Record Button -->
+                    <button id="recordBtn" class="record-btn" onclick="toggleRecording()">
+                        <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg>
+                    </button>
+                    
+                    <div id="recordStatus" class="status-indicator"></div>
+                    
+                    <div id="feedbackActions" style="display:none; margin-top:1.5rem;">
+                        <button class="btn btn-primary btn-large" onclick="applyVoiceFeedback()">✨ Apply Feedback & Regenerate</button>
+                        <button class="btn btn-secondary" onclick="cancelFeedback()" style="margin-left:0.5rem;">Cancel</button>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="closeFeedbackPanel()" style="margin-top:1rem;">✖️ Close</button>
+                </div>
+                
+                <!-- Validator Approval -->
+                <div style="margin-top:1.5rem; padding:1.5rem; background:linear-gradient(135deg, #c6f6d5, #9ae6b4); border:2px solid #38a169; border-radius:var(--radius-lg);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                        <div>
+                            <h4 style="color:#276749;">✅ Validator Approval</h4>
+                            <p style="font-size:0.9em; color:#2f855a;">When it sounds natural, mark as approved.</p>
+                        </div>
+                        <button id="valApproveBtn" class="btn btn-success btn-large" onclick="toggleValidator()">☐ Approve</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ======================= -->
+            <!-- MENTOR VIEW - TEXT VISIBLE -->
+            <!-- ======================= -->
+            <div id="mentorView" class="studio-view">
+                
+                <!-- Rehearsal Text Display -->
+                <div class="mentor-text-panel">
+                    <h3 style="color:var(--mentor-primary); margin-bottom:0.75rem;">📜 Transcription (Text View)</h3>
+                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1rem;">Text is only visible in Mentor view. Validator works only with audio.</p>
+                    <div id="mentorText" class="mentor-text-display">
+                        <span style="color:#999;">Generate rehearsal in Validator tab first...</span>
                     </div>
                     <div class="button-row">
-                        <button class="btn btn-primary" onclick="runStep(${step})">Try Again</button>
+                        <button class="btn btn-secondary btn-small" onclick="copyMentorText()">📋 Copy Text</button>
                     </div>
-                `;
+                </div>
+                
+                <!-- Edit History -->
+                <div id="editHistorySection" style="display:none; margin-bottom:1.5rem;">
+                    <h4 style="color:var(--mentor-primary); margin-bottom:0.75rem;">📝 Edit History</h4>
+                    <div id="editHistoryList" class="edit-history">
+                        <span style="color:#999;">No edits yet.</span>
+                    </div>
+                </div>
+                
+                <!-- Faithfulness Analysis (After Validator Approval) -->
+                <div id="faithSection" style="display:none;">
+                    <div style="background:#ebf8ff; border:2px solid #90cdf4; border-radius:var(--radius-lg); padding:1.5rem; margin-bottom:1.5rem;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                            <div>
+                                <h4 style="color:#2b6cb0;">🔍 Faithfulness Analysis</h4>
+                                <p style="font-size:0.9em; color:#4299e1;">Check faithfulness to the Meaning Map.</p>
+                            </div>
+                            <button class="btn btn-primary btn-large" onclick="runAnalysis()">🤖 Run Analysis</button>
+                        </div>
+                        <div id="analysisStatus" style="margin-top:0.75rem; font-size:0.9em;"></div>
+                    </div>
+                    
+                    <div id="resultsSection" style="display:none;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                            <h4>📊 Analysis Results</h4>
+                            <div id="analysisStats"></div>
+                        </div>
+                        <div id="resultsList" style="max-height:400px; overflow-y:auto;"></div>
+                    </div>
+                    
+                    <!-- Mentor Approval -->
+                    <div id="mentorApproveSection" style="display:none; background:linear-gradient(135deg, #c6f6d5, #9ae6b4); border:2px solid #38a169; border-radius:var(--radius-lg); padding:1.5rem; margin-top:1.5rem;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                            <div><h4 style="color:#276749;">✅ Mentor Approval</h4></div>
+                            <button id="menApproveBtn" class="btn btn-success btn-large" onclick="toggleMentor()">☐ Approve</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Community Approval -->
+                    <div id="comApproveSection" style="display:none; background:linear-gradient(135deg, #faf5ff, #e9d8fd); border:2px solid #805ad5; border-radius:var(--radius-lg); padding:1.5rem; margin-top:1rem;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                            <div><h4 style="color:#553c9a;">👥 Community Approval</h4></div>
+                            <button id="comApproveBtn" class="btn btn-large" style="background:#805ad5; color:white;" onclick="toggleCommunity()">☐ Approve</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+}
+
+function initStudio() {
+    const mainLang = document.getElementById('targetLang').value;
+    document.getElementById('studioLang').value = mainLang;
+    if (outputs[3]) {
+        studio.text = outputs[3];
+        document.getElementById('mentorText').textContent = outputs[3];
+        document.getElementById('audioPanel').style.display = 'block';
+        segmentText();
+    }
+    loadVoiceConfig();
+    updateApprovalUI();
+    initSpeechRecognition();
+}
+
+function switchTab(tab) {
+    document.querySelectorAll('.studio-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.studio-view').forEach(v => v.classList.remove('active'));
+    if (tab === 'validator') {
+        document.getElementById('tabVal').classList.add('active');
+        document.getElementById('validatorView').classList.add('active');
+    } else {
+        document.getElementById('tabMen').classList.add('active');
+        document.getElementById('mentorView').classList.add('active');
+        if (studio.text) document.getElementById('mentorText').textContent = studio.text;
+    }
+}
+
+// ============================================================
+// REHEARSAL GENERATION
+// ============================================================
+async function generateRehearsal() {
+    const apiKey = document.getElementById('apiKey').value || localStorage.getItem('anthropic_api_key');
+    if (!apiKey) return alert('Please enter your API key.');
+    const mapJson = outputs[2] || outputs[1];
+    if (!mapJson) return alert('Complete Steps 1-2 first.');
+    
+    const langKey = document.getElementById('studioLang').value;
+    const lang = LANGS[langKey];
+    
+    document.getElementById('audioPanel').style.display = 'block';
+    document.getElementById('audioStatus').textContent = '⏳ Generating oral Scripture...';
+    
+    try {
+        const model = document.getElementById('modelSelect').value;
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+            body: JSON.stringify({ model, max_tokens: 4000, messages: [{ role: 'user', content: `Compose oral Scripture from this Meaning Map.\n\n${lang.instruction}\n\nMEANING MAP:\n${mapJson}\n\nOutput ONLY the narrative text.` }] })
+        });
+        if (!resp.ok) throw new Error('API error');
+        const data = await resp.json();
+        const text = data.content[0].text;
+        
+        studio.text = text;
+        document.getElementById('mentorText').textContent = text;
+        segmentText();
+        document.getElementById('audioStatus').textContent = '✅ Text ready. Generating audio...';
+        
+        // Auto-generate audio
+        await generateAudio();
+        
+    } catch (e) {
+        document.getElementById('audioStatus').textContent = '❌ Error: ' + e.message;
+    }
+}
+
+function segmentText() {
+    const text = studio.text;
+    const parts = text.split(/(?<=[.!?:;])\s+/).filter(s => s.trim());
+    studio.segments = [];
+    let buf = '';
+    for (let i = 0; i < parts.length; i++) {
+        buf += (buf ? ' ' : '') + parts[i].trim();
+        if (buf.length >= 50 || i === parts.length - 1) {
+            studio.segments.push({ id: studio.segments.length, text: buf.trim() });
+            buf = '';
+        }
+    }
+    if (!studio.segments.length) {
+        studio.segments = [{ id: 0, text: text.trim() }];
+    }
+    renderSegmentNav();
+}
+
+function renderSegmentNav() {
+    const nav = document.getElementById('segmentNav');
+    if (!studio.segments.length) {
+        nav.innerHTML = '<div style="flex:1; display:flex; align-items:center; justify-content:center; color:#666;">No segments</div>';
+        return;
+    }
+    
+    const total = studio.segments.reduce((s, seg) => s + seg.text.length, 0);
+    nav.innerHTML = studio.segments.map((seg, i) => {
+        const w = (seg.text.length / total) * 100;
+        const c = SEGMENT_COLORS[i % SEGMENT_COLORS.length];
+        const isPlaying = i === studio.playingIdx ? 'playing' : '';
+        const isSelected = i === studio.selectedIdx ? 'selected' : '';
+        return `<div class="segment-block ${isPlaying} ${isSelected}" style="flex:0 0 ${w}%; background:${c.bg}; color:${c.color};" onclick="selectSegment(${i})" title="Segment ${i+1}">${i + 1}</div>`;
+    }).join('');
+}
+
+// ============================================================
+// AUDIO GENERATION & PLAYBACK
+// ============================================================
+async function generateAudio() {
+    const key = document.getElementById('elevenLabsKey').value || localStorage.getItem('elevenlabs_api_key');
+    if (!key) {
+        document.getElementById('audioStatus').textContent = '⚠️ Enter ElevenLabs API key for audio';
+        return;
+    }
+    
+    const langKey = document.getElementById('studioLang').value;
+    loadVoiceConfig();
+    const voiceId = voiceConfig[langKey];
+    if (!voiceId) {
+        document.getElementById('audioStatus').textContent = '⚠️ Configure voice for this language first';
+        return;
+    }
+    
+    if (!studio.text) return;
+    
+    document.getElementById('audioStatus').textContent = '⏳ Generating audio...';
+    
+    try {
+        const resp = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+            method: 'POST',
+            headers: { 'Accept': 'audio/mpeg', 'Content-Type': 'application/json', 'xi-api-key': key },
+            body: JSON.stringify({ text: studio.text, model_id: 'eleven_multilingual_v2', voice_settings: { stability: 0.5, similarity_boost: 0.75 } })
+        });
+        if (!resp.ok) throw new Error('ElevenLabs error');
+        
+        const blob = await resp.blob();
+        const url = URL.createObjectURL(blob);
+        studio.fullAudioUrl = url;
+        
+        const player = document.getElementById('audioPlayer');
+        player.src = url;
+        player.onloadedmetadata = () => {
+            calcSegmentTimings(player.duration);
+            document.getElementById('totalTime').textContent = formatTime(player.duration);
+            setupPlayerEvents();
+            document.getElementById('audioStatus').textContent = '✅ Audio ready!';
+        };
+    } catch (e) {
+        document.getElementById('audioStatus').textContent = '❌ Audio error: ' + e.message;
+    }
+}
+
+function calcSegmentTimings(duration) {
+    const total = studio.segments.reduce((s, seg) => s + seg.text.length, 0);
+    let t = 0;
+    studio.segments.forEach(seg => {
+        const dur = duration * (seg.text.length / total);
+        seg.start = t;
+        seg.end = t + dur;
+        t += dur;
+    });
+}
+
+function setupPlayerEvents() {
+    const player = document.getElementById('audioPlayer');
+    player.ontimeupdate = () => {
+        const pct = (player.currentTime / player.duration) * 100;
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('currentTime').textContent = formatTime(player.currentTime);
+        
+        // Update playing segment indicator
+        const idx = studio.segments.findIndex(s => player.currentTime >= s.start && player.currentTime < s.end);
+        if (idx !== studio.playingIdx) {
+            studio.playingIdx = idx;
+            renderSegmentNav();
+        }
+    };
+    player.onplay = () => {
+        studio.isPlaying = true;
+        updatePlayButton();
+    };
+    player.onpause = () => {
+        studio.isPlaying = false;
+        updatePlayButton();
+    };
+    player.onended = () => {
+        studio.isPlaying = false;
+        studio.playingIdx = -1;
+        updatePlayButton();
+        renderSegmentNav();
+    };
+}
+
+function updatePlayButton() {
+    const btn = document.getElementById('mainPlayBtn');
+    if (studio.isPlaying) {
+        btn.classList.add('playing');
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+    } else {
+        btn.classList.remove('playing');
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+    }
+}
+
+function formatTime(s) {
+    if (isNaN(s)) return '0:00';
+    return `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
+}
+
+function toggleMainPlay() {
+    const player = document.getElementById('audioPlayer');
+    if (!player.src) {
+        document.getElementById('audioStatus').textContent = '⚠️ Generate audio first';
+        return;
+    }
+    if (studio.isPlaying) {
+        player.pause();
+    } else {
+        player.play();
+    }
+}
+
+function restartAudio() {
+    const player = document.getElementById('audioPlayer');
+    player.currentTime = 0;
+    player.play();
+}
+
+function seekAudio(e) {
+    const player = document.getElementById('audioPlayer');
+    const rect = e.target.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    player.currentTime = pct * player.duration;
+}
+
+function skipSegment(delta) {
+    const current = studio.playingIdx >= 0 ? studio.playingIdx : 0;
+    const next = Math.max(0, Math.min(studio.segments.length - 1, current + delta));
+    if (studio.segments[next]) {
+        const player = document.getElementById('audioPlayer');
+        player.currentTime = studio.segments[next].start;
+        player.play();
+    }
+}
+
+function selectSegment(idx) {
+    studio.selectedIdx = idx;
+    renderSegmentNav();
+    
+    // Play the selected segment
+    const player = document.getElementById('audioPlayer');
+    if (studio.segments[idx] && player.src) {
+        player.currentTime = studio.segments[idx].start;
+        player.play();
+    }
+    
+    // Show feedback panel
+    const panel = document.getElementById('feedbackPanel');
+    panel.style.display = 'block';
+    document.getElementById('selectedSegLabel').innerHTML = `<span style="background:${SEGMENT_COLORS[idx % SEGMENT_COLORS.length].bg}; padding:4px 12px; border-radius:6px; color:${SEGMENT_COLORS[idx % SEGMENT_COLORS.length].color};">Segment ${idx + 1}</span>`;
+    
+    // Reset feedback state
+    recordedFeedback = '';
+    document.getElementById('recordStatus').innerHTML = '';
+    document.getElementById('feedbackActions').style.display = 'none';
+}
+
+function playSelectedSegment() {
+    if (studio.selectedIdx < 0) return;
+    const player = document.getElementById('audioPlayer');
+    const seg = studio.segments[studio.selectedIdx];
+    if (seg && player.src) {
+        player.currentTime = seg.start;
+        player.play();
+    }
+}
+
+function closeFeedbackPanel() {
+    studio.selectedIdx = -1;
+    document.getElementById('feedbackPanel').style.display = 'none';
+    renderSegmentNav();
+}
+
+// ============================================================
+// VOICE RECORDING & SPEECH-TO-TEXT
+// ============================================================
+function initSpeechRecognition() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        console.warn('Speech recognition not supported');
+        return;
+    }
+    
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    speechRecognition = new SpeechRecognition();
+    speechRecognition.continuous = true;
+    speechRecognition.interimResults = true;
+    
+    let finalTranscript = '';
+    
+    speechRecognition.onresult = (event) => {
+        let interimTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            const transcript = event.results[i][0].transcript;
+            if (event.results[i].isFinal) {
+                finalTranscript += transcript + ' ';
+            } else {
+                interimTranscript += transcript;
             }
         }
-
-        function goToStep(step) {
-            currentStep = step;
-            updateProgress(step);
-            showStep(step);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        recordedFeedback = finalTranscript + interimTranscript;
+        document.getElementById('recordStatus').innerHTML = `<span style="color:#e53e3e;">🔴 ${recordedFeedback || 'Listening...'}</span>`;
+    };
+    
+    speechRecognition.onend = () => {
+        isRecording = false;
+        updateRecordButton();
+        
+        if (recordedFeedback.trim()) {
+            document.getElementById('recordStatus').innerHTML = `<span style="color:#38a169;">✅ "${recordedFeedback.trim()}"</span>`;
+            document.getElementById('feedbackActions').style.display = 'block';
+        } else {
+            document.getElementById('recordStatus').innerHTML = `<span style="color:#718096;">No speech detected. Try again.</span>`;
         }
+    };
+    
+    speechRecognition.onerror = (event) => {
+        console.error('Speech error:', event.error);
+        isRecording = false;
+        updateRecordButton();
+        document.getElementById('recordStatus').innerHTML = `<span style="color:#e53e3e;">⚠️ Error: ${event.error}</span>`;
+    };
+}
 
-        function copyText(step) {
-            const text = outputs[step];
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Copied!');
-            });
-        }
+function toggleRecording() {
+    if (!speechRecognition) {
+        alert('Speech recognition not supported in this browser. Please use Chrome or Edge.');
+        return;
+    }
+    
+    if (isRecording) {
+        speechRecognition.stop();
+    } else {
+        // Pause audio while recording
+        const player = document.getElementById('audioPlayer');
+        player.pause();
+        
+        // Set language
+        const langKey = document.getElementById('studioLang').value;
+        speechRecognition.lang = LANGS[langKey]?.speechLang || 'en-US';
+        
+        recordedFeedback = '';
+        document.getElementById('feedbackActions').style.display = 'none';
+        speechRecognition.start();
+        isRecording = true;
+        updateRecordButton();
+        document.getElementById('recordStatus').innerHTML = '<span style="color:#e53e3e;">🔴 Listening...</span>';
+    }
+}
 
-        function startOver() {
-            currentStep = 0;
-            for (let i = 1; i <= 4; i++) {
-                outputs[i] = '';
-            }
-            document.getElementById('progressSteps').classList.add('hidden');
-            document.getElementById('workArea').classList.add('hidden');
-            document.getElementById('biblicalRef').value = '';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+function updateRecordButton() {
+    const btn = document.getElementById('recordBtn');
+    if (isRecording) {
+        btn.classList.add('recording');
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>';
+    } else {
+        btn.classList.remove('recording');
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg>';
+    }
+}
+
+function cancelFeedback() {
+    recordedFeedback = '';
+    document.getElementById('recordStatus').innerHTML = '';
+    document.getElementById('feedbackActions').style.display = 'none';
+}
+
+async function applyVoiceFeedback() {
+    if (!recordedFeedback.trim()) {
+        alert('No feedback recorded.');
+        return;
+    }
+    
+    if (studio.selectedIdx < 0) {
+        alert('No segment selected.');
+        return;
+    }
+    
+    const apiKey = document.getElementById('apiKey').value || localStorage.getItem('anthropic_api_key');
+    const seg = studio.segments[studio.selectedIdx];
+    const langKey = document.getElementById('studioLang').value;
+    const lang = LANGS[langKey];
+    
+    document.getElementById('recordStatus').innerHTML = '<span style="color:var(--validator-primary);">⏳ Revising segment...</span>';
+    document.getElementById('feedbackActions').style.display = 'none';
+    
+    try {
+        const fullText = studio.segments.map(s => s.text).join(' ');
+        
+        const prompt = `You are editing ONE segment of an oral Scripture passage based on listener feedback.
+
+FULL PASSAGE (for context):
+${fullText}
+
+SEGMENT TO EDIT (segment ${studio.selectedIdx + 1}):
+"${seg.text}"
+
+LISTENER FEEDBACK (spoken):
+${recordedFeedback.trim()}
+
+TARGET LANGUAGE: ${lang.name}
+${lang.instruction}
+
+RULES:
+1. Edit ONLY the specified segment
+2. Keep the same approximate length
+3. Maintain connection to surrounding segments
+4. Apply the feedback precisely
+5. Keep oral storytelling style
+
+Return ONLY the revised segment text, nothing else.`;
+
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+            body: JSON.stringify({ model: document.getElementById('modelSelect').value, max_tokens: 500, messages: [{ role: 'user', content: prompt }] })
+        });
+        
+        const data = await resp.json();
+        const revised = data.content[0].text.trim();
+        
+        // Store in edit history
+        studio.editHistory.push({
+            segmentIndex: studio.selectedIdx + 1,
+            original: seg.text,
+            revised: revised,
+            feedback: recordedFeedback.trim(),
+            timestamp: new Date().toISOString()
+        });
+        
+        // Update segment
+        studio.segments[studio.selectedIdx].text = revised;
+        studio.text = studio.segments.map(s => s.text).join(' ');
+        
+        // Update mentor text
+        document.getElementById('mentorText').textContent = studio.text;
+        updateEditHistory();
+        
+        document.getElementById('recordStatus').innerHTML = '<span style="color:#38a169;">✅ Segment revised! Regenerating audio...</span>';
+        
+        // Regenerate audio
+        await generateAudio();
+        
+        // Clear and close
+        closeFeedbackPanel();
+        
+    } catch (e) {
+        document.getElementById('recordStatus').innerHTML = `<span style="color:#e53e3e;">❌ Error: ${e.message}</span>`;
+        document.getElementById('feedbackActions').style.display = 'block';
+    }
+}
+
+function updateEditHistory() {
+    const section = document.getElementById('editHistorySection');
+    const list = document.getElementById('editHistoryList');
+    
+    if (studio.editHistory.length === 0) {
+        section.style.display = 'none';
+        return;
+    }
+    
+    section.style.display = 'block';
+    list.innerHTML = studio.editHistory.map((edit, i) => `
+        <div class="edit-item">
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
+                <strong style="color:var(--mentor-primary);">Segment ${edit.segmentIndex}</strong>
+                <span style="color:#999; font-size:0.85rem;">${new Date(edit.timestamp).toLocaleTimeString()}</span>
+            </div>
+            <div style="font-size:0.85rem; margin-bottom:0.5rem;">
+                <span style="color:#c53030;">Before:</span> "${edit.original.substring(0, 60)}${edit.original.length > 60 ? '...' : ''}"
+            </div>
+            <div style="font-size:0.85rem; margin-bottom:0.5rem;">
+                <span style="color:#38a169;">After:</span> "${edit.revised.substring(0, 60)}${edit.revised.length > 60 ? '...' : ''}"
+            </div>
+            <div style="font-size:0.8rem; color:#805ad5; font-style:italic;">
+                Feedback: "${edit.feedback}"
+            </div>
+        </div>
+    `).reverse().join('');
+}
+
+// ============================================================
+// VOICE CONFIG
+// ============================================================
+function showVoiceModal() {
+    document.getElementById('voiceModal').style.display = 'flex';
+    loadVoiceConfig();
+    const list = document.getElementById('voiceConfigList');
+    list.innerHTML = Object.entries(LANGS).map(([k, v]) => `
+        <div style="margin-bottom:1rem;">
+            <label style="font-weight:600;">${v.name}</label>
+            <input type="text" class="voice-input" data-lang="${k}" value="${voiceConfig[k] || ''}" placeholder="ElevenLabs Voice ID" style="width:100%; padding:0.5rem; margin-top:0.25rem; border:1px solid var(--border); border-radius:var(--radius);">
+        </div>
+    `).join('') + '<p style="font-size:0.85em; color:#666;">Get Voice IDs from <a href="https://elevenlabs.io" target="_blank">ElevenLabs</a></p>';
+}
+
+function hideVoiceModal() { document.getElementById('voiceModal').style.display = 'none'; }
+function loadVoiceConfig() { const s = localStorage.getItem('voice_config'); if (s) voiceConfig = JSON.parse(s); }
+
+function saveVoiceConfig() {
+    document.querySelectorAll('.voice-input').forEach(inp => {
+        const lang = inp.dataset.lang;
+        const val = inp.value.trim();
+        if (val) voiceConfig[lang] = val;
+        else delete voiceConfig[lang];
+    });
+    localStorage.setItem('voice_config', JSON.stringify(voiceConfig));
+    hideVoiceModal();
+    alert('Saved!');
+}
+
+function copyMentorText() {
+    if (studio.text) navigator.clipboard.writeText(studio.text).then(() => alert('Copied!'));
+}
+
+// ============================================================
+// APPROVAL WORKFLOW
+// ============================================================
+function updateApprovalUI() {
+    const { validator, mentor, community } = studio.approval;
+    const vb = document.getElementById('valBadge');
+    const mb = document.getElementById('menBadge');
+    const cb = document.getElementById('comBadge');
+    
+    if (vb) {
+        vb.className = 'approval-badge ' + (validator ? 'approved' : 'pending');
+        vb.innerHTML = (validator ? '✅' : '⏳') + ' Validator';
+    }
+    
+    if (mb) {
+        mb.className = 'approval-badge ' + (mentor ? 'approved' : validator ? 'active' : 'waiting');
+        mb.innerHTML = (mentor ? '✅' : validator ? '🔍' : '⏸️') + ' Mentor';
+    }
+    
+    if (cb) {
+        cb.className = 'approval-badge ' + (community ? 'approved' : mentor ? 'active' : 'waiting');
+        cb.innerHTML = (community ? '✅' : mentor ? '👥' : '⏸️') + ' Community';
+    }
+    
+    const fs = document.getElementById('faithSection');
+    if (fs) fs.style.display = validator ? 'block' : 'none';
+    
+    const cs = document.getElementById('comApproveSection');
+    if (cs) cs.style.display = mentor ? 'block' : 'none';
+}
+
+function toggleValidator() {
+    studio.approval.validator = !studio.approval.validator;
+    const btn = document.getElementById('valApproveBtn');
+    btn.innerHTML = studio.approval.validator ? '✅ Approved' : '☐ Approve';
+    updateApprovalUI();
+}
+
+function toggleMentor() {
+    studio.approval.mentor = !studio.approval.mentor;
+    const btn = document.getElementById('menApproveBtn');
+    btn.innerHTML = studio.approval.mentor ? '✅ Approved' : '☐ Approve';
+    updateApprovalUI();
+}
+
+function toggleCommunity() {
+    studio.approval.community = !studio.approval.community;
+    const btn = document.getElementById('comApproveBtn');
+    btn.innerHTML = studio.approval.community ? '✅ Approved' : '☐ Approve';
+    updateApprovalUI();
+}
+
+// ============================================================
+// FAITHFULNESS ANALYSIS
+// ============================================================
+async function runAnalysis() {
+    const apiKey = document.getElementById('apiKey').value || localStorage.getItem('anthropic_api_key');
+    if (!apiKey) return alert('Enter API key.');
+    if (!studio.text) return alert('Generate rehearsal first.');
+    
+    const mapJson = outputs[2] || outputs[1];
+    if (!mapJson) return alert('Meaning Map needed.');
+    
+    document.getElementById('analysisStatus').innerHTML = '⏳ Analyzing...';
+    
+    try {
+        const prompt = `Analyze this oral translation for faithfulness to the Meaning Map.
+
+MEANING MAP:
+${mapJson}
+
+TRANSLATION:
+${studio.text}
+
+For each sentence/segment, evaluate:
+1. Does it accurately represent the semantic content?
+2. Are there additions not in the map?
+3. Are there omissions from the map?
+4. Are key terms handled correctly?
+
+Return JSON array:
+[
+  {
+    "idx": 0,
+    "text": "segment text",
+    "status": "pass|warning|fail",
+    "score": 1-5,
+    "comment": "brief analysis",
+    "issues": ["issue1", "issue2"]
+  }
+]
+
+Return ONLY valid JSON array.`;
+
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+            body: JSON.stringify({ model: document.getElementById('modelSelect').value, max_tokens: 4000, messages: [{ role: 'user', content: prompt }] })
+        });
+        
+        const data = await resp.json();
+        let text = data.content[0].text;
+        
+        // Extract JSON
+        const match = text.match(/\[[\s\S]*\]/);
+        if (match) {
+            studio.faithfulness = JSON.parse(match[0]);
+            document.getElementById('analysisStatus').innerHTML = '✅ Analysis complete';
+            document.getElementById('resultsSection').style.display = 'block';
+            renderResults();
+        } else {
+            throw new Error('Invalid response format');
         }
-    </script>
+    } catch (e) {
+        document.getElementById('analysisStatus').innerHTML = '❌ Error: ' + e.message;
+    }
+}
+
+function renderResults() {
+    const pass = studio.faithfulness.filter(r => r.status === 'pass').length;
+    const warn = studio.faithfulness.filter(r => r.status === 'warning').length;
+    const fail = studio.faithfulness.filter(r => r.status === 'fail').length;
+    const valid = studio.faithfulness.filter(r => r.validated).length;
+    
+    document.getElementById('analysisStats').innerHTML = `<span style="color:#38a169;">✅${pass}</span> · <span style="color:#d69e2e;">⚠️${warn}</span> · <span style="color:#e53e3e;">❌${fail}</span> · <span style="color:#805ad5;">☑️${valid}/${studio.faithfulness.length}</span>`;
+    
+    document.getElementById('resultsList').innerHTML = studio.faithfulness.map((r, i) => {
+        const icons = { pass: '✅', warning: '⚠️', fail: '❌' };
+        return `<div class="faithfulness-result ${r.status}" style="${r.validated ? 'opacity:0.7;' : ''}">
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
+                <span>${icons[r.status]} <strong>Seg ${r.idx + 1}</strong> ${r.validated ? '<span style="background:#805ad5; color:white; padding:2px 6px; border-radius:10px; font-size:0.75em;">✓</span>' : ''}</span>
+                <span style="color:#666;">${r.score}/5</span>
+            </div>
+            <div style="background:white; padding:0.5rem; border-radius:4px; font-size:0.9em; margin-bottom:0.5rem;">"${r.text}"</div>
+            <div style="font-size:0.85em; color:#666;">${r.comment}</div>
+            ${r.issues?.length ? `<ul style="font-size:0.8em; color:#c53030; margin:0.5rem 0 0 1rem;">${r.issues.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}
+            <div style="margin-top:0.5rem;">
+                ${r.validated ? `<button class="btn btn-small btn-secondary" onclick="unvalidate(${i})">↩ Undo</button>` : `<button class="btn btn-small btn-success" onclick="validate(${i})">✓ Validate</button>`}
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function validate(i) { studio.faithfulness[i].validated = true; renderResults(); checkMentorReady(); }
+function unvalidate(i) { studio.faithfulness[i].validated = false; renderResults(); checkMentorReady(); }
+function checkMentorReady() {
+    const ready = studio.faithfulness.length > 0 && studio.faithfulness.every(r => r.validated);
+    document.getElementById('mentorApproveSection').style.display = ready ? 'block' : 'none';
+}
+
+// ============================================================
+// MAIN STEP RUNNER
+// ============================================================
+async function runStep(step) {
+    const apiKey = document.getElementById('apiKey').value || localStorage.getItem('anthropic_api_key');
+    const model = document.getElementById('modelSelect').value;
+    const ref = document.getElementById('biblicalRef').value;
+    const lang = document.getElementById('targetLang').value;
+    const aud = document.getElementById('targetAudience').value;
+    
+    const out = document.getElementById(`output${step}`);
+    out.innerHTML = `<div class="loading"><div class="spinner"></div><div class="loading-text">Processing...</div></div>`;
+    
+    let msg = '';
+    if (step === 1) msg = `Biblical Reference: ${ref}\n\nCreate the Meaning Map JSON.`;
+    else if (step === 2) msg = document.getElementById('input2').value;
+    else if (step === 3) msg = `Target: ${LANGS[lang]?.name || lang}\nAudience: ${aud}\nInstruction: ${LANGS[lang]?.instruction || ''}\n\n${document.getElementById('input3').value}`;
+    else if (step === 4) msg = `Reference: ${ref}\nLanguage: ${lang}\nAudience: ${aud}\n\nTranslation:\n${document.getElementById('input4').value}`;
+    
+    try {
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+            body: JSON.stringify({ model, max_tokens: 8192, system: PROMPTS[step], messages: [{ role: 'user', content: msg }] })
+        });
+        if (!resp.ok) throw new Error('API error');
+        const data = await resp.json();
+        const result = data.content?.[0]?.text || '';
+        
+        outputs[step] = result;
+        currentStep = step;
+        updateProgress(step + 1);
+        
+        const isJson = step <= 2;
+        let html = isJson ? `<textarea class="text-box json-output" rows="10" readonly>${result}</textarea>` :
+                   step === 4 ? `<div class="report-output" style="background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; max-height:500px; overflow-y:auto;">${parseMarkdown(result)}</div>` :
+                   `<textarea class="text-box output" rows="10" readonly>${result}</textarea>`;
+        
+        out.innerHTML = `
+            <div class="message message-success">✓ Step ${step} complete</div>
+            <label class="text-label">Result:</label>
+            ${html}
+            <div class="button-row">
+                <button class="btn btn-secondary" onclick="navigator.clipboard.writeText(outputs[${step}]).then(()=>alert('Copied!'))">Copy</button>
+                ${step < 4 ? `<button class="btn btn-success btn-large" onclick="goToStep(${step + 1})">Next Step</button>` : `<button class="btn btn-success btn-large" onclick="goToStep(5)">Open Studio</button>`}
+            </div>`;
+    } catch (e) {
+        out.innerHTML = `<div class="message message-error">Error: ${e.message}</div><div class="button-row"><button class="btn btn-primary" onclick="runStep(${step})">Retry</button></div>`;
+    }
+}
+
+function goToStep(step) {
+    currentStep = step;
+    updateProgress(step);
+    showStep(step);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function parseMarkdown(text) {
+    return text
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/^- (.*$)/gim, '<li>$1</li>')
+        .replace(/\n/g, '<br>')
+        .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
+        .replace(/<\/ul><br><ul>/g, '');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const k1 = localStorage.getItem('anthropic_api_key');
+    const k2 = localStorage.getItem('elevenlabs_api_key');
+    if (k1) document.getElementById('apiKey').value = k1;
+    if (k2) document.getElementById('elevenLabsKey').value = k2;
+    loadVoiceConfig();
+});
+</script>
 </body>
 </html>
