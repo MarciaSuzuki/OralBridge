@@ -1,106 +1,67 @@
-# Tripod Pipeline
+# Oral Bridge OBT
 
-A web-based tool for AI-assisted Bible translation using the Tripod Method. This application orchestrates four AI agents through Google's Gemini API to create semantic meaning maps and generate natural oral translations.
+AI-Assisted Bible Translation for Oral Communities
 
-## Overview
+## What is this?
 
-The Tripod Pipeline implements a four-agent workflow:
+Oral Bridge helps translation teams create natural oral Bible translations. It uses AI to analyze biblical text and generate translations that sound natural when spoken aloud.
 
-1. **Event Architect** (Agent 1): Creates structured Meaning Map JSON from biblical text
-2. **Discourse Weaver** (Agent 2): Adds discourse structure and inter-event relations
-3. **Oral Renderer** (Agent 3): Generates natural oral translation in the target language
-4. **Accuracy Checker** (Agent 4): Validates faithfulness and provides quality analysis
+## How it works
 
-## Features
+The app guides you through 4 simple steps:
 
-- Single-page web application with no backend required
-- Uses Google Gemini API for all AI processing
-- Step-by-step workflow with manual review at each stage
-- Copy/paste outputs between agents or use automatic "Pull from Previous" feature
-- API key stored locally in browser (never sent to any server except Google)
-- Clean, professional interface optimized for translation teams
+1. **Meaning Map** — AI analyzes the Bible passage structure
+2. **Discourse** — AI adds narrative flow and connections
+3. **Translation** — AI creates an oral translation in your target language
+4. **Review** — AI checks accuracy and suggests improvements
 
-## Quick Start
+## Getting Started
 
-### Option 1: GitHub Pages (Recommended)
+1. Open the app in your web browser
+2. Enter your Claude API key
+3. Type a Bible passage (example: Ruth 1:1-5)
+4. Choose your target language and audience
+5. Click "Start Translation"
+6. Follow the steps — review each result before continuing
 
-1. Fork this repository
-2. Go to Settings → Pages
-3. Select "Deploy from a branch" and choose `main` branch
-4. Your app will be available at `https://[username].github.io/tripod-pipeline/`
+## Getting an API Key
 
-### Option 2: Local Use
+1. Go to [console.anthropic.com](https://console.anthropic.com)
+2. Create an account or sign in
+3. Go to API Keys
+4. Click "Create Key"
+5. Copy the key and paste it into the app
 
-1. Download `index.html`
-2. Open it directly in your web browser
-3. No server required
+## Cost
 
-## Usage
+Claude API is pay-per-use:
+- **Claude Sonnet 4**: ~$0.08–0.15 per passage (recommended)
+- **Claude Opus 4**: ~$0.30–0.50 per passage (highest quality)
 
-1. **Enter your Gemini API Key**
-   - Get one free at [Google AI Studio](https://aistudio.google.com/apikey)
-   - The key is stored locally in your browser
+## For Team Leaders
 
-2. **Enter the Biblical Reference**
-   - Example: `Ruth 1:1-5` or `Genesis 22:1-19`
+You can:
+1. Create one API key with billing
+2. Share that key with your team
+3. Monitor usage at console.anthropic.com
 
-3. **Set Target Language and Audience**
-   - Example: Portuguese, Rural Brazil / Sertanejo
+## Deployment
 
-4. **Click "Start Pipeline"**
-   - This opens Agent 1 with a prepared prompt
+**Option 1: Share the file**
+- Download `index.html`
+- Send it to your team
+- They open it in their browser
 
-5. **Work through each agent:**
-   - Review the input prompt
-   - Click "Run Agent" to process
-   - Review the output
-   - Make edits if needed
-   - Move to the next agent
-
-## Requirements
-
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- Google Gemini API key (free tier available)
-- Internet connection
-
-## Tripod Method
-
-The Tripod Method is a semantic composition architecture for AI-assisted Bible translation. It separates meaning representation from linguistic expression using three components:
-
-- **Meaning Maps**: Structured semantic representations using cognitive primitives
-- **Language Archive**: Tagged authentic speech from the target community
-- **Concept Bank**: Validated expressions for key biblical terms
-
-Learn more: [Ready Vessels Project](https://www.shemaywam.com)
-
-## Technical Details
-
-- Pure HTML/CSS/JavaScript - no build step required
-- **Model options:**
-  - **Gemini 2.5 Pro** (recommended) - Best for complex linguistic analysis
-  - **Gemini 2.5 Flash** - Good balance of quality and speed
-  - **Gemini 2.0 Flash** - Fastest, for quick iterations
-- Responsive design works on desktop and mobile
-- All processing happens client-side
-
-## File Structure
-
-```
-tripod-pipeline/
-├── index.html      # Complete application (single file)
-├── README.md       # This file
-└── LICENSE         # MIT License
-```
-
-## License
-
-MIT License - See [LICENSE](LICENSE) file
+**Option 2: GitHub Pages**
+- Upload files to GitHub
+- Enable Pages in Settings
+- Share the link with your team
 
 ## Credits
 
-- Tripod Method: Ready Vessels Project, OBT Lab, University of the Nations
-- Contact: marcia.suzuki@uofn.edu
+- Tripod Method: Ready Vessels Project
+- OBT Lab, University of the Nations
 
 ## Version
 
-Tripod Pipeline v5.2 | January 2026
+Oral Bridge OBT v1.0 | January 2026
