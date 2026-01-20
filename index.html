@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripod Pipeline | Bible Translation Workflow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #FAF9F7;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #F3F1ED;
+            --text-primary: #1A1A1A;
+            --text-secondary: #5A5A5A;
+            --text-muted: #8A8A8A;
+            --accent: #B45309;
+            --accent-light: #FEF3C7;
+            --accent-hover: #92400E;
+            --border: #E5E2DC;
+            --success: #166534;
+            --success-bg: #DCFCE7;
+            --agent1: #7C3AED;
+            --agent2: #0891B2;
+            --agent3: #059669;
+            --agent4: #DC2626;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            --radius: 8px;
+            --radius-lg: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .api-setup {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .api-setup label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .api-setup input {
+            width: 100%;
+            max-width: 500px;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            font-family: monospace;
+            background: var(--bg-tertiary);
+        }
+
+        .api-setup input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: var(--bg-secondary);
+        }
+
+        .api-hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .model-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .model-select-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .model-select-group label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .model-select {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            font-family: inherit;
+            background: var(--bg-primary);
+            min-width: 120px;
+        }
+
+        .model-select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .pipeline-progress {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        .step-indicator.completed {
+            border-color: var(--success);
+            color: var(--success);
+            background: var(--success-bg);
+        }
+
+        .step-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .input-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .input-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+
+        .input-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: var(--bg-primary);
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-primary:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        .agent-panels {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .agent-panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .agent-panel.active {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .agent-panel.collapsed .panel-body {
+            display: none;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .panel-header:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .agent-badge {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .agent-1 .agent-badge { background: var(--agent1); }
+        .agent-2 .agent-badge { background: var(--agent2); }
+        .agent-3 .agent-badge { background: var(--agent3); }
+        .agent-4 .agent-badge { background: var(--agent4); }
+
+        .panel-title h3 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .panel-title span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .panel-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .panel-status.ready { color: var(--text-muted); }
+        .panel-status.running { color: var(--accent); }
+        .panel-status.completed { color: var(--success); }
+        .panel-status.error { color: var(--agent4); }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .agent-panel.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .panel-body {
+            padding: 1.5rem;
+        }
+
+        .prompt-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .prompt-section label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .prompt-section textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            resize: vertical;
+            background: var(--bg-primary);
+        }
+
+        .prompt-section textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .output-section {
+            background: var(--bg-tertiary);
+            border-radius: var(--radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .output-section label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .output-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            min-height: 150px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .output-content.prose {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .panel-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            color: #991B1B;
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .info-banner {
+            background: var(--accent-light);
+            border: 1px solid #FCD34D;
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .input-row {
+                flex-direction: column;
+            }
+            
+            .input-group {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tripod Pipeline</h1>
+            <p class="subtitle">Semantic Composition Architecture for AI-Assisted Bible Translation</p>
+        </header>
+
+        <div class="api-setup">
+            <div class="input-row" style="align-items: flex-start;">
+                <div class="input-group">
+                    <label for="apiKey">Gemini API Key</label>
+                    <input type="password" id="apiKey" placeholder="Enter your Gemini API key">
+                    <p class="api-hint">Your API key is stored locally and never sent to any server except Google's Gemini API.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1rem;">
+                <label style="display: block; font-weight: 500; margin-bottom: 0.75rem; font-size: 0.9rem;">Model per Agent <span style="font-weight: 400; color: var(--text-muted);">(Pro recommended for Agents 1 & 2)</span></label>
+                <div class="model-grid">
+                    <div class="model-select-group">
+                        <label for="model1">Agent 1</label>
+                        <select id="model1" class="model-select">
+                            <option value="gemini-2.5-pro-preview-06-05">2.5 Pro</option>
+                            <option value="gemini-2.5-flash-preview-05-20">2.5 Flash</option>
+                            <option value="gemini-2.0-flash">2.0 Flash</option>
+                        </select>
+                    </div>
+                    <div class="model-select-group">
+                        <label for="model2">Agent 2</label>
+                        <select id="model2" class="model-select">
+                            <option value="gemini-2.5-pro-preview-06-05">2.5 Pro</option>
+                            <option value="gemini-2.5-flash-preview-05-20">2.5 Flash</option>
+                            <option value="gemini-2.0-flash">2.0 Flash</option>
+                        </select>
+                    </div>
+                    <div class="model-select-group">
+                        <label for="model3">Agent 3</label>
+                        <select id="model3" class="model-select">
+                            <option value="gemini-2.5-pro-preview-06-05">2.5 Pro</option>
+                            <option value="gemini-2.5-flash-preview-05-20" selected>2.5 Flash</option>
+                            <option value="gemini-2.0-flash">2.0 Flash</option>
+                        </select>
+                    </div>
+                    <div class="model-select-group">
+                        <label for="model4">Agent 4</label>
+                        <select id="model4" class="model-select">
+                            <option value="gemini-2.5-pro-preview-06-05">2.5 Pro</option>
+                            <option value="gemini-2.5-flash-preview-05-20" selected>2.5 Flash</option>
+                            <option value="gemini-2.0-flash">2.0 Flash</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pipeline-progress">
+            <div class="step-indicator" id="step1">
+                <span class="step-dot"></span>
+                Event Architect
+            </div>
+            <div class="step-indicator" id="step2">
+                <span class="step-dot"></span>
+                Discourse Weaver
+            </div>
+            <div class="step-indicator" id="step3">
+                <span class="step-dot"></span>
+                Oral Renderer
+            </div>
+            <div class="step-indicator" id="step4">
+                <span class="step-dot"></span>
+                Accuracy Check
+            </div>
+        </div>
+
+        <div class="input-section">
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="biblicalRef">Biblical Reference</label>
+                    <input type="text" id="biblicalRef" placeholder="e.g., Ruth 1:1-5 or Genesis 22:1-19">
+                </div>
+                <div class="input-group">
+                    <label for="targetLang">Target Language</label>
+                    <input type="text" id="targetLang" placeholder="e.g., Portuguese, Spanish, Hindi" value="Portuguese">
+                </div>
+                <div class="input-group">
+                    <label for="targetAudience">Target Audience</label>
+                    <input type="text" id="targetAudience" placeholder="e.g., Rural Brazil / Sertanejo" value="Rural Brazil / Sertanejo">
+                </div>
+                <button class="btn btn-primary" id="startBtn" onclick="startPipeline()">Start Pipeline</button>
+            </div>
+        </div>
+
+        <div class="agent-panels">
+            <!-- Agent 1: Event Architect -->
+            <div class="agent-panel agent-1 collapsed" id="agent1Panel">
+                <div class="panel-header" onclick="togglePanel('agent1Panel')">
+                    <div class="panel-title">
+                        <span class="agent-badge"></span>
+                        <h3>Agent 1: Event Architect</h3>
+                        <span>Creates the Meaning Map</span>
+                    </div>
+                    <div class="panel-status ready" id="agent1Status">
+                        <span>Ready</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="prompt-section">
+                        <label>
+                            Input Prompt
+                            <button class="btn btn-secondary" onclick="resetPrompt(1)" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Reset Default</button>
+                        </label>
+                        <textarea id="agent1Prompt" placeholder="The prompt will be auto-filled when you start the pipeline..."></textarea>
+                    </div>
+                    <div class="panel-actions">
+                        <button class="btn btn-primary" onclick="runAgent(1)">Run Agent 1</button>
+                        <button class="btn btn-secondary" onclick="copyOutput(1)">Copy Output</button>
+                    </div>
+                    <div class="output-section" style="margin-top: 1rem;">
+                        <label>Output (Meaning Map JSON)</label>
+                        <div class="output-content" id="agent1Output">Output will appear here...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agent 2: Discourse Weaver -->
+            <div class="agent-panel agent-2 collapsed" id="agent2Panel">
+                <div class="panel-header" onclick="togglePanel('agent2Panel')">
+                    <div class="panel-title">
+                        <span class="agent-badge"></span>
+                        <h3>Agent 2: Discourse Weaver</h3>
+                        <span>Adds discourse structure</span>
+                    </div>
+                    <div class="panel-status ready" id="agent2Status">
+                        <span>Ready</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="prompt-section">
+                        <label>
+                            Input (Meaning Map from Agent 1)
+                            <button class="btn btn-secondary" onclick="pullFromPrevious(2)" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Pull from Agent 1</button>
+                        </label>
+                        <textarea id="agent2Prompt" placeholder="Paste the Meaning Map JSON from Agent 1 or click 'Pull from Agent 1'..."></textarea>
+                    </div>
+                    <div class="panel-actions">
+                        <button class="btn btn-primary" onclick="runAgent(2)">Run Agent 2</button>
+                        <button class="btn btn-secondary" onclick="copyOutput(2)">Copy Output</button>
+                    </div>
+                    <div class="output-section" style="margin-top: 1rem;">
+                        <label>Output (Complete Meaning Map with Discourse)</label>
+                        <div class="output-content" id="agent2Output">Output will appear here...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agent 3: Oral Renderer -->
+            <div class="agent-panel agent-3 collapsed" id="agent3Panel">
+                <div class="panel-header" onclick="togglePanel('agent3Panel')">
+                    <div class="panel-title">
+                        <span class="agent-badge"></span>
+                        <h3>Agent 3: Oral Renderer</h3>
+                        <span>Generates the translation</span>
+                    </div>
+                    <div class="panel-status ready" id="agent3Status">
+                        <span>Ready</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="prompt-section">
+                        <label>
+                            Input (Complete Meaning Map from Agent 2)
+                            <button class="btn btn-secondary" onclick="pullFromPrevious(3)" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Pull from Agent 2</button>
+                        </label>
+                        <textarea id="agent3Prompt" placeholder="Paste the complete Meaning Map from Agent 2 or click 'Pull from Agent 2'..."></textarea>
+                    </div>
+                    <div class="panel-actions">
+                        <button class="btn btn-primary" onclick="runAgent(3)">Run Agent 3</button>
+                        <button class="btn btn-secondary" onclick="copyOutput(3)">Copy Output</button>
+                    </div>
+                    <div class="output-section" style="margin-top: 1rem;">
+                        <label>Output (Oral Translation)</label>
+                        <div class="output-content prose" id="agent3Output">Output will appear here...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agent 4: Accuracy Checker -->
+            <div class="agent-panel agent-4 collapsed" id="agent4Panel">
+                <div class="panel-header" onclick="togglePanel('agent4Panel')">
+                    <div class="panel-title">
+                        <span class="agent-badge"></span>
+                        <h3>Agent 4: Accuracy Checker</h3>
+                        <span>Validates faithfulness</span>
+                    </div>
+                    <div class="panel-status ready" id="agent4Status">
+                        <span>Ready</span>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="prompt-section">
+                        <label>
+                            Input (Translation from Agent 3)
+                            <button class="btn btn-secondary" onclick="pullFromPrevious(4)" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Pull from Agent 3</button>
+                        </label>
+                        <textarea id="agent4Prompt" placeholder="Paste the translation from Agent 3 or click 'Pull from Agent 3'..."></textarea>
+                    </div>
+                    <div class="panel-actions">
+                        <button class="btn btn-primary" onclick="runAgent(4)">Run Agent 4</button>
+                        <button class="btn btn-secondary" onclick="copyOutput(4)">Copy Output</button>
+                    </div>
+                    <div class="output-section" style="margin-top: 1rem;">
+                        <label>Output (Accuracy Analysis)</label>
+                        <div class="output-content prose" id="agent4Output">Output will appear here...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Tripod Pipeline v5.2 • Ready Vessels Project • OBT Lab, University of the Nations</p>
+        </footer>
+    </div>
+
+    <script>
+        // Store the agent system prompts
+        const AGENT_PROMPTS = {
+            1: `ROLE
+You are the Event Architect (Agent 1) in the Tripod pipeline.
+
+MISSION
+Convert the user-provided input text into a structured Meaning Map JSON by:
+1) registering Frames (scene-setting time/place headers),
+2) registering Participants (entities),
+3) decomposing the text into atomic Event Cores + role bindings,
+4) encoding nuance via Modifiers and Bundles,
+while preventing translationese, lexical bias, and hallucinated additions.
+
+CORE PRINCIPLE (Distributed Semantics)
+- Do NOT write a translation.
+- Use a SMALL closed set of Event Cores (primitives) + roles + modifiers/bundles.
+- When the source is underspecified, keep it underspecified (do not guess).
+
+INPUT CONTRACT (User always provides the text)
+1) Biblical pericope input:
+- The input contains an explicit biblical reference (e.g., "Ruth 1:1–7") AND the passage text.
+- Map ONLY from the passage text the user provided (sealed environment).
+- DO NOT fetch, reconstruct, "fill in," or harmonize text from memory/training.
+- Preferred: original biblical languages (hbo/arc/grc).
+If a biblical reference is present BUT the provided text is not in Hebrew/Aramaic/Greek:
+- Still map from the provided text (do not reject),
+- Add quality flag: "BIBLICAL_REF_BUT_TEXT_NOT_ORIGINAL_LANGUAGE".
+
+2) Non-biblical input:
+- The input has NO biblical reference.
+- Map from the provided text in its own language as-is.
+
+LANGUAGE DETECTION
+- Detect script(s) from the PROVIDED text only.
+- Set meta.source_lang to:
+  - "hbo" if Hebrew script dominates,
+  - "grc" if Greek script dominates,
+  - "arc" only if the user labels it Aramaic OR the text is clearly Aramaic,
+  - otherwise best-effort BCP47 tag or "und".
+
+SEALED-SYSTEM RULE (No Addition / No Subtraction)
+- The input text is the only evidence.
+- No external backstory, theology, smoothing, or "what the verse usually says".
+- No omission: every semantic unit must be represented (participants, predicates, quantifiers, negations, purpose infinitives, causal markers like כי, etc.).
+
+EVIDENCE / ANCHORING RULE
+- Every Participant and every Event MUST include ≥1 anchor.
+- Anchors MUST quote exact surface form from the user's provided text.
+- If the input includes verse markers (digits, Hebrew letters א ב ג..., etc.), you may omit the marker from the anchor "form" but MUST capture verse reference in "ref" when possible.
+
+OUTPUT FORMAT
+- Return JSON only. No commentary. No markdown.
+
+I. TOP-LEVEL JSON STRUCTURE (v3.5.1)
+{
+  "meta": {
+    "protocol": "Tripod v3.5.1",
+    "agent": "Event Architect",
+    "input_type": "biblical|non_biblical",
+    "text_ref": "string|null",
+    "source_lang": "hbo|arc|grc|...|und",
+    "detected_scripts": ["Hebrew","Greek","Latin","..."],
+    "quality_flags": [],
+    "status": "OK|OK_WITH_FLAGS"
+  },
+  "frames": [],
+  "participants": [],
+  "events": []
+}
+
+II. FRAMES (Time/Place/Setting headers)
+Frame schema:
+{
+  "id": "f_*",
+  "frame_type": "time|place|setting|discourse",
+  "value": "FRAME:*",
+  "anchors": [ { "lang": "...", "form": "...", "ref": "..." } ]
+}
+
+III. PARTICIPANTS (Entities / Nouns)
+Allowed participant types (closed): person, group, divine, item, substance, location, abstract
+
+Participant schema:
+{
+  "id": "p_*|g_*|loc_*|it_*|abs_*|sub_*",
+  "type": "person|group|divine|item|substance|location|abstract",
+  "value": "ONT:*",
+  "quantity": "1|2|3|few|many|all|mass",
+  "is_body_part": true|false,
+  "implicit": true|false,
+  "member_of": "g_*|null",
+  "members": ["p_*", "..."],
+  "anchors": [ { "lang": "...", "form": "...", "ref": "..." } ]
+}
+
+IV. EVENTS (Predicates)
+Event schema:
+{
+  "id": "e*",
+  "category": "STATE|PHYSICAL|INTERNAL|SPEECH",
+  "event_core": "exist|be_located|remain|connect|move|enter|exit|return|approach|flee|ascend|descend|do|make|destroy|impact|take|give|receive|send|bring|lose|find|die|rise|perceive_see|perceive_hear|know|think|decide|remember|feel|want|say|ask|command",
+  "roles": { },
+  "modifiers": { },
+  "bundles": { },
+  "link_hints": { },
+  "anchors": [ { "lang": "...", "form": "...", "ref": "..." } ]
+}
+
+A) CLOSED ROLE KEYS: initiator, affected, experiencer, recipient, addressee, content (string), content_ref (event id), source, goal, location, time, instrument, accompaniment, beneficiary
+
+B) ROLE CONSTRAINTS:
+- die: the entity who dies MUST be in "affected" (not initiator).
+- perceive_hear / perceive_see / know / think (when complement exists): represent the complement as content_ref to another event.
+- move/enter/exit/return: use source/goal/location when the text provides them.
+
+C) MODIFIERS (closed values):
+{
+  "polarity": "positive|negative",
+  "reality": "actual|potential|hypothetical|counterfactual",
+  "time_frame": "retrospective|immediate|prospective|gnomic",
+  "volition": "willful|automatic|unspecified",
+  "intensity": "low|medium|high|extreme|unspecified",
+  "duration": "string",
+  "frequency": "string",
+  "approx": true|false
+}
+
+D) BUNDLES (nuance without lexical bundling):
+"bundles": {
+  "state_bundle": {
+    "domain": "internal|social|mixed",
+    "affect_valence": "positive|negative|mixed|underspecified",
+    "tension_status": "resolved|unresolved|underspecified",
+    "intensity": "low|medium|high|extreme|underspecified"
+  },
+  "social_bundle": {
+    "relation": "optional_string",
+    "notes": "optional_string"
+  }
+}
+
+E) LINK_HINTS (minimal explicit subordination):
+{
+  "subordinate_type": "purpose|reason|result|condition|simultaneous|manner|temporal",
+  "matrix_event_id": "e*",
+  "subordinate_event_id": "e*"
+}
+
+V. REQUIRED COVERAGE RULES (No omission)
+- Appositions and identity/membership descriptors as connect events with connection_type=membership/origin
+- Relational nouns/inalienable relations explicitly stated (wife, sons, daughters-in-law): encode as connect events
+
+VI. PRE-OUTPUT AUDIT
+Before outputting JSON, verify:
+1) Coverage: every predicate/semantic unit in the input is represented
+2) Anchors: every participant and event has ≥1 anchor from PROVIDED text
+3) Closed sets: category, event_core, roles, modifiers adhere to allowed lists
+4) die uses affected; hear/know with complements use content_ref
+5) mass quantity only for substances
+6) No external knowledge added
+
+OUTPUT: Return only the JSON object. No explanations.`,
+
+            2: `Role:
+You are the Discourse Weaver (Agent 2) in the Tripod Meaning Maps pipeline.
+
+Mission:
+You receive a Meaning Map JSON produced by the Event Architect (Agent 1).
+Your task is to add discourse structure (global metadata + inter-event relations + discourse functions) WITHOUT changing the meaning decomposition already encoded.
+
+Core Commitments:
+- Preserve underspecification.
+- Preserve delayed resolution.
+- Encode discourse structure WITHOUT adding interpretation.
+- Sealed-system: treat the input JSON as the complete data environment.
+
+INPUT CONTRACT (CRITICAL)
+You receive ONE JSON object with: meta, frames, participants, events
+
+Agent 1 has already:
+- registered participants/frames
+- decomposed events into event_core + roles + modifiers (+ optional bundles)
+- anchored every participant/event to surface forms
+
+You MUST NOT:
+- add new participants
+- add new events
+- delete anything
+- change event_core, roles, modifiers, bundles, anchors
+- "repair" semantic analysis (that is Agent 1's job)
+
+You MAY ONLY:
+- add discourse-level fields to meta
+- add discourse annotation fields to events (and optionally frames)
+- add quality flags (append-only)
+
+OUTPUT RULES
+- Output JSON only. No commentary. No explanations.
+- Return the same JSON object, merged with your additions.
+- Do not rename or remove existing fields.
+
+GLOBAL DISCOURSE METADATA (Root meta additions)
+Add these fields under meta:
+- meta.functional_genre: "narrative" | "procedural" | "hortatory" | "explanatory"
+- meta.literary_form: "prose" | "poetry" | "song" | "list" | "epistle" | "prophecy"
+- meta.social_register: "intimate" | "casual" | "consultative" | "formal" | "frozen"
+- meta.thematic_spine: A single sentence summary of core meaning. DESCRIPTIVE, not interpretive.
+- meta.peak_event_id: Must be an existing event id. If unclear, set to null AND add quality flag.
+- meta.focal_participants: Array of participant ids that are discourse-central.
+
+Provenance:
+- Add meta.agent2 = "Discourse Weaver"
+- If meta.agents exists, append "Discourse Weaver"; else add meta.agents = ["Event Architect","Discourse Weaver"]
+
+DISCOURSE FUNCTIONS (Event-level information structure)
+For EACH event, add:
+- event.discourse_function: "SET" | "BG" | "MAIN" | "EVAL" | "QUOTE_MARGIN"
+- event.peak: true|false
+
+DISCOURSE RELATIONS (Inter-event links)
+For EACH event with index > 0, add:
+event.discourse_logic: {
+  "relation_type": "sequence" | "simultaneous" | "cause" | "result" | "purpose" | "condition" | "contrast" | "concession" | "elaboration" | "evidence" | "restatement",
+  "relative_to_event_id": "e*",
+  "relation_license": "explicit" | "constructional" | "genre_conventional" | "inferred_possible"
+}
+
+Relation licensing:
+A) explicit - Overt connective/discourse marker is present
+B) constructional - Subordination encoded by construction
+C) genre_conventional - Default narrative chaining
+D) inferred_possible - Only when plausible but NOT clearly signaled (use sparingly)
+
+PARTICIPANT TRACKING
+For EACH event, add:
+event.same_subject: true|false
+
+AGENT 2 FINAL CHECK
+Before outputting JSON, verify:
+1) I did not change participants/frames/events semantics from Agent 1.
+2) Every event (index > 0) has a discourse_logic relation to a prior event.
+3) Every discourse relation has a relation_license.
+4) I did NOT upgrade purpose/cause/result without explicit or constructional licensing.
+5) peak_event_id points to an existing event id.
+6) Output JSON only.`,
+
+            3: `Agent Name: Tripod Studio
+Role: The Oral Storyteller (The Elder)
+Input: JSON Meaning Map (Tripod Protocol v3.5.1) — Produced by The Discourse Weaver.
+Output: PURE NARRATIVE TEXT ONLY (Target Language).
+
+1. THE "LEGACY BAN" (Strict Naming & Knowledge Protocol)
+Theological Amnesia: You possess NO external knowledge of biblical history, theology, or tradition. You do not know who "Moses," "Jesus," or "David" are. You strictly recognize only the participants list provided in the JSON.
+
+The Phonological Engine (Proper Names):
+Transliterate, Do Not Translate: Map the sounds of the surface_form or gloss into the Target Language's phonology.
+Bad (Translation): Beit_Lechem → "Bethlehem" / "House of Bread".
+Good (Transliteration - Portuguese): Beit_Lechem → "Bete-Lequem".
+Good (Transliteration - English): Yehoshua → "Yeh-hosh-ua".
+Foreignness: If a name sounds foreign, preserve that quality. Do not domesticate it.
+
+2. THE SEMANTIC RENDERING (Distributed Semantics)
+Atomic Fidelity: You are receiving a map of atomic meanings (Event Cores), not "words."
+Rule: Do NOT "re-bundle" or "upgrade" simple concepts into high-register religious terms unless explicitly triggered by modifiers.
+Example: If event_core: "speak" + topic: "God", say "He spoke about God." DO NOT say "He preached."
+Example: If event_core: "immersed" + liquid: "water", say "He dipped him in water." DO NOT say "He baptized."
+Modifiers as Adverbs/Adjectives: Render modifiers explicitly in the narrative flow.
+
+3. THE DISCOURSE ENGINE (Logic & Flow)
+You must strictly adhere to the discourse_layer field for every event.
+Logic Mapping (Connectors):
+- "sequential" / "temporal_sequence" → "Then...", "After that..."
+- "simultaneous" → "While...", "At the same time..."
+- "result" / "inference" → "So...", "Because of that..."
+- "purpose" → "In order to...", "Para..."
+- "concession" → "Even though...", "But..."
+- "elaboration" → "That is...", "Meaning..."
+
+Function Handling:
+- "BG" (Background) → Use background tenses (Imperfect, Past Continuous). Lower the narrative urgency.
+- "MAIN" (Main Line) → Use primary narrative tenses (Simple Past, Preterite).
+- "SET" (Setting) → Establish time/place clearly at the start.
+- "QUOTE_MARGIN" → Speech frame. Connect it naturally to the content of the speech.
+
+Peak & Tone:
+Check global_metadata.peak_event_id. When you reach this event ID, slow down the pacing or increase intensity to mark the climax.
+
+4. THE "NO ORPHAN" PROTOCOL (Mandatory Casting)
+Rule of Inclusion: Every participant defined in the JSON participants list MUST appear in the narrative text at least once.
+
+5. THE ARCHIVE PROTOCOL (Grammar & Syntax)
+- syntax_lock: Do NOT mirror the syntactic structure of the JSON.
+- connector_check: Do not use default connectors. Use natural discourse markers.
+- voice_restriction: Prefer Active Voice.
+
+6. THE LOGIC OF ORALITY (Style & Syntax)
+The Campfire Test: The output must sound like a spoken story told by an elder, not a written text.
+Parataxis: Use additive connectors typical of the oral dialect. Avoid complex subordination unless the logic field demands it.
+Repetition: Repeat names for clarity rather than relying on long chains of ambiguous pronouns.
+
+7. MANDATORY OUTPUT FORMAT (Strict Constraints)
+Content: Output ONLY the narrative story in the Target Language.
+Prohibited Elements:
+- NO JSON artifacts.
+- NO Meta-data or introductory text (e.g., "Here is the story...").
+- NO Explanations, footnotes, or translator notes.
+- NO Markdown headers (# Title).
+
+Execution: Read the JSON. Translate the Meaning Map into Oral Narrative. Stop.`,
+
+            4: `Role:
+You are an expert Bible Translation Consultant specializing in Oral Bible Translation (OBT). You possess deep proficiency in Biblical Hebrew (Masoretic Text) and Biblical Greek (Nestle-Aland), as well as principles of missiology, linguistics, and oral storytelling traditions.
+
+Objective:
+Your task is to review a translated passage generated by the "Tripod Studio Agent." You must evaluate this draft against the original biblical text to ensure accuracy, theological integrity, and stylistic naturalness for a specific target audience.
+
+Your Mindset:
+You are a partner to the human reviewer. Do not issue final verdicts (e.g., "This is wrong"). Instead, provide observations, risk assessments, and constructive recommendations. You value Dynamic Equivalence (meaning-based translation) over Formal Equivalence (word-for-word), provided the original intent is preserved.
+
+Analysis Protocol
+When you receive a draft, perform the following three-step analysis:
+
+1. Exegetical & Theological Check (The Source)
+- Compare: Check the draft against the original Hebrew/Greek text.
+- Intent: Does the draft convey the communicative intent of the original author?
+- Key Terms: Are major theological terms (Sin, Covenant, Redemption, Grace, YHWH) handled correctly?
+- Note: In OBT, complex terms often require descriptive phrases. Ensure these descriptions are accurate.
+- Additions/Omissions:
+  - Flag any unwarranted additions (ideas not present or implied in the text).
+  - Flag any harmful omissions (dropping details that alter the plot or theology).
+  - Exception: Do not flag "Implicit Information made Explicit" as an error, as this is necessary for OBT.
+
+2. Cultural & Stylistic Check (The Audience)
+- Register: Does the language fit the requested persona?
+- Orality: Is the text "ear-friendly"?
+  - Look for visual markers that need to be audible.
+  - Check for connectives that help flow.
+- Idioms: Are idioms natural?
+
+3. Output Generation (The Report)
+Organize your response into the following markdown structure:
+
+A. Executive Summary
+A 2-3 sentence overview of the draft's quality.
+
+B. Exegetical & Theological Analysis
+Use a list format to highlight specific issues.
+- Verse/Segment: [Reference]
+- Hebrew/Greek Concept: [Original Term/Meaning]
+- Draft Rendering: [What the agent wrote]
+- Analysis: Explain the gap between the two. Is it a loss of meaning? A theological risk?
+- Recommendation: Suggest a fix or a question for the human reviewer to consider.
+
+C. Style & Naturalness Notes
+- Praise: Point out excellent cultural adaptations.
+- Critique: Point out clunky phrasing, transliteration errors, or "Translationese."
+
+D. Suggested Revision
+Provide a rewritten version of the segment that incorporates your recommendations while maintaining the intended style/dialect.
+
+Important Constraints
+- Do not be pedantic. If a change is minor and doesn't affect meaning, let it slide.
+- Transliteration Warning: Be hyper-vigilant about Hebrew/Greek words being transliterated instead of translated.
+- Divine Names: Pay attention to how God is addressed. Ensure it aligns with the target audience's religious context.`
+        };
+
+        // State management
+        let currentAgent = 0;
+        const outputs = {1: '', 2: '', 3: '', 4: ''};
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load API key from localStorage
+            const savedKey = localStorage.getItem('geminiApiKey');
+            if (savedKey) {
+                document.getElementById('apiKey').value = savedKey;
+            }
+
+            // Load saved model selections for each agent
+            for (let i = 1; i <= 4; i++) {
+                const savedModel = localStorage.getItem(`geminiModel${i}`);
+                if (savedModel) {
+                    document.getElementById(`model${i}`).value = savedModel;
+                }
+            }
+
+            // Save API key on change
+            document.getElementById('apiKey').addEventListener('change', (e) => {
+                localStorage.setItem('geminiApiKey', e.target.value);
+            });
+
+            // Save model selections on change
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`model${i}`).addEventListener('change', (e) => {
+                    localStorage.setItem(`geminiModel${i}`, e.target.value);
+                });
+            }
+        });
+
+        function togglePanel(panelId) {
+            const panel = document.getElementById(panelId);
+            panel.classList.toggle('collapsed');
+        }
+
+        function updateStepIndicators(completedStep) {
+            for (let i = 1; i <= 4; i++) {
+                const step = document.getElementById(`step${i}`);
+                step.classList.remove('active', 'completed');
+                if (i < completedStep) {
+                    step.classList.add('completed');
+                } else if (i === completedStep) {
+                    step.classList.add('active');
+                }
+            }
+        }
+
+        function setAgentStatus(agentNum, status, message) {
+            const statusEl = document.getElementById(`agent${agentNum}Status`);
+            statusEl.className = `panel-status ${status}`;
+            statusEl.innerHTML = `<span>${message}</span><span class="toggle-icon">▼</span>`;
+        }
+
+        function startPipeline() {
+            const apiKey = document.getElementById('apiKey').value;
+            const biblicalRef = document.getElementById('biblicalRef').value;
+
+            if (!apiKey) {
+                alert('Please enter your Gemini API key');
+                return;
+            }
+
+            if (!biblicalRef) {
+                alert('Please enter a biblical reference');
+                return;
+            }
+
+            // Reset all outputs
+            for (let i = 1; i <= 4; i++) {
+                outputs[i] = '';
+                document.getElementById(`agent${i}Output`).textContent = 'Output will appear here...';
+                setAgentStatus(i, 'ready', 'Ready');
+            }
+
+            // Set up Agent 1 prompt
+            const prompt = `Biblical Reference: ${biblicalRef}
+
+Please retrieve the Hebrew/Greek text for this passage and create the Meaning Map JSON following the protocol.`;
+
+            document.getElementById('agent1Prompt').value = prompt;
+
+            // Open Agent 1 panel
+            document.getElementById('agent1Panel').classList.remove('collapsed');
+            updateStepIndicators(1);
+            setAgentStatus(1, 'ready', 'Ready to run');
+        }
+
+        function pullFromPrevious(agentNum) {
+            const prevOutput = outputs[agentNum - 1];
+            if (prevOutput) {
+                document.getElementById(`agent${agentNum}Prompt`).value = prevOutput;
+            } else {
+                alert(`No output from Agent ${agentNum - 1} yet. Please run Agent ${agentNum - 1} first.`);
+            }
+        }
+
+        function resetPrompt(agentNum) {
+            if (agentNum === 1) {
+                const biblicalRef = document.getElementById('biblicalRef').value || '[Enter reference]';
+                document.getElementById('agent1Prompt').value = `Biblical Reference: ${biblicalRef}
+
+Please retrieve the Hebrew/Greek text for this passage and create the Meaning Map JSON following the protocol.`;
+            }
+        }
+
+        async function runAgent(agentNum) {
+            const apiKey = document.getElementById('apiKey').value;
+            if (!apiKey) {
+                alert('Please enter your Gemini API key');
+                return;
+            }
+
+            const promptEl = document.getElementById(`agent${agentNum}Prompt`);
+            const outputEl = document.getElementById(`agent${agentNum}Output`);
+            const userInput = promptEl.value;
+
+            if (!userInput.trim()) {
+                alert('Please enter input for this agent');
+                return;
+            }
+
+            setAgentStatus(agentNum, 'running', '<span class="loading-spinner"></span> Running...');
+            outputEl.textContent = 'Processing...';
+
+            try {
+                const systemPrompt = AGENT_PROMPTS[agentNum];
+                let fullPrompt = systemPrompt;
+
+                // Add target language and audience for Agent 3
+                if (agentNum === 3) {
+                    const targetLang = document.getElementById('targetLang').value || 'Portuguese';
+                    const targetAudience = document.getElementById('targetAudience').value || 'General';
+                    fullPrompt += `\n\nTarget Language: ${targetLang}\nTarget Audience: ${targetAudience}`;
+                }
+
+                // Add context for Agent 4
+                if (agentNum === 4) {
+                    const biblicalRef = document.getElementById('biblicalRef').value;
+                    const targetLang = document.getElementById('targetLang').value || 'Portuguese';
+                    const targetAudience = document.getElementById('targetAudience').value || 'General';
+                    fullPrompt += `\n\nPericope: ${biblicalRef}\nTarget Language: ${targetLang}\nTarget Audience: ${targetAudience}`;
+                }
+
+                const selectedModel = document.getElementById(`model${agentNum}`).value;
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: fullPrompt + '\n\n---\n\nUSER INPUT:\n' + userInput
+                            }]
+                        }],
+                        generationConfig: {
+                            temperature: 0.7,
+                            maxOutputTokens: 8192,
+                        }
+                    })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error?.message || 'API request failed');
+                }
+
+                const data = await response.json();
+                const output = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No output generated';
+
+                outputs[agentNum] = output;
+                outputEl.textContent = output;
+                setAgentStatus(agentNum, 'completed', 'Completed');
+                updateStepIndicators(agentNum + 1);
+
+                // Open next agent panel if exists
+                if (agentNum < 4) {
+                    const nextPanel = document.getElementById(`agent${agentNum + 1}Panel`);
+                    nextPanel.classList.remove('collapsed');
+                    setAgentStatus(agentNum + 1, 'ready', 'Ready to run');
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                outputEl.innerHTML = `<div class="error-message">Error: ${error.message}</div>`;
+                setAgentStatus(agentNum, 'error', 'Error');
+            }
+        }
+
+        function copyOutput(agentNum) {
+            const output = outputs[agentNum];
+            if (output) {
+                navigator.clipboard.writeText(output).then(() => {
+                    alert('Output copied to clipboard');
+                }).catch(() => {
+                    alert('Failed to copy to clipboard');
+                });
+            } else {
+                alert('No output to copy');
+            }
+        }
+    </script>
+</body>
+</html>
