@@ -69,7 +69,47 @@
 <script>
 let currentStep=0,outputs={},studio={text:'',segments:[],selectedIdx:-1,playingIdx:-1,isPlaying:false,approval:{validator:false,mentor:false,community:false},faithfulness:[],editHistory:[],fullAudioUrl:null,mentorQuestion:''},voiceConfig={},speechRecognition=null,mentorSpeechRecognition=null,isRecording=false,isMentorRecording=false,recordedFeedback='';
 const LANGS={english:{name:"English (Oral)",instruction:"Generate in natural, spoken English using oral storytelling register. Include oral markers: 'Now listen...', 'Then...'. Avoid formal Bible-speak.",speechLang:'en-US'},portuguese_sertanejo:{name:"Portuguese (Sertanejo)",instruction:"Gere em português do Sertão Nordestino, registro oral. Use marcadores: 'Escuta só...', 'Aí...'.",speechLang:'pt-BR'},hindi:{name:"Hindi (बोलचाल)",instruction:"हिंदी की बोलचाल की भाषा में लिखें। मौखिक चिह्नक उपयोग करें।",speechLang:'hi-IN'},spanish:{name:"Spanish (Coloquial)",instruction:"Genera en español coloquial hablado. Usa marcadores orales.",speechLang:'es-ES'},korean:{name:"Korean (구어체)",instruction:"한국어 구어체로 생성하세요. 구술 표지를 사용하세요.",speechLang:'ko-KR'},indonesian:{name:"Bahasa Indonesia",instruction:"Tulis dalam Bahasa Indonesia lisan sehari-hari.",speechLang:'id-ID'}};
-const PROMPTS={1:`You are the Event Architect. Convert the biblical passage into a Meaning Map JSON with: meta, frames, participants, events. Use closed Event Cores, semantic roles, and modifiers. Return ONLY valid JSON.`,2:`You are the Discourse Weaver. Add discourse structure to the Meaning Map: functional_genre, literary_form, thematic_spine, peak_event_id, and for each event add discourse_function (SET/BG/MAIN/EVAL), peak flag, and discourse_logic relations. Return the enhanced JSON only.`,3:`You are the Oral Storyteller. Transform the Meaning Map into natural oral narrative in the target language. RULES: 1) Use ONLY participants and events from the map. 2) Transliterate names phonetically. 3) Don't upgrade terms to religious jargon. 4) Make it sound like a spoken story. Output ONLY the narrative text.`};
+const PROMPTS={1:`You are the Event Architect. Convert the biblical passage into a Meaning Map JSON with: meta, frames, participants, events. Use closed Event Cores, semantic roles, and modifiers. Return ONLY valid JSON.`,2:`You are the Discourse Weaver. Add discourse structure to the Meaning Map: functional_genre, literary_form, thematic_spine, peak_event_id, and for each event add discourse_function (SET/BG/MAIN/EVAL), peak flag, and discourse_logic relations. Return the enhanced JSON only.`,3:`You are the Oral Storyteller. Transform the Meaning Map into natural oral narrative.
+
+=== FIDELITY CONSTRAINTS (ABSOLUTE) ===
+You must preserve COMPLETE semantic fidelity to the Meaning Map:
+• INCLUDE every event, participant, and relationship in the map
+• PRESERVE all semantic roles (agent, patient, experiencer, etc.)
+• MAINTAIN temporal sequence and logical connections
+• NEVER add meanings, interpretations, or facts not in the map
+• NEVER omit any event or participant from the map
+• NEVER change who did what to whom
+
+=== FORBIDDEN ADDITIONS ===
+Do NOT add:
+• Character traits: "brave David", "wicked Pharaoh", "faithful Abraham"
+• Emotions not in map: "angrily said", "joyfully went", "sadly wept"  
+• Motivations: "because he was jealous", "wanting to help"
+• Evaluations: "this was wrong", "a great miracle", "an important moment"
+• Theological commentary: "as God had planned", "showing His mercy"
+• Explanations: "which means...", "in other words..."
+
+=== PERMITTED ORAL FRAMING (Performance, not Content) ===
+You MAY add ONLY these three types of navigational cues:
+
+1. ATTENTIONAL MARKERS (phatic) - manage listener focus:
+   ✓ "Now listen..." / "Hear this..."
+   ✗ "Listen, for this is important..." (adds evaluation)
+
+2. STRUCTURAL MARKERS (discursive) - signal transitions:
+   ✓ "That was the story of X. Now begins Y..."
+   ✓ "Some time later..." / "Meanwhile..."
+   ✗ "That was the amazing story of..." (adds evaluation)
+
+3. TURN-TAKING MARKERS (deictic) - clarify speakers:
+   ✓ "Then Moses said..." / "The woman answered..."
+   ✗ "Then Moses, filled with courage, said..." (adds trait)
+
+=== SUBTRACTION RULE ===
+Test every addition: If removing it loses NO theological/narrative facts but only causes structural confusion, it is legitimate. If removing it loses information, it was an illegitimate addition.
+
+=== OUTPUT ===
+Generate natural oral narrative. Sound like spoken storytelling, not written text. Use the target language's oral register. Output ONLY the narrative.`};
 const SEGMENT_COLORS=[{bg:'#bee3f8',color:'#2b6cb0'},{bg:'#c6f6d5',color:'#22543d'},{bg:'#fefcbf',color:'#744210'},{bg:'#fed7d7',color:'#c53030'},{bg:'#e9d8fd',color:'#553c9a'},{bg:'#b2f5ea',color:'#234e52'}];
 
 function startStep1(){const apiKey=document.getElementById('apiKey').value,ref=document.getElementById('biblicalRef').value;if(!apiKey)return alert('Please enter your API key.');if(!ref)return alert('Please enter a biblical reference.');localStorage.setItem('anthropic_api_key',apiKey);const el=document.getElementById('elevenLabsKey');if(el.value)localStorage.setItem('elevenlabs_api_key',el.value);currentStep=1;document.getElementById('progressSteps').classList.remove('hidden');document.getElementById('workArea').classList.remove('hidden');updateProgress(1);showStep(1);runStep(1);}
