@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oral Bridge OBT - Tripod Studio v2</title>
+    <title>Oral Bridge OBT - Tripod Studio v3</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -104,12 +104,10 @@
         .message { padding: 1rem 1.25rem; border-radius: var(--radius); margin-bottom: 1rem; font-size: 0.95rem; }
         .message-error { background: #FEF2F2; border: 1px solid #FECACA; color: #991B1B; }
         .message-success { background: var(--success-bg); border: 1px solid #86EFAC; color: var(--success); }
-        .message-info { background: var(--accent-light); border: 1px solid #FCD34D; color: #92400E; }
         
         .hidden { display: none !important; }
         footer { text-align: center; padding: 1.5rem 0; color: var(--text-muted); font-size: 0.85rem; }
         
-        /* Studio Tabs */
         .studio-tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 1.5rem; }
         .studio-tab { padding: 0.875rem 1.5rem; border: none; background: var(--bg-tertiary); color: var(--text-secondary); font-weight: 600; cursor: pointer; border-radius: var(--radius) var(--radius) 0 0; margin-right: 0.5rem; transition: all 0.2s; font-size: 1rem; }
         .studio-tab.active { color: white; }
@@ -119,7 +117,6 @@
         .studio-view { display: none; }
         .studio-view.active { display: block; }
         
-        /* Approval Panel */
         .approval-panel { background: linear-gradient(135deg, #f7fafc, #edf2f7); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
         .approval-badges { display: flex; gap: 1rem; flex-wrap: wrap; }
         .approval-badge { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
@@ -128,177 +125,53 @@
         .approval-badge.approved { background: #c6f6d5; color: #276749; }
         .approval-badge.waiting { background: #e2e8f0; color: #718096; }
         
-        /* Validator View - Audio Only */
-        .validator-audio-panel { 
-            background: var(--validator-bg); 
-            border: 2px solid var(--validator-border); 
-            border-radius: var(--radius-lg); 
-            padding: 2rem; 
-            text-align: center;
-        }
+        .validator-audio-panel { background: var(--validator-bg); border: 2px solid var(--validator-border); border-radius: var(--radius-lg); padding: 2rem; text-align: center; }
         
-        /* Large Play Button */
-        .main-play-btn {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--validator-primary), #285e61);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 2rem auto;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.3s ease;
-        }
+        .main-play-btn { width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--validator-primary), #285e61); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 2rem auto; box-shadow: var(--shadow-lg); transition: all 0.3s ease; }
         .main-play-btn:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(49, 151, 149, 0.4); }
         .main-play-btn:active { transform: scale(0.98); }
         .main-play-btn svg { width: 50px; height: 50px; fill: white; }
         .main-play-btn.playing { background: linear-gradient(135deg, #e53e3e, #c53030); }
         
-        /* Segment Navigation - Visual Only (No Text) */
-        .segment-nav { 
-            display: flex; 
-            height: 60px; 
-            border-radius: var(--radius-lg); 
-            overflow: hidden; 
-            margin: 1.5rem 0; 
-            border: 2px solid var(--validator-border);
-            background: white;
-        }
-        .segment-block {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.2s;
-            position: relative;
-        }
+        .segment-nav { display: flex; height: 60px; border-radius: var(--radius-lg); overflow: hidden; margin: 1.5rem 0; border: 2px solid var(--validator-border); background: white; }
+        .segment-block { cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; transition: all 0.2s; position: relative; }
         .segment-block:hover { filter: brightness(0.92); }
-        .segment-block.playing::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px;
-            height: 8px;
-            background: currentColor;
-            border-radius: 50%;
-            animation: pulse 1s ease-in-out infinite;
-        }
+        .segment-block.playing::after { content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; background: currentColor; border-radius: 50%; animation: pulse 1s ease-in-out infinite; }
         .segment-block.selected { box-shadow: inset 0 0 0 3px rgba(0,0,0,0.3); }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
         
-        /* Progress Bar */
-        .audio-progress { 
-            height: 10px; 
-            background: #b2f5ea; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            margin: 1rem 0;
-            overflow: hidden;
-        }
+        .audio-progress { height: 10px; background: #b2f5ea; border-radius: 5px; cursor: pointer; margin: 1rem 0; overflow: hidden; }
         .audio-progress-fill { height: 100%; background: var(--validator-primary); border-radius: 5px; width: 0%; transition: width 0.1s; }
         
-        /* Recording Interface */
-        .recording-panel {
-            background: linear-gradient(135deg, var(--mentor-bg), #E9D8FD);
-            border: 2px solid var(--mentor-border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            margin-top: 1.5rem;
-            text-align: center;
-        }
-        .record-btn {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #805AD5, #553C9A);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 1.5rem auto;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.3s ease;
-        }
+        .recording-panel { background: linear-gradient(135deg, var(--mentor-bg), #E9D8FD); border: 2px solid var(--mentor-border); border-radius: var(--radius-lg); padding: 2rem; margin-top: 1.5rem; text-align: center; }
+        .record-btn { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #805AD5, #553C9A); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 1.5rem auto; box-shadow: var(--shadow-lg); transition: all 0.3s ease; }
         .record-btn:hover { transform: scale(1.05); }
-        .record-btn.recording { 
-            background: linear-gradient(135deg, #e53e3e, #c53030); 
-            animation: recording-pulse 1.5s ease-in-out infinite;
-        }
+        .record-btn.recording { background: linear-gradient(135deg, #e53e3e, #c53030); animation: recording-pulse 1.5s ease-in-out infinite; }
         .record-btn svg { width: 40px; height: 40px; fill: white; }
         @keyframes recording-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.7); } 50% { box-shadow: 0 0 0 20px rgba(229, 62, 62, 0); } }
         
-        .status-indicator {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 1rem 0;
-            min-height: 2rem;
-        }
+        .status-indicator { font-size: 1.1rem; font-weight: 600; margin: 1rem 0; min-height: 2rem; }
+        .time-display { font-family: 'DM Sans', monospace; font-size: 2rem; font-weight: 600; color: var(--validator-primary); margin: 1rem 0; }
         
-        /* Time Display */
-        .time-display {
-            font-family: 'DM Sans', monospace;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--validator-primary);
-            margin: 1rem 0;
-        }
+        .mentor-text-panel { background: var(--mentor-bg); border: 2px solid var(--mentor-border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; }
+        .mentor-text-display { background: white; border: 1px solid var(--mentor-border); border-radius: var(--radius); padding: 1.5rem; font-family: 'Source Serif 4', serif; font-size: 1.1rem; line-height: 1.8; min-height: 150px; }
         
-        /* Segment Colors */
-        .seg-color-0 { background: #bee3f8; color: #2b6cb0; }
-        .seg-color-1 { background: #c6f6d5; color: #22543d; }
-        .seg-color-2 { background: #fefcbf; color: #744210; }
-        .seg-color-3 { background: #fed7d7; color: #c53030; }
-        .seg-color-4 { background: #e9d8fd; color: #553c9a; }
-        .seg-color-5 { background: #b2f5ea; color: #234e52; }
-        
-        /* Mentor View */
-        .mentor-text-panel {
-            background: var(--mentor-bg);
-            border: 2px solid var(--mentor-border);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .mentor-text-display {
-            background: white;
-            border: 1px solid var(--mentor-border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            font-family: 'Source Serif 4', serif;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            min-height: 150px;
-        }
-        
-        /* Faithfulness Results */
         .faithfulness-result { border-radius: var(--radius); padding: 1rem; margin-bottom: 0.75rem; }
         .faithfulness-result.pass { background: #f0fff4; border: 2px solid #68d391; }
         .faithfulness-result.warning { background: #fffbeb; border: 2px solid #f6ad55; }
         .faithfulness-result.fail { background: #fff5f5; border: 2px solid #fc8181; }
         
-        /* Edit History */
-        .edit-history {
-            background: #f7fafc;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1rem;
-            max-height: 300px;
-            overflow-y: auto;
-            font-size: 0.9rem;
-        }
-        .edit-item {
-            padding: 0.75rem;
-            border-bottom: 1px solid var(--border);
-        }
+        .edit-history { background: #f7fafc; border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; max-height: 300px; overflow-y: auto; font-size: 0.9rem; }
+        .edit-item { padding: 0.75rem; border-bottom: 1px solid var(--border); }
         .edit-item:last-child { border-bottom: none; }
+        
+        .mentor-voice-panel { background: linear-gradient(135deg, #E9D8FD, #D6BCFA); border: 2px solid var(--mentor-primary); border-radius: var(--radius-lg); padding: 1.5rem; margin-top: 1.5rem; text-align: center; }
+        .mentor-record-btn { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #805AD5, #553C9A); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 1rem auto; box-shadow: var(--shadow-md); transition: all 0.3s ease; }
+        .mentor-record-btn:hover { transform: scale(1.05); }
+        .mentor-record-btn.recording { background: linear-gradient(135deg, #e53e3e, #c53030); animation: recording-pulse 1.5s ease-in-out infinite; }
+        .mentor-record-btn svg { width: 32px; height: 32px; fill: white; }
+        
+        .response-options { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
         
         @media (max-width: 768px) {
             .container { padding: 1rem; }
@@ -315,12 +188,10 @@
     <div class="container">
         <header>
             <div class="logo">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                </div>
+                <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
                 <h1>Oral Bridge OBT</h1>
             </div>
-            <p class="subtitle">AI-Assisted Bible Translation with Voice-First Tripod Studio</p>
+            <p class="subtitle">AI-Assisted Bible Translation</p>
         </header>
 
         <div class="setup-section">
@@ -331,7 +202,7 @@
                 </div>
                 <div class="input-group">
                     <label for="elevenLabsKey">ElevenLabs API Key</label>
-                    <input type="password" id="elevenLabsKey" placeholder="For audio generation">
+                    <input type="password" id="elevenLabsKey" placeholder="For audio">
                 </div>
                 <div class="input-group" style="max-width: 180px;">
                     <label for="modelSelect">Model</label>
@@ -363,24 +234,22 @@
                 </div>
             </div>
             <div class="button-row button-row-center" style="margin-top: 1.5rem;">
-                <button class="btn btn-primary btn-large" onclick="startTranslation()">Begin Translation</button>
+                <button class="btn btn-primary btn-large" onclick="startStep1()">▶️ Start Meaning Map</button>
             </div>
         </div>
 
         <div id="progressSteps" class="progress-steps hidden">
             <div class="step" id="step1Ind" onclick="goToStep(1)"><span class="step-number">1</span><span>Map</span></div>
             <div class="step" id="step2Ind" onclick="goToStep(2)"><span class="step-number">2</span><span>Discourse</span></div>
-            <div class="step" id="step3Ind" onclick="goToStep(3)"><span class="step-number">3</span><span>Translate</span></div>
+            <div class="step" id="step3Ind" onclick="goToStep(3)"><span class="step-number">3</span><span>Draft</span></div>
             <div class="step" id="step4Ind" onclick="goToStep(4)"><span class="step-number">4</span><span>Review</span></div>
             <div class="step" id="step5Ind" onclick="goToStep(5)"><span class="step-number">5</span><span>Studio</span></div>
         </div>
 
         <div id="workArea" class="main-card hidden"></div>
-
-        <footer><p>Ready Vessels Project • Tripod Method v5.2 • Voice-First Studio</p></footer>
+        <footer><p>Ready Vessels Project • Tripod Method v5.3</p></footer>
     </div>
 
-    <!-- Voice Config Modal -->
     <div id="voiceModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:2000; align-items:center; justify-content:center;">
         <div style="background:white; padding:2rem; border-radius:12px; max-width:500px; width:90%; max-height:80vh; overflow-y:auto;">
             <h3 style="margin-bottom:1rem;">🎙️ Configure Voice</h3>
@@ -393,28 +262,14 @@
     </div>
 
 <script>
-// ============================================================
-// STATE
-// ============================================================
 let currentStep = 0;
 let outputs = {};
-let studio = {
-    text: '',
-    segments: [],
-    selectedIdx: -1,
-    playingIdx: -1,
-    isPlaying: false,
-    approval: { validator: false, mentor: false, community: false },
-    faithfulness: [],
-    editHistory: [],
-    audioBlobs: {}, // Store audio blobs per segment
-    fullAudioUrl: null
-};
+let studio = { text: '', segments: [], selectedIdx: -1, playingIdx: -1, isPlaying: false, approval: { validator: false, mentor: false, community: false }, faithfulness: [], editHistory: [], fullAudioUrl: null, mentorQuestion: '', pendingMentorFeedback: null };
 let voiceConfig = {};
-
-// Speech recognition
 let speechRecognition = null;
+let mentorSpeechRecognition = null;
 let isRecording = false;
+let isMentorRecording = false;
 let recordedFeedback = '';
 
 const LANGS = {
@@ -442,24 +297,20 @@ const SEGMENT_COLORS = [
     { bg: '#b2f5ea', color: '#234e52' }
 ];
 
-// ============================================================
-// UI FUNCTIONS
-// ============================================================
-function startTranslation() {
+function startStep1() {
     const apiKey = document.getElementById('apiKey').value;
     const ref = document.getElementById('biblicalRef').value;
     if (!apiKey) return alert('Please enter your API key.');
     if (!ref) return alert('Please enter a biblical reference.');
-    
     localStorage.setItem('anthropic_api_key', apiKey);
     const el = document.getElementById('elevenLabsKey');
     if (el.value) localStorage.setItem('elevenlabs_api_key', el.value);
-    
     currentStep = 1;
     document.getElementById('progressSteps').classList.remove('hidden');
     document.getElementById('workArea').classList.remove('hidden');
     updateProgress(1);
     showStep(1);
+    runStep(1);
 }
 
 function updateProgress(step) {
@@ -478,55 +329,26 @@ function showStep(step) {
     const langName = LANGS[lang]?.name || lang;
     
     if (step === 1) {
-        workArea.innerHTML = `
-            <div class="card-header step-1"><div class="step-badge">1</div><div class="card-title"><h2>Create Meaning Map</h2><p>Analyze ${ref} and create semantic structure</p></div></div>
-            <div class="card-body">
-                <div class="button-row"><button class="btn btn-primary btn-large" onclick="runStep(1)">Create Meaning Map</button></div>
-                <div id="output1" class="section-gap"></div>
-            </div>`;
+        workArea.innerHTML = `<div class="card-header step-1"><div class="step-badge">1</div><div class="card-title"><h2>Meaning Map</h2><p>${ref}</p></div></div><div class="card-body"><div id="output1"></div></div>`;
     } else if (step === 2) {
-        workArea.innerHTML = `
-            <div class="card-header step-2"><div class="step-badge">2</div><div class="card-title"><h2>Add Discourse Structure</h2><p>Add narrative flow and connections</p></div></div>
-            <div class="card-body">
-                <label class="text-label">Meaning Map</label>
-                <textarea class="text-box json-output" id="input2" rows="8">${outputs[1] || ''}</textarea>
-                <div class="button-row"><button class="btn btn-primary btn-large" onclick="runStep(2)">Add Discourse</button></div>
-                <div id="output2" class="section-gap"></div>
-            </div>`;
+        workArea.innerHTML = `<div class="card-header step-2"><div class="step-badge">2</div><div class="card-title"><h2>Discourse Structure</h2><p>Narrative flow</p></div></div><div class="card-body"><textarea class="text-box json-output" id="input2" rows="4" style="display:none;">${outputs[1] || ''}</textarea><div id="output2"></div></div>`;
     } else if (step === 3) {
-        workArea.innerHTML = `
-            <div class="card-header step-3"><div class="step-badge">3</div><div class="card-title"><h2>Generate Translation</h2><p>Create oral translation in ${langName}</p></div></div>
-            <div class="card-body">
-                <label class="text-label">Meaning Map with Discourse</label>
-                <textarea class="text-box json-output" id="input3" rows="6">${outputs[2] || ''}</textarea>
-                <div class="button-row"><button class="btn btn-primary btn-large" onclick="runStep(3)">Generate Translation</button></div>
-                <div id="output3" class="section-gap"></div>
-            </div>`;
+        workArea.innerHTML = `<div class="card-header step-3"><div class="step-badge">3</div><div class="card-title"><h2>Generate Draft</h2><p>${langName}</p></div></div><div class="card-body"><textarea class="text-box json-output" id="input3" rows="4" style="display:none;">${outputs[2] || ''}</textarea><div id="output3"></div></div>`;
     } else if (step === 4) {
-        workArea.innerHTML = `
-            <div class="card-header step-4"><div class="step-badge">4</div><div class="card-title"><h2>Quality Review</h2><p>Check accuracy and naturalness</p></div></div>
-            <div class="card-body">
-                <label class="text-label">Translation</label>
-                <textarea class="text-box output" id="input4" rows="6">${outputs[3] || ''}</textarea>
-                <div class="button-row"><button class="btn btn-primary btn-large" onclick="runStep(4)">Review Translation</button></div>
-                <div id="output4" class="section-gap"></div>
-            </div>`;
+        workArea.innerHTML = `<div class="card-header step-4"><div class="step-badge">4</div><div class="card-title"><h2>Review Draft</h2><p>Quality check</p></div></div><div class="card-body"><textarea class="text-box output" id="input4" rows="4" style="display:none;">${outputs[3] || ''}</textarea><div id="output4"></div></div>`;
     } else if (step === 5) {
         workArea.innerHTML = buildStudioUI();
         initStudio();
     }
 }
 
-// ============================================================
-// TRIPOD STUDIO - VOICE FIRST
-// ============================================================
 function buildStudioUI() {
     return `
-        <div class="card-header step-5"><div class="step-badge">5</div><div class="card-title"><h2>🎬 Tripod Studio</h2><p>Voice-First Validation Workflow</p></div></div>
+        <div class="card-header step-5"><div class="step-badge">5</div><div class="card-title"><h2>🎬 Tripod Studio</h2><p>Listen & Validate</p></div></div>
         <div class="card-body">
             <div class="approval-panel">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-                    <strong>📋 Approval Chain</strong>
+                    <strong>📋 Approval</strong>
                     <div class="approval-badges">
                         <div id="valBadge" class="approval-badge pending">⏳ Validator</div>
                         <div id="menBadge" class="approval-badge waiting">⏸️ Mentor</div>
@@ -536,156 +358,110 @@ function buildStudioUI() {
             </div>
             
             <div class="studio-tabs">
-                <button id="tabVal" class="studio-tab validator-tab active" onclick="switchTab('validator')">🎧 Validator (Audio Only)</button>
-                <button id="tabMen" class="studio-tab mentor-tab" onclick="switchTab('mentor')">📝 Mentor (Text View)</button>
+                <button id="tabVal" class="studio-tab validator-tab active" onclick="switchTab('validator')">🎧 Validator</button>
+                <button id="tabMen" class="studio-tab mentor-tab" onclick="switchTab('mentor')">📝 Mentor</button>
             </div>
             
-            <!-- ======================= -->
-            <!-- VALIDATOR VIEW - AUDIO ONLY -->
-            <!-- ======================= -->
             <div id="validatorView" class="studio-view active">
-                
-                <!-- Generate Section -->
                 <div style="background:#f0fff4; border:1px solid #9ae6b4; border-radius:var(--radius-lg); padding:1.5rem; margin-bottom:1.5rem;">
                     <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap; justify-content:center;">
                         <select id="studioLang" style="padding:0.75rem; border:2px solid #9ae6b4; border-radius:var(--radius); min-width:200px;">
                             ${Object.entries(LANGS).map(([k,v]) => `<option value="${k}">${v.name}</option>`).join('')}
                         </select>
-                        <button class="btn btn-success btn-large" onclick="generateRehearsal()">🎯 Generate Oral Scripture</button>
-                        <button class="btn btn-secondary" onclick="showVoiceModal()">⚙️ Voice Config</button>
+                        <button class="btn btn-success btn-large" onclick="listenToDraft()">🔊 Listen to the Draft</button>
+                        <button class="btn btn-secondary" onclick="showVoiceModal()">⚙️ Voice</button>
                     </div>
                 </div>
                 
-                <!-- Main Audio Panel - NO TEXT VISIBLE -->
                 <div id="audioPanel" class="validator-audio-panel" style="display:none;">
-                    <h3 style="color:var(--validator-primary); margin-bottom:0.5rem;">🔊 Listen to Oral Scripture</h3>
-                    <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:1rem;">Click segments to listen. Record voice feedback to request changes.</p>
-                    
-                    <!-- Segment Navigation -->
-                    <div id="segmentNav" class="segment-nav">
-                        <div style="flex:1; display:flex; align-items:center; justify-content:center; color:#666;">Generate audio first</div>
-                    </div>
-                    
-                    <!-- Main Play Button -->
-                    <button id="mainPlayBtn" class="main-play-btn" onclick="toggleMainPlay()">
-                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </button>
-                    
-                    <!-- Time Display -->
-                    <div class="time-display">
-                        <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
-                    </div>
-                    
-                    <!-- Progress Bar -->
-                    <div class="audio-progress" onclick="seekAudio(event)">
-                        <div id="progressFill" class="audio-progress-fill"></div>
-                    </div>
-                    
+                    <h3 style="color:var(--validator-primary); margin-bottom:1rem;">🔊 Draft Audio</h3>
+                    <div id="segmentNav" class="segment-nav"><div style="flex:1; display:flex; align-items:center; justify-content:center; color:#666;">Loading...</div></div>
+                    <button id="mainPlayBtn" class="main-play-btn" onclick="toggleMainPlay()"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+                    <div class="time-display"><span id="currentTime">0:00</span> / <span id="totalTime">0:00</span></div>
+                    <div class="audio-progress" onclick="seekAudio(event)"><div id="progressFill" class="audio-progress-fill"></div></div>
                     <div style="display:flex; gap:0.75rem; justify-content:center; margin-top:1rem;">
-                        <button class="btn btn-secondary btn-small" onclick="skipSegment(-1)">⏮️ Prev</button>
-                        <button class="btn btn-secondary btn-small" onclick="restartAudio()">🔄 Restart</button>
-                        <button class="btn btn-secondary btn-small" onclick="skipSegment(1)">⏭️ Next</button>
+                        <button class="btn btn-secondary btn-small" onclick="skipSegment(-1)">⏮️</button>
+                        <button class="btn btn-secondary btn-small" onclick="restartAudio()">🔄</button>
+                        <button class="btn btn-secondary btn-small" onclick="skipSegment(1)">⏭️</button>
                     </div>
-                    
                     <div id="audioStatus" style="margin-top:1rem; font-size:0.9rem; color:var(--text-secondary);"></div>
-                    
                     <audio id="audioPlayer" style="display:none;"></audio>
                 </div>
                 
-                <!-- Selected Segment Feedback Panel -->
                 <div id="feedbackPanel" class="recording-panel" style="display:none;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-                        <h4 style="color:var(--mentor-primary);">🎯 Selected: <span id="selectedSegLabel">Segment 1</span></h4>
+                        <h4 style="color:var(--mentor-primary);">🎯 <span id="selectedSegLabel">Segment 1</span></h4>
                         <button class="btn btn-secondary btn-small" onclick="playSelectedSegment()">▶️ Replay</button>
                     </div>
-                    
-                    <p style="color:var(--text-secondary); margin-bottom:1rem;">Speak your feedback. Describe what to change.</p>
-                    
-                    <!-- Record Button -->
-                    <button id="recordBtn" class="record-btn" onclick="toggleRecording()">
-                        <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg>
-                    </button>
-                    
+                    <button id="recordBtn" class="record-btn" onclick="toggleRecording()"><svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg></button>
                     <div id="recordStatus" class="status-indicator"></div>
-                    
                     <div id="feedbackActions" style="display:none; margin-top:1.5rem;">
-                        <button class="btn btn-primary btn-large" onclick="applyVoiceFeedback()">✨ Apply Feedback & Regenerate</button>
+                        <button class="btn btn-primary btn-large" onclick="applyVoiceFeedback()">✨ Apply Change</button>
                         <button class="btn btn-secondary" onclick="cancelFeedback()" style="margin-left:0.5rem;">Cancel</button>
                     </div>
-                    
                     <button class="btn btn-secondary" onclick="closeFeedbackPanel()" style="margin-top:1rem;">✖️ Close</button>
                 </div>
                 
-                <!-- Validator Approval -->
                 <div style="margin-top:1.5rem; padding:1.5rem; background:linear-gradient(135deg, #c6f6d5, #9ae6b4); border:2px solid #38a169; border-radius:var(--radius-lg);">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-                        <div>
-                            <h4 style="color:#276749;">✅ Validator Approval</h4>
-                            <p style="font-size:0.9em; color:#2f855a;">When it sounds natural, mark as approved.</p>
-                        </div>
+                        <h4 style="color:#276749;">✅ Validator Approval</h4>
                         <button id="valApproveBtn" class="btn btn-success btn-large" onclick="toggleValidator()">☐ Approve</button>
                     </div>
                 </div>
             </div>
             
-            <!-- ======================= -->
-            <!-- MENTOR VIEW - TEXT VISIBLE -->
-            <!-- ======================= -->
             <div id="mentorView" class="studio-view">
-                
-                <!-- Rehearsal Text Display -->
                 <div class="mentor-text-panel">
-                    <h3 style="color:var(--mentor-primary); margin-bottom:0.75rem;">📜 Transcription (Text View)</h3>
-                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1rem;">Text is only visible in Mentor view. Validator works only with audio.</p>
-                    <div id="mentorText" class="mentor-text-display">
-                        <span style="color:#999;">Generate rehearsal in Validator tab first...</span>
-                    </div>
-                    <div class="button-row">
-                        <button class="btn btn-secondary btn-small" onclick="copyMentorText()">📋 Copy Text</button>
-                    </div>
+                    <h3 style="color:var(--mentor-primary); margin-bottom:0.75rem;">📜 Draft Text</h3>
+                    <div id="mentorText" class="mentor-text-display"><span style="color:#999;">Generate audio first...</span></div>
+                    <div class="button-row"><button class="btn btn-secondary btn-small" onclick="copyMentorText()">📋 Copy</button></div>
                 </div>
                 
-                <!-- Edit History -->
                 <div id="editHistorySection" style="display:none; margin-bottom:1.5rem;">
-                    <h4 style="color:var(--mentor-primary); margin-bottom:0.75rem;">📝 Edit History</h4>
-                    <div id="editHistoryList" class="edit-history">
-                        <span style="color:#999;">No edits yet.</span>
+                    <h4 style="color:var(--mentor-primary); margin-bottom:0.75rem;">📝 Changes</h4>
+                    <div id="editHistoryList" class="edit-history"><span style="color:#999;">No changes yet.</span></div>
+                </div>
+                
+                <div class="mentor-voice-panel">
+                    <h4 style="color:var(--mentor-primary); margin-bottom:0.5rem;">🎤 Ask the Validator</h4>
+                    <button id="mentorRecordBtn" class="mentor-record-btn" onclick="toggleMentorRecording()"><svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg></button>
+                    <div id="mentorRecordStatus" class="status-indicator"></div>
+                    <div id="mentorFeedbackActions" style="display:none; margin-top:1rem;">
+                        <p style="font-size:0.9rem; margin-bottom:1rem; color:#553c9a;"><strong>Your question:</strong> "<span id="mentorQuestionText"></span>"</p>
+                        <button class="btn btn-primary" onclick="sendToValidator()">📤 Send to Validator</button>
+                        <button class="btn btn-secondary" onclick="cancelMentorFeedback()">Cancel</button>
+                    </div>
+                    <div id="validatorResponseSection" style="display:none; margin-top:1.5rem; padding:1rem; background:white; border-radius:var(--radius); border:2px solid var(--validator-border);">
+                        <h5 style="color:var(--validator-primary); margin-bottom:0.5rem;">📨 Validator Response</h5>
+                        <p id="validatorResponseText" style="font-style:italic; color:#666;"></p>
+                        <div class="response-options">
+                            <button class="btn btn-success btn-small" onclick="acceptValidatorResponse()">✅ Accept</button>
+                            <button class="btn btn-secondary btn-small" onclick="rejectValidatorResponse()">❌ Decline</button>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Faithfulness Analysis (After Validator Approval) -->
                 <div id="faithSection" style="display:none;">
-                    <div style="background:#ebf8ff; border:2px solid #90cdf4; border-radius:var(--radius-lg); padding:1.5rem; margin-bottom:1.5rem;">
+                    <div style="background:#ebf8ff; border:2px solid #90cdf4; border-radius:var(--radius-lg); padding:1.5rem; margin-bottom:1.5rem; margin-top:1.5rem;">
                         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-                            <div>
-                                <h4 style="color:#2b6cb0;">🔍 Faithfulness Analysis</h4>
-                                <p style="font-size:0.9em; color:#4299e1;">Check faithfulness to the Meaning Map.</p>
-                            </div>
-                            <button class="btn btn-primary btn-large" onclick="runAnalysis()">🤖 Run Analysis</button>
+                            <h4 style="color:#2b6cb0;">🔍 Faithfulness Check</h4>
+                            <button class="btn btn-primary btn-large" onclick="runAnalysis()">🤖 Analyze</button>
                         </div>
                         <div id="analysisStatus" style="margin-top:0.75rem; font-size:0.9em;"></div>
                     </div>
-                    
                     <div id="resultsSection" style="display:none;">
-                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
-                            <h4>📊 Analysis Results</h4>
-                            <div id="analysisStats"></div>
-                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:1rem;"><h4>📊 Results</h4><div id="analysisStats"></div></div>
                         <div id="resultsList" style="max-height:400px; overflow-y:auto;"></div>
                     </div>
-                    
-                    <!-- Mentor Approval -->
                     <div id="mentorApproveSection" style="display:none; background:linear-gradient(135deg, #c6f6d5, #9ae6b4); border:2px solid #38a169; border-radius:var(--radius-lg); padding:1.5rem; margin-top:1.5rem;">
                         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-                            <div><h4 style="color:#276749;">✅ Mentor Approval</h4></div>
+                            <h4 style="color:#276749;">✅ Mentor Approval</h4>
                             <button id="menApproveBtn" class="btn btn-success btn-large" onclick="toggleMentor()">☐ Approve</button>
                         </div>
                     </div>
-                    
-                    <!-- Community Approval -->
                     <div id="comApproveSection" style="display:none; background:linear-gradient(135deg, #faf5ff, #e9d8fd); border:2px solid #805ad5; border-radius:var(--radius-lg); padding:1.5rem; margin-top:1rem;">
                         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-                            <div><h4 style="color:#553c9a;">👥 Community Approval</h4></div>
+                            <h4 style="color:#553c9a;">👥 Community Approval</h4>
                             <button id="comApproveBtn" class="btn btn-large" style="background:#805ad5; color:white;" onclick="toggleCommunity()">☐ Approve</button>
                         </div>
                     </div>
@@ -706,6 +482,7 @@ function initStudio() {
     loadVoiceConfig();
     updateApprovalUI();
     initSpeechRecognition();
+    initMentorSpeechRecognition();
 }
 
 function switchTab(tab) {
@@ -721,43 +498,14 @@ function switchTab(tab) {
     }
 }
 
-// ============================================================
-// REHEARSAL GENERATION
-// ============================================================
-async function generateRehearsal() {
-    const apiKey = document.getElementById('apiKey').value || localStorage.getItem('anthropic_api_key');
-    if (!apiKey) return alert('Please enter your API key.');
-    const mapJson = outputs[2] || outputs[1];
-    if (!mapJson) return alert('Complete Steps 1-2 first.');
-    
-    const langKey = document.getElementById('studioLang').value;
-    const lang = LANGS[langKey];
-    
+async function listenToDraft() {
+    if (!outputs[3]) { alert('Complete the translation steps first.'); return; }
+    studio.text = outputs[3];
+    document.getElementById('mentorText').textContent = studio.text;
     document.getElementById('audioPanel').style.display = 'block';
-    document.getElementById('audioStatus').textContent = '⏳ Generating oral Scripture...';
-    
-    try {
-        const model = document.getElementById('modelSelect').value;
-        const resp = await fetch('https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-            body: JSON.stringify({ model, max_tokens: 4000, messages: [{ role: 'user', content: `Compose oral Scripture from this Meaning Map.\n\n${lang.instruction}\n\nMEANING MAP:\n${mapJson}\n\nOutput ONLY the narrative text.` }] })
-        });
-        if (!resp.ok) throw new Error('API error');
-        const data = await resp.json();
-        const text = data.content[0].text;
-        
-        studio.text = text;
-        document.getElementById('mentorText').textContent = text;
-        segmentText();
-        document.getElementById('audioStatus').textContent = '✅ Text ready. Generating audio...';
-        
-        // Auto-generate audio
-        await generateAudio();
-        
-    } catch (e) {
-        document.getElementById('audioStatus').textContent = '❌ Error: ' + e.message;
-    }
+    segmentText();
+    document.getElementById('audioStatus').textContent = '⏳ Generating audio...';
+    await generateAudio();
 }
 
 function segmentText() {
@@ -772,51 +520,30 @@ function segmentText() {
             buf = '';
         }
     }
-    if (!studio.segments.length) {
-        studio.segments = [{ id: 0, text: text.trim() }];
-    }
+    if (!studio.segments.length) studio.segments = [{ id: 0, text: text.trim() }];
     renderSegmentNav();
 }
 
 function renderSegmentNav() {
     const nav = document.getElementById('segmentNav');
-    if (!studio.segments.length) {
-        nav.innerHTML = '<div style="flex:1; display:flex; align-items:center; justify-content:center; color:#666;">No segments</div>';
-        return;
-    }
-    
+    if (!studio.segments.length) { nav.innerHTML = '<div style="flex:1; display:flex; align-items:center; justify-content:center; color:#666;">No segments</div>'; return; }
     const total = studio.segments.reduce((s, seg) => s + seg.text.length, 0);
     nav.innerHTML = studio.segments.map((seg, i) => {
         const w = (seg.text.length / total) * 100;
         const c = SEGMENT_COLORS[i % SEGMENT_COLORS.length];
-        const isPlaying = i === studio.playingIdx ? 'playing' : '';
-        const isSelected = i === studio.selectedIdx ? 'selected' : '';
-        return `<div class="segment-block ${isPlaying} ${isSelected}" style="flex:0 0 ${w}%; background:${c.bg}; color:${c.color};" onclick="selectSegment(${i})" title="Segment ${i+1}">${i + 1}</div>`;
+        return `<div class="segment-block ${i === studio.playingIdx ? 'playing' : ''} ${i === studio.selectedIdx ? 'selected' : ''}" style="flex:0 0 ${w}%; background:${c.bg}; color:${c.color};" onclick="selectSegment(${i})">${i + 1}</div>`;
     }).join('');
 }
 
-// ============================================================
-// AUDIO GENERATION & PLAYBACK
-// ============================================================
 async function generateAudio() {
     const key = document.getElementById('elevenLabsKey').value || localStorage.getItem('elevenlabs_api_key');
-    if (!key) {
-        document.getElementById('audioStatus').textContent = '⚠️ Enter ElevenLabs API key for audio';
-        return;
-    }
-    
+    if (!key) { document.getElementById('audioStatus').textContent = '⚠️ Enter ElevenLabs API key'; return; }
     const langKey = document.getElementById('studioLang').value;
     loadVoiceConfig();
     const voiceId = voiceConfig[langKey];
-    if (!voiceId) {
-        document.getElementById('audioStatus').textContent = '⚠️ Configure voice for this language first';
-        return;
-    }
-    
+    if (!voiceId) { document.getElementById('audioStatus').textContent = '⚠️ Configure voice first'; return; }
     if (!studio.text) return;
-    
     document.getElementById('audioStatus').textContent = '⏳ Generating audio...';
-    
     try {
         const resp = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
             method: 'POST',
@@ -824,565 +551,269 @@ async function generateAudio() {
             body: JSON.stringify({ text: studio.text, model_id: 'eleven_multilingual_v2', voice_settings: { stability: 0.5, similarity_boost: 0.75 } })
         });
         if (!resp.ok) throw new Error('ElevenLabs error');
-        
         const blob = await resp.blob();
-        const url = URL.createObjectURL(blob);
-        studio.fullAudioUrl = url;
-        
+        studio.fullAudioUrl = URL.createObjectURL(blob);
         const player = document.getElementById('audioPlayer');
-        player.src = url;
+        player.src = studio.fullAudioUrl;
         player.onloadedmetadata = () => {
             calcSegmentTimings(player.duration);
             document.getElementById('totalTime').textContent = formatTime(player.duration);
             setupPlayerEvents();
-            document.getElementById('audioStatus').textContent = '✅ Audio ready!';
+            document.getElementById('audioStatus').textContent = '✅ Ready!';
         };
-    } catch (e) {
-        document.getElementById('audioStatus').textContent = '❌ Audio error: ' + e.message;
-    }
+    } catch (e) { document.getElementById('audioStatus').textContent = '❌ Error: ' + e.message; }
 }
 
 function calcSegmentTimings(duration) {
     const total = studio.segments.reduce((s, seg) => s + seg.text.length, 0);
     let t = 0;
-    studio.segments.forEach(seg => {
-        const dur = duration * (seg.text.length / total);
-        seg.start = t;
-        seg.end = t + dur;
-        t += dur;
-    });
+    studio.segments.forEach(seg => { const dur = duration * (seg.text.length / total); seg.start = t; seg.end = t + dur; t += dur; });
 }
 
 function setupPlayerEvents() {
     const player = document.getElementById('audioPlayer');
     player.ontimeupdate = () => {
-        const pct = (player.currentTime / player.duration) * 100;
-        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressFill').style.width = (player.currentTime / player.duration) * 100 + '%';
         document.getElementById('currentTime').textContent = formatTime(player.currentTime);
-        
-        // Update playing segment indicator
         const idx = studio.segments.findIndex(s => player.currentTime >= s.start && player.currentTime < s.end);
-        if (idx !== studio.playingIdx) {
-            studio.playingIdx = idx;
-            renderSegmentNav();
-        }
+        if (idx !== studio.playingIdx) { studio.playingIdx = idx; renderSegmentNav(); }
     };
-    player.onplay = () => {
-        studio.isPlaying = true;
-        updatePlayButton();
-    };
-    player.onpause = () => {
-        studio.isPlaying = false;
-        updatePlayButton();
-    };
-    player.onended = () => {
-        studio.isPlaying = false;
-        studio.playingIdx = -1;
-        updatePlayButton();
-        renderSegmentNav();
-    };
+    player.onplay = () => { studio.isPlaying = true; updatePlayButton(); };
+    player.onpause = () => { studio.isPlaying = false; updatePlayButton(); };
+    player.onended = () => { studio.isPlaying = false; studio.playingIdx = -1; updatePlayButton(); renderSegmentNav(); };
 }
 
 function updatePlayButton() {
     const btn = document.getElementById('mainPlayBtn');
-    if (studio.isPlaying) {
-        btn.classList.add('playing');
-        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
-    } else {
-        btn.classList.remove('playing');
-        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-    }
+    if (studio.isPlaying) { btn.classList.add('playing'); btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>'; }
+    else { btn.classList.remove('playing'); btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>'; }
 }
 
-function formatTime(s) {
-    if (isNaN(s)) return '0:00';
-    return `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
-}
-
-function toggleMainPlay() {
-    const player = document.getElementById('audioPlayer');
-    if (!player.src) {
-        document.getElementById('audioStatus').textContent = '⚠️ Generate audio first';
-        return;
-    }
-    if (studio.isPlaying) {
-        player.pause();
-    } else {
-        player.play();
-    }
-}
-
-function restartAudio() {
-    const player = document.getElementById('audioPlayer');
-    player.currentTime = 0;
-    player.play();
-}
-
-function seekAudio(e) {
-    const player = document.getElementById('audioPlayer');
-    const rect = e.target.getBoundingClientRect();
-    const pct = (e.clientX - rect.left) / rect.width;
-    player.currentTime = pct * player.duration;
-}
-
-function skipSegment(delta) {
-    const current = studio.playingIdx >= 0 ? studio.playingIdx : 0;
-    const next = Math.max(0, Math.min(studio.segments.length - 1, current + delta));
-    if (studio.segments[next]) {
-        const player = document.getElementById('audioPlayer');
-        player.currentTime = studio.segments[next].start;
-        player.play();
-    }
-}
+function formatTime(s) { if (isNaN(s)) return '0:00'; return `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`; }
+function toggleMainPlay() { const player = document.getElementById('audioPlayer'); if (!player.src) { document.getElementById('audioStatus').textContent = '⚠️ Generate audio first'; return; } if (studio.isPlaying) player.pause(); else player.play(); }
+function restartAudio() { const player = document.getElementById('audioPlayer'); player.currentTime = 0; player.play(); }
+function seekAudio(e) { const player = document.getElementById('audioPlayer'); const rect = e.target.getBoundingClientRect(); player.currentTime = ((e.clientX - rect.left) / rect.width) * player.duration; }
+function skipSegment(delta) { const current = studio.playingIdx >= 0 ? studio.playingIdx : 0; const next = Math.max(0, Math.min(studio.segments.length - 1, current + delta)); if (studio.segments[next]) { const player = document.getElementById('audioPlayer'); player.currentTime = studio.segments[next].start; player.play(); } }
 
 function selectSegment(idx) {
     studio.selectedIdx = idx;
     renderSegmentNav();
-    
-    // Play the selected segment
     const player = document.getElementById('audioPlayer');
-    if (studio.segments[idx] && player.src) {
-        player.currentTime = studio.segments[idx].start;
-        player.play();
-    }
-    
-    // Show feedback panel
-    const panel = document.getElementById('feedbackPanel');
-    panel.style.display = 'block';
+    if (studio.segments[idx] && player.src) { player.currentTime = studio.segments[idx].start; player.play(); }
+    document.getElementById('feedbackPanel').style.display = 'block';
     document.getElementById('selectedSegLabel').innerHTML = `<span style="background:${SEGMENT_COLORS[idx % SEGMENT_COLORS.length].bg}; padding:4px 12px; border-radius:6px; color:${SEGMENT_COLORS[idx % SEGMENT_COLORS.length].color};">Segment ${idx + 1}</span>`;
-    
-    // Reset feedback state
     recordedFeedback = '';
     document.getElementById('recordStatus').innerHTML = '';
     document.getElementById('feedbackActions').style.display = 'none';
 }
 
-function playSelectedSegment() {
-    if (studio.selectedIdx < 0) return;
-    const player = document.getElementById('audioPlayer');
-    const seg = studio.segments[studio.selectedIdx];
-    if (seg && player.src) {
-        player.currentTime = seg.start;
-        player.play();
-    }
-}
+function playSelectedSegment() { if (studio.selectedIdx < 0) return; const player = document.getElementById('audioPlayer'); const seg = studio.segments[studio.selectedIdx]; if (seg && player.src) { player.currentTime = seg.start; player.play(); } }
+function closeFeedbackPanel() { studio.selectedIdx = -1; document.getElementById('feedbackPanel').style.display = 'none'; renderSegmentNav(); }
 
-function closeFeedbackPanel() {
-    studio.selectedIdx = -1;
-    document.getElementById('feedbackPanel').style.display = 'none';
-    renderSegmentNav();
-}
-
-// ============================================================
-// VOICE RECORDING & SPEECH-TO-TEXT
-// ============================================================
 function initSpeechRecognition() {
-    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-        console.warn('Speech recognition not supported');
-        return;
-    }
-    
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    speechRecognition = new SpeechRecognition();
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) return;
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    speechRecognition = new SR();
     speechRecognition.continuous = true;
     speechRecognition.interimResults = true;
-    
     let finalTranscript = '';
-    
     speechRecognition.onresult = (event) => {
-        let interimTranscript = '';
+        let interim = '';
         for (let i = event.resultIndex; i < event.results.length; i++) {
-            const transcript = event.results[i][0].transcript;
-            if (event.results[i].isFinal) {
-                finalTranscript += transcript + ' ';
-            } else {
-                interimTranscript += transcript;
-            }
+            if (event.results[i].isFinal) finalTranscript += event.results[i][0].transcript + ' ';
+            else interim += event.results[i][0].transcript;
         }
-        recordedFeedback = finalTranscript + interimTranscript;
+        recordedFeedback = finalTranscript + interim;
         document.getElementById('recordStatus').innerHTML = `<span style="color:#e53e3e;">🔴 ${recordedFeedback || 'Listening...'}</span>`;
     };
-    
     speechRecognition.onend = () => {
-        isRecording = false;
-        updateRecordButton();
-        
-        if (recordedFeedback.trim()) {
-            document.getElementById('recordStatus').innerHTML = `<span style="color:#38a169;">✅ "${recordedFeedback.trim()}"</span>`;
-            document.getElementById('feedbackActions').style.display = 'block';
-        } else {
-            document.getElementById('recordStatus').innerHTML = `<span style="color:#718096;">No speech detected. Try again.</span>`;
-        }
+        isRecording = false; updateRecordButton();
+        if (recordedFeedback.trim()) { document.getElementById('recordStatus').innerHTML = `<span style="color:#38a169;">✅ "${recordedFeedback.trim()}"</span>`; document.getElementById('feedbackActions').style.display = 'block'; }
+        else document.getElementById('recordStatus').innerHTML = `<span style="color:#718096;">No speech detected.</span>`;
     };
-    
-    speechRecognition.onerror = (event) => {
-        console.error('Speech error:', event.error);
-        isRecording = false;
-        updateRecordButton();
-        document.getElementById('recordStatus').innerHTML = `<span style="color:#e53e3e;">⚠️ Error: ${event.error}</span>`;
-    };
+    speechRecognition.onerror = (e) => { isRecording = false; updateRecordButton(); document.getElementById('recordStatus').innerHTML = `<span style="color:#e53e3e;">⚠️ Error</span>`; };
 }
 
 function toggleRecording() {
-    if (!speechRecognition) {
-        alert('Speech recognition not supported in this browser. Please use Chrome or Edge.');
-        return;
-    }
-    
-    if (isRecording) {
-        speechRecognition.stop();
-    } else {
-        // Pause audio while recording
-        const player = document.getElementById('audioPlayer');
-        player.pause();
-        
-        // Set language
-        const langKey = document.getElementById('studioLang').value;
-        speechRecognition.lang = LANGS[langKey]?.speechLang || 'en-US';
-        
-        recordedFeedback = '';
-        document.getElementById('feedbackActions').style.display = 'none';
-        speechRecognition.start();
-        isRecording = true;
-        updateRecordButton();
+    if (!speechRecognition) { alert('Speech not supported. Use Chrome.'); return; }
+    if (isRecording) speechRecognition.stop();
+    else {
+        document.getElementById('audioPlayer').pause();
+        speechRecognition.lang = LANGS[document.getElementById('studioLang').value]?.speechLang || 'en-US';
+        recordedFeedback = ''; document.getElementById('feedbackActions').style.display = 'none';
+        speechRecognition.start(); isRecording = true; updateRecordButton();
         document.getElementById('recordStatus').innerHTML = '<span style="color:#e53e3e;">🔴 Listening...</span>';
     }
 }
 
 function updateRecordButton() {
     const btn = document.getElementById('recordBtn');
-    if (isRecording) {
-        btn.classList.add('recording');
-        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>';
-    } else {
-        btn.classList.remove('recording');
-        btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg>';
-    }
+    if (isRecording) { btn.classList.add('recording'); btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>'; }
+    else { btn.classList.remove('recording'); btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg>'; }
 }
 
-function cancelFeedback() {
-    recordedFeedback = '';
-    document.getElementById('recordStatus').innerHTML = '';
-    document.getElementById('feedbackActions').style.display = 'none';
-}
+function cancelFeedback() { recordedFeedback = ''; document.getElementById('recordStatus').innerHTML = ''; document.getElementById('feedbackActions').style.display = 'none'; }
 
 async function applyVoiceFeedback() {
-    if (!recordedFeedback.trim()) {
-        alert('No feedback recorded.');
-        return;
-    }
-    
-    if (studio.selectedIdx < 0) {
-        alert('No segment selected.');
-        return;
-    }
-    
+    if (!recordedFeedback.trim() || studio.selectedIdx < 0) return;
     const apiKey = document.getElementById('apiKey').value || localStorage.getItem('anthropic_api_key');
     const seg = studio.segments[studio.selectedIdx];
-    const langKey = document.getElementById('studioLang').value;
-    const lang = LANGS[langKey];
-    
-    document.getElementById('recordStatus').innerHTML = '<span style="color:var(--validator-primary);">⏳ Revising segment...</span>';
+    const lang = LANGS[document.getElementById('studioLang').value];
+    document.getElementById('recordStatus').innerHTML = '<span style="color:var(--validator-primary);">⏳ Revising...</span>';
     document.getElementById('feedbackActions').style.display = 'none';
-    
     try {
-        const fullText = studio.segments.map(s => s.text).join(' ');
-        
-        const prompt = `You are editing ONE segment of an oral Scripture passage based on listener feedback.
-
-FULL PASSAGE (for context):
-${fullText}
-
-SEGMENT TO EDIT (segment ${studio.selectedIdx + 1}):
-"${seg.text}"
-
-LISTENER FEEDBACK (spoken):
-${recordedFeedback.trim()}
-
-TARGET LANGUAGE: ${lang.name}
-${lang.instruction}
-
-RULES:
-1. Edit ONLY the specified segment
-2. Keep the same approximate length
-3. Maintain connection to surrounding segments
-4. Apply the feedback precisely
-5. Keep oral storytelling style
-
-Return ONLY the revised segment text, nothing else.`;
-
+        const prompt = `Edit segment ${studio.selectedIdx + 1}: "${seg.text}"\nFeedback: ${recordedFeedback.trim()}\nLanguage: ${lang.name}\n${lang.instruction}\nReturn ONLY revised segment.`;
         const resp = await fetch('https://api.anthropic.com/v1/messages', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
             body: JSON.stringify({ model: document.getElementById('modelSelect').value, max_tokens: 500, messages: [{ role: 'user', content: prompt }] })
         });
-        
         const data = await resp.json();
         const revised = data.content[0].text.trim();
-        
-        // Store in edit history
-        studio.editHistory.push({
-            segmentIndex: studio.selectedIdx + 1,
-            original: seg.text,
-            revised: revised,
-            feedback: recordedFeedback.trim(),
-            timestamp: new Date().toISOString()
-        });
-        
-        // Update segment
+        studio.editHistory.push({ segmentIndex: studio.selectedIdx + 1, original: seg.text, revised, feedback: recordedFeedback.trim(), timestamp: new Date().toISOString() });
         studio.segments[studio.selectedIdx].text = revised;
         studio.text = studio.segments.map(s => s.text).join(' ');
-        
-        // Update mentor text
         document.getElementById('mentorText').textContent = studio.text;
         updateEditHistory();
-        
-        document.getElementById('recordStatus').innerHTML = '<span style="color:#38a169;">✅ Segment revised! Regenerating audio...</span>';
-        
-        // Regenerate audio
+        document.getElementById('recordStatus').innerHTML = '<span style="color:#38a169;">✅ Done!</span>';
         await generateAudio();
-        
-        // Clear and close
         closeFeedbackPanel();
-        
-    } catch (e) {
-        document.getElementById('recordStatus').innerHTML = `<span style="color:#e53e3e;">❌ Error: ${e.message}</span>`;
-        document.getElementById('feedbackActions').style.display = 'block';
-    }
+    } catch (e) { document.getElementById('recordStatus').innerHTML = `<span style="color:#e53e3e;">❌ Error</span>`; document.getElementById('feedbackActions').style.display = 'block'; }
 }
 
 function updateEditHistory() {
     const section = document.getElementById('editHistorySection');
     const list = document.getElementById('editHistoryList');
-    
-    if (studio.editHistory.length === 0) {
-        section.style.display = 'none';
-        return;
-    }
-    
+    if (!studio.editHistory.length) { section.style.display = 'none'; return; }
     section.style.display = 'block';
-    list.innerHTML = studio.editHistory.map((edit, i) => `
-        <div class="edit-item">
-            <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
-                <strong style="color:var(--mentor-primary);">Segment ${edit.segmentIndex}</strong>
-                <span style="color:#999; font-size:0.85rem;">${new Date(edit.timestamp).toLocaleTimeString()}</span>
-            </div>
-            <div style="font-size:0.85rem; margin-bottom:0.5rem;">
-                <span style="color:#c53030;">Before:</span> "${edit.original.substring(0, 60)}${edit.original.length > 60 ? '...' : ''}"
-            </div>
-            <div style="font-size:0.85rem; margin-bottom:0.5rem;">
-                <span style="color:#38a169;">After:</span> "${edit.revised.substring(0, 60)}${edit.revised.length > 60 ? '...' : ''}"
-            </div>
-            <div style="font-size:0.8rem; color:#805ad5; font-style:italic;">
-                Feedback: "${edit.feedback}"
-            </div>
-        </div>
-    `).reverse().join('');
+    list.innerHTML = studio.editHistory.map(e => `<div class="edit-item"><strong style="color:var(--mentor-primary);">Seg ${e.segmentIndex}</strong><br><span style="color:#c53030;">Before:</span> "${e.original.substring(0,50)}..."<br><span style="color:#38a169;">After:</span> "${e.revised.substring(0,50)}..."</div>`).reverse().join('');
 }
 
-// ============================================================
-// VOICE CONFIG
-// ============================================================
+function initMentorSpeechRecognition() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) return;
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    mentorSpeechRecognition = new SR();
+    mentorSpeechRecognition.continuous = true;
+    mentorSpeechRecognition.interimResults = true;
+    let finalTranscript = '';
+    mentorSpeechRecognition.onresult = (event) => {
+        let interim = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            if (event.results[i].isFinal) finalTranscript += event.results[i][0].transcript + ' ';
+            else interim += event.results[i][0].transcript;
+        }
+        studio.mentorQuestion = finalTranscript + interim;
+        document.getElementById('mentorRecordStatus').innerHTML = `<span style="color:#e53e3e;">🔴 ${studio.mentorQuestion || 'Listening...'}</span>`;
+    };
+    mentorSpeechRecognition.onend = () => {
+        isMentorRecording = false; updateMentorRecordButton();
+        if (studio.mentorQuestion.trim()) { document.getElementById('mentorRecordStatus').innerHTML = ''; document.getElementById('mentorQuestionText').textContent = studio.mentorQuestion.trim(); document.getElementById('mentorFeedbackActions').style.display = 'block'; }
+        else document.getElementById('mentorRecordStatus').innerHTML = `<span style="color:#718096;">No speech.</span>`;
+    };
+    mentorSpeechRecognition.onerror = () => { isMentorRecording = false; updateMentorRecordButton(); };
+}
+
+function toggleMentorRecording() {
+    if (!mentorSpeechRecognition) { alert('Speech not supported.'); return; }
+    if (isMentorRecording) mentorSpeechRecognition.stop();
+    else {
+        mentorSpeechRecognition.lang = LANGS[document.getElementById('studioLang').value]?.speechLang || 'en-US';
+        studio.mentorQuestion = ''; document.getElementById('mentorFeedbackActions').style.display = 'none';
+        mentorSpeechRecognition.start(); isMentorRecording = true; updateMentorRecordButton();
+        document.getElementById('mentorRecordStatus').innerHTML = '<span style="color:#e53e3e;">🔴 Listening...</span>';
+    }
+}
+
+function updateMentorRecordButton() {
+    const btn = document.getElementById('mentorRecordBtn');
+    if (isMentorRecording) { btn.classList.add('recording'); btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>'; }
+    else { btn.classList.remove('recording'); btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg>'; }
+}
+
+function cancelMentorFeedback() { studio.mentorQuestion = ''; document.getElementById('mentorRecordStatus').innerHTML = ''; document.getElementById('mentorFeedbackActions').style.display = 'none'; }
+
+function sendToValidator() {
+    studio.pendingMentorFeedback = { question: studio.mentorQuestion.trim(), timestamp: new Date().toISOString() };
+    document.getElementById('mentorFeedbackActions').style.display = 'none';
+    document.getElementById('mentorRecordStatus').innerHTML = '<span style="color:#38a169;">✅ Sent!</span>';
+    studio.editHistory.push({ segmentIndex: 'Mentor', original: 'Question', revised: studio.mentorQuestion.trim(), feedback: 'Awaiting response', timestamp: new Date().toISOString() });
+    updateEditHistory();
+    setTimeout(() => { document.getElementById('validatorResponseSection').style.display = 'block'; document.getElementById('validatorResponseText').textContent = 'Waiting for validator response...'; }, 500);
+    studio.mentorQuestion = '';
+}
+
+function acceptValidatorResponse() { document.getElementById('validatorResponseSection').style.display = 'none'; document.getElementById('mentorRecordStatus').innerHTML = '<span style="color:#38a169;">✅ Accepted</span>'; setTimeout(() => { document.getElementById('mentorRecordStatus').innerHTML = ''; }, 2000); }
+function rejectValidatorResponse() { document.getElementById('validatorResponseSection').style.display = 'none'; document.getElementById('mentorRecordStatus').innerHTML = '<span style="color:#718096;">Declined</span>'; setTimeout(() => { document.getElementById('mentorRecordStatus').innerHTML = ''; }, 2000); }
+
 function showVoiceModal() {
     document.getElementById('voiceModal').style.display = 'flex';
     loadVoiceConfig();
-    const list = document.getElementById('voiceConfigList');
-    list.innerHTML = Object.entries(LANGS).map(([k, v]) => `
-        <div style="margin-bottom:1rem;">
-            <label style="font-weight:600;">${v.name}</label>
-            <input type="text" class="voice-input" data-lang="${k}" value="${voiceConfig[k] || ''}" placeholder="ElevenLabs Voice ID" style="width:100%; padding:0.5rem; margin-top:0.25rem; border:1px solid var(--border); border-radius:var(--radius);">
-        </div>
-    `).join('') + '<p style="font-size:0.85em; color:#666;">Get Voice IDs from <a href="https://elevenlabs.io" target="_blank">ElevenLabs</a></p>';
+    document.getElementById('voiceConfigList').innerHTML = Object.entries(LANGS).map(([k, v]) => `<div style="margin-bottom:1rem;"><label style="font-weight:600;">${v.name}</label><input type="text" class="voice-input" data-lang="${k}" value="${voiceConfig[k] || ''}" placeholder="ElevenLabs Voice ID" style="width:100%; padding:0.5rem; margin-top:0.25rem; border:1px solid var(--border); border-radius:var(--radius);"></div>`).join('') + '<p style="font-size:0.85em; color:#666;">Get Voice IDs from <a href="https://elevenlabs.io" target="_blank">ElevenLabs</a></p>';
 }
 
 function hideVoiceModal() { document.getElementById('voiceModal').style.display = 'none'; }
 function loadVoiceConfig() { const s = localStorage.getItem('voice_config'); if (s) voiceConfig = JSON.parse(s); }
+function saveVoiceConfig() { document.querySelectorAll('.voice-input').forEach(inp => { if (inp.value.trim()) voiceConfig[inp.dataset.lang] = inp.value.trim(); else delete voiceConfig[inp.dataset.lang]; }); localStorage.setItem('voice_config', JSON.stringify(voiceConfig)); hideVoiceModal(); alert('Saved!'); }
+function copyMentorText() { if (studio.text) navigator.clipboard.writeText(studio.text).then(() => alert('Copied!')); }
 
-function saveVoiceConfig() {
-    document.querySelectorAll('.voice-input').forEach(inp => {
-        const lang = inp.dataset.lang;
-        const val = inp.value.trim();
-        if (val) voiceConfig[lang] = val;
-        else delete voiceConfig[lang];
-    });
-    localStorage.setItem('voice_config', JSON.stringify(voiceConfig));
-    hideVoiceModal();
-    alert('Saved!');
-}
-
-function copyMentorText() {
-    if (studio.text) navigator.clipboard.writeText(studio.text).then(() => alert('Copied!'));
-}
-
-// ============================================================
-// APPROVAL WORKFLOW
-// ============================================================
 function updateApprovalUI() {
     const { validator, mentor, community } = studio.approval;
-    const vb = document.getElementById('valBadge');
-    const mb = document.getElementById('menBadge');
-    const cb = document.getElementById('comBadge');
-    
-    if (vb) {
-        vb.className = 'approval-badge ' + (validator ? 'approved' : 'pending');
-        vb.innerHTML = (validator ? '✅' : '⏳') + ' Validator';
-    }
-    
-    if (mb) {
-        mb.className = 'approval-badge ' + (mentor ? 'approved' : validator ? 'active' : 'waiting');
-        mb.innerHTML = (mentor ? '✅' : validator ? '🔍' : '⏸️') + ' Mentor';
-    }
-    
-    if (cb) {
-        cb.className = 'approval-badge ' + (community ? 'approved' : mentor ? 'active' : 'waiting');
-        cb.innerHTML = (community ? '✅' : mentor ? '👥' : '⏸️') + ' Community';
-    }
-    
-    const fs = document.getElementById('faithSection');
-    if (fs) fs.style.display = validator ? 'block' : 'none';
-    
-    const cs = document.getElementById('comApproveSection');
-    if (cs) cs.style.display = mentor ? 'block' : 'none';
+    const vb = document.getElementById('valBadge'), mb = document.getElementById('menBadge'), cb = document.getElementById('comBadge');
+    if (vb) { vb.className = 'approval-badge ' + (validator ? 'approved' : 'pending'); vb.innerHTML = (validator ? '✅' : '⏳') + ' Validator'; }
+    if (mb) { mb.className = 'approval-badge ' + (mentor ? 'approved' : validator ? 'active' : 'waiting'); mb.innerHTML = (mentor ? '✅' : validator ? '🔍' : '⏸️') + ' Mentor'; }
+    if (cb) { cb.className = 'approval-badge ' + (community ? 'approved' : mentor ? 'active' : 'waiting'); cb.innerHTML = (community ? '✅' : mentor ? '👥' : '⏸️') + ' Community'; }
+    const fs = document.getElementById('faithSection'); if (fs) fs.style.display = validator ? 'block' : 'none';
+    const cs = document.getElementById('comApproveSection'); if (cs) cs.style.display = mentor ? 'block' : 'none';
 }
 
-function toggleValidator() {
-    studio.approval.validator = !studio.approval.validator;
-    const btn = document.getElementById('valApproveBtn');
-    btn.innerHTML = studio.approval.validator ? '✅ Approved' : '☐ Approve';
-    updateApprovalUI();
-}
+function toggleValidator() { studio.approval.validator = !studio.approval.validator; document.getElementById('valApproveBtn').innerHTML = studio.approval.validator ? '✅ Approved' : '☐ Approve'; updateApprovalUI(); }
+function toggleMentor() { studio.approval.mentor = !studio.approval.mentor; document.getElementById('menApproveBtn').innerHTML = studio.approval.mentor ? '✅ Approved' : '☐ Approve'; updateApprovalUI(); }
+function toggleCommunity() { studio.approval.community = !studio.approval.community; document.getElementById('comApproveBtn').innerHTML = studio.approval.community ? '✅ Approved' : '☐ Approve'; updateApprovalUI(); }
 
-function toggleMentor() {
-    studio.approval.mentor = !studio.approval.mentor;
-    const btn = document.getElementById('menApproveBtn');
-    btn.innerHTML = studio.approval.mentor ? '✅ Approved' : '☐ Approve';
-    updateApprovalUI();
-}
-
-function toggleCommunity() {
-    studio.approval.community = !studio.approval.community;
-    const btn = document.getElementById('comApproveBtn');
-    btn.innerHTML = studio.approval.community ? '✅ Approved' : '☐ Approve';
-    updateApprovalUI();
-}
-
-// ============================================================
-// FAITHFULNESS ANALYSIS
-// ============================================================
 async function runAnalysis() {
     const apiKey = document.getElementById('apiKey').value || localStorage.getItem('anthropic_api_key');
-    if (!apiKey) return alert('Enter API key.');
-    if (!studio.text) return alert('Generate rehearsal first.');
-    
+    if (!apiKey || !studio.text) return alert('Need API key and draft.');
     const mapJson = outputs[2] || outputs[1];
-    if (!mapJson) return alert('Meaning Map needed.');
-    
+    if (!mapJson) return alert('Need Meaning Map.');
     document.getElementById('analysisStatus').innerHTML = '⏳ Analyzing...';
-    
     try {
-        const prompt = `Analyze this oral translation for faithfulness to the Meaning Map.
-
-MEANING MAP:
-${mapJson}
-
-TRANSLATION:
-${studio.text}
-
-For each sentence/segment, evaluate:
-1. Does it accurately represent the semantic content?
-2. Are there additions not in the map?
-3. Are there omissions from the map?
-4. Are key terms handled correctly?
-
-Return JSON array:
-[
-  {
-    "idx": 0,
-    "text": "segment text",
-    "status": "pass|warning|fail",
-    "score": 1-5,
-    "comment": "brief analysis",
-    "issues": ["issue1", "issue2"]
-  }
-]
-
-Return ONLY valid JSON array.`;
-
         const resp = await fetch('https://api.anthropic.com/v1/messages', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-            body: JSON.stringify({ model: document.getElementById('modelSelect').value, max_tokens: 4000, messages: [{ role: 'user', content: prompt }] })
+            body: JSON.stringify({ model: document.getElementById('modelSelect').value, max_tokens: 4000, messages: [{ role: 'user', content: `Analyze faithfulness:\nMAP: ${mapJson}\nTRANSLATION: ${studio.text}\nReturn JSON array: [{"idx":0,"text":"...","status":"pass|warning|fail","score":1-5,"comment":"...","issues":[]}]` }] })
         });
-        
         const data = await resp.json();
-        let text = data.content[0].text;
-        
-        // Extract JSON
-        const match = text.match(/\[[\s\S]*\]/);
-        if (match) {
-            studio.faithfulness = JSON.parse(match[0]);
-            document.getElementById('analysisStatus').innerHTML = '✅ Analysis complete';
-            document.getElementById('resultsSection').style.display = 'block';
-            renderResults();
-        } else {
-            throw new Error('Invalid response format');
-        }
-    } catch (e) {
-        document.getElementById('analysisStatus').innerHTML = '❌ Error: ' + e.message;
-    }
+        const match = data.content[0].text.match(/\[[\s\S]*\]/);
+        if (match) { studio.faithfulness = JSON.parse(match[0]); document.getElementById('analysisStatus').innerHTML = '✅ Done'; document.getElementById('resultsSection').style.display = 'block'; renderResults(); }
+        else throw new Error('Invalid format');
+    } catch (e) { document.getElementById('analysisStatus').innerHTML = '❌ Error'; }
 }
 
 function renderResults() {
     const pass = studio.faithfulness.filter(r => r.status === 'pass').length;
     const warn = studio.faithfulness.filter(r => r.status === 'warning').length;
     const fail = studio.faithfulness.filter(r => r.status === 'fail').length;
-    const valid = studio.faithfulness.filter(r => r.validated).length;
-    
-    document.getElementById('analysisStats').innerHTML = `<span style="color:#38a169;">✅${pass}</span> · <span style="color:#d69e2e;">⚠️${warn}</span> · <span style="color:#e53e3e;">❌${fail}</span> · <span style="color:#805ad5;">☑️${valid}/${studio.faithfulness.length}</span>`;
-    
-    document.getElementById('resultsList').innerHTML = studio.faithfulness.map((r, i) => {
-        const icons = { pass: '✅', warning: '⚠️', fail: '❌' };
-        return `<div class="faithfulness-result ${r.status}" style="${r.validated ? 'opacity:0.7;' : ''}">
-            <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
-                <span>${icons[r.status]} <strong>Seg ${r.idx + 1}</strong> ${r.validated ? '<span style="background:#805ad5; color:white; padding:2px 6px; border-radius:10px; font-size:0.75em;">✓</span>' : ''}</span>
-                <span style="color:#666;">${r.score}/5</span>
-            </div>
-            <div style="background:white; padding:0.5rem; border-radius:4px; font-size:0.9em; margin-bottom:0.5rem;">"${r.text}"</div>
-            <div style="font-size:0.85em; color:#666;">${r.comment}</div>
-            ${r.issues?.length ? `<ul style="font-size:0.8em; color:#c53030; margin:0.5rem 0 0 1rem;">${r.issues.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}
-            <div style="margin-top:0.5rem;">
-                ${r.validated ? `<button class="btn btn-small btn-secondary" onclick="unvalidate(${i})">↩ Undo</button>` : `<button class="btn btn-small btn-success" onclick="validate(${i})">✓ Validate</button>`}
-            </div>
-        </div>`;
-    }).join('');
+    document.getElementById('analysisStats').innerHTML = `<span style="color:#38a169;">✅${pass}</span> · <span style="color:#d69e2e;">⚠️${warn}</span> · <span style="color:#e53e3e;">❌${fail}</span>`;
+    document.getElementById('resultsList').innerHTML = studio.faithfulness.map((r, i) => `<div class="faithfulness-result ${r.status}" style="${r.validated ? 'opacity:0.7;' : ''}"><div style="display:flex; justify-content:space-between;"><span>${{pass:'✅',warning:'⚠️',fail:'❌'}[r.status]} <strong>Seg ${r.idx + 1}</strong></span><span>${r.score}/5</span></div><div style="background:white; padding:0.5rem; border-radius:4px; font-size:0.9em; margin:0.5rem 0;">"${r.text}"</div><div style="font-size:0.85em; color:#666;">${r.comment}</div><div style="margin-top:0.5rem;">${r.validated ? `<button class="btn btn-small btn-secondary" onclick="unvalidate(${i})">↩ Undo</button>` : `<button class="btn btn-small btn-success" onclick="validate(${i})">✓ Validate</button>`}</div></div>`).join('');
 }
 
 function validate(i) { studio.faithfulness[i].validated = true; renderResults(); checkMentorReady(); }
 function unvalidate(i) { studio.faithfulness[i].validated = false; renderResults(); checkMentorReady(); }
-function checkMentorReady() {
-    const ready = studio.faithfulness.length > 0 && studio.faithfulness.every(r => r.validated);
-    document.getElementById('mentorApproveSection').style.display = ready ? 'block' : 'none';
-}
+function checkMentorReady() { document.getElementById('mentorApproveSection').style.display = (studio.faithfulness.length > 0 && studio.faithfulness.every(r => r.validated)) ? 'block' : 'none'; }
 
-// ============================================================
-// MAIN STEP RUNNER
-// ============================================================
 async function runStep(step) {
     const apiKey = document.getElementById('apiKey').value || localStorage.getItem('anthropic_api_key');
     const model = document.getElementById('modelSelect').value;
     const ref = document.getElementById('biblicalRef').value;
     const lang = document.getElementById('targetLang').value;
     const aud = document.getElementById('targetAudience').value;
-    
     const out = document.getElementById(`output${step}`);
     out.innerHTML = `<div class="loading"><div class="spinner"></div><div class="loading-text">Processing...</div></div>`;
-    
     let msg = '';
     if (step === 1) msg = `Biblical Reference: ${ref}\n\nCreate the Meaning Map JSON.`;
     else if (step === 2) msg = document.getElementById('input2').value;
     else if (step === 3) msg = `Target: ${LANGS[lang]?.name || lang}\nAudience: ${aud}\nInstruction: ${LANGS[lang]?.instruction || ''}\n\n${document.getElementById('input3').value}`;
     else if (step === 4) msg = `Reference: ${ref}\nLanguage: ${lang}\nAudience: ${aud}\n\nTranslation:\n${document.getElementById('input4').value}`;
-    
     try {
         const resp = await fetch('https://api.anthropic.com/v1/messages', {
             method: 'POST',
@@ -1392,50 +823,25 @@ async function runStep(step) {
         if (!resp.ok) throw new Error('API error');
         const data = await resp.json();
         const result = data.content?.[0]?.text || '';
-        
         outputs[step] = result;
         currentStep = step;
         updateProgress(step + 1);
-        
         const isJson = step <= 2;
-        let html = isJson ? `<textarea class="text-box json-output" rows="10" readonly>${result}</textarea>` :
-                   step === 4 ? `<div class="report-output" style="background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; max-height:500px; overflow-y:auto;">${parseMarkdown(result)}</div>` :
-                   `<textarea class="text-box output" rows="10" readonly>${result}</textarea>`;
-        
-        out.innerHTML = `
-            <div class="message message-success">✓ Step ${step} complete</div>
-            <label class="text-label">Result:</label>
-            ${html}
-            <div class="button-row">
-                <button class="btn btn-secondary" onclick="navigator.clipboard.writeText(outputs[${step}]).then(()=>alert('Copied!'))">Copy</button>
-                ${step < 4 ? `<button class="btn btn-success btn-large" onclick="goToStep(${step + 1})">Next Step</button>` : `<button class="btn btn-success btn-large" onclick="goToStep(5)">Open Studio</button>`}
-            </div>`;
-    } catch (e) {
-        out.innerHTML = `<div class="message message-error">Error: ${e.message}</div><div class="button-row"><button class="btn btn-primary" onclick="runStep(${step})">Retry</button></div>`;
-    }
+        let html = isJson ? `<textarea class="text-box json-output" rows="6" readonly>${result}</textarea>` :
+                   step === 4 ? `<div style="background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; max-height:300px; overflow-y:auto;">${parseMarkdown(result)}</div>` :
+                   `<textarea class="text-box output" rows="6" readonly>${result}</textarea>`;
+        let nextBtn = '';
+        if (step === 1) nextBtn = `<button class="btn btn-primary btn-large" onclick="goToStep(2); runStep(2);">▶️ Complete Meaning Map</button>`;
+        else if (step === 2) nextBtn = `<button class="btn btn-primary btn-large" onclick="goToStep(3); runStep(3);">▶️ Generate Draft</button>`;
+        else if (step === 3) nextBtn = `<button class="btn btn-primary btn-large" onclick="goToStep(4); runStep(4);">▶️ Review Draft</button>`;
+        else if (step === 4) nextBtn = `<button class="btn btn-success btn-large" onclick="goToStep(5)">🔊 Listen to the Draft</button>`;
+        out.innerHTML = `<div class="message message-success">✓ Step ${step} complete</div><label class="text-label">Result:</label>${html}<div class="button-row"><button class="btn btn-secondary" onclick="navigator.clipboard.writeText(outputs[${step}]).then(()=>alert('Copied!'))">📋 Copy</button>${nextBtn}</div>`;
+    } catch (e) { out.innerHTML = `<div class="message message-error">Error: ${e.message}</div><div class="button-row"><button class="btn btn-primary" onclick="runStep(${step})">Retry</button></div>`; }
 }
 
-function goToStep(step) {
-    currentStep = step;
-    updateProgress(step);
-    showStep(step);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+function goToStep(step) { currentStep = step; updateProgress(step); showStep(step); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function parseMarkdown(text) { return text.replace(/^### (.*$)/gim, '<h3>$1</h3>').replace(/^## (.*$)/gim, '<h2>$1</h2>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/^- (.*$)/gim, '<li>$1</li>').replace(/\n/g, '<br>').replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>').replace(/<\/ul><br><ul>/g, ''); }
 
-function parseMarkdown(text) {
-    return text
-        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/^- (.*$)/gim, '<li>$1</li>')
-        .replace(/\n/g, '<br>')
-        .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
-        .replace(/<\/ul><br><ul>/g, '');
-}
-
-// ============================================================
-// INIT
-// ============================================================
 document.addEventListener('DOMContentLoaded', () => {
     const k1 = localStorage.getItem('anthropic_api_key');
     const k2 = localStorage.getItem('elevenlabs_api_key');
