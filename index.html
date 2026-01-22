@@ -3,39 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oral Bridge OBT - Tripod Studio v3</title>
+    <title>Oral Bridge - Hindi Team</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root{--bg-primary:#FAF9F7;--bg-secondary:#FFFFFF;--bg-tertiary:#F3F1ED;--text-primary:#1A1A1A;--text-secondary:#5A5A5A;--text-muted:#8A8A8A;--accent:#B45309;--accent-light:#FEF3C7;--accent-hover:#92400E;--border:#E5E2DC;--success:#166534;--success-bg:#DCFCE7;--agent1:#7C3AED;--agent2:#0891B2;--agent3:#059669;--agent4:#6B21A8;--validator-primary:#319795;--validator-bg:#E6FFFA;--validator-border:#81E6D9;--mentor-primary:#805AD5;--mentor-bg:#FAF5FF;--mentor-border:#D6BCFA;--shadow-sm:0 1px 2px rgba(0,0,0,0.05);--shadow-md:0 4px 6px -1px rgba(0,0,0,0.07),0 2px 4px -1px rgba(0,0,0,0.04);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);--radius:8px;--radius-lg:12px}
+        :root{--bg-primary:#FAF9F7;--bg-secondary:#FFFFFF;--bg-tertiary:#F3F1ED;--text-primary:#1A1A1A;--text-secondary:#5A5A5A;--text-muted:#8A8A8A;--accent:#B45309;--accent-light:#FEF3C7;--accent-hover:#92400E;--border:#E5E2DC;--success:#166534;--success-bg:#DCFCE7;--agent1:#7C3AED;--agent2:#0891B2;--agent3:#059669;--agent4:#6B21A8;--validator-primary:#319795;--validator-bg:#E6FFFA;--validator-border:#81E6D9;--shadow-sm:0 1px 2px rgba(0,0,0,0.05);--shadow-md:0 4px 6px -1px rgba(0,0,0,0.07),0 2px 4px -1px rgba(0,0,0,0.04);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);--radius:8px;--radius-lg:12px}
         *{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6;min-height:100vh}.container{max-width:1000px;margin:0 auto;padding:2rem}header{text-align:center;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}.logo{display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:0.5rem}.logo-icon{width:48px;height:48px;background:var(--accent);border-radius:12px;display:flex;align-items:center;justify-content:center}.logo-icon svg{width:28px;height:28px;fill:white}h1{font-family:'Source Serif 4',serif;font-size:2rem;font-weight:600}.subtitle{color:var(--text-secondary);font-size:1rem;margin-top:0.25rem}
         .setup-section{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem;box-shadow:var(--shadow-sm)}.setup-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end}.input-group{flex:1;min-width:180px}.input-group label{display:block;font-weight:500;margin-bottom:0.5rem;font-size:0.95rem}.input-group input,.input-group select{width:100%;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius);font-size:1rem;font-family:inherit;background:var(--bg-primary)}.input-group input:focus,.input-group select:focus{outline:none;border-color:var(--accent);background:var(--bg-secondary)}
         .progress-steps{display:flex;justify-content:center;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap}.step{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.875rem;background:var(--bg-secondary);border:2px solid var(--border);border-radius:25px;font-size:0.85rem;font-weight:500;color:var(--text-muted);transition:all 0.3s ease;cursor:pointer}.step:hover{background:var(--bg-tertiary)}.step-number{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:600}.step.active{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}.step.active .step-number{background:var(--accent);color:white}.step.completed{border-color:var(--success);color:var(--success);background:var(--success-bg)}.step.completed .step-number{background:var(--success);color:white}
         .main-card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:1.5rem}.card-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.75rem}.step-badge{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:1rem;color:white}.step-1 .step-badge{background:var(--agent1)}.step-2 .step-badge{background:var(--agent2)}.step-3 .step-badge{background:var(--agent3)}.step-4 .step-badge{background:var(--agent4)}.card-title h2{font-size:1.1rem;font-weight:600;margin-bottom:0.125rem}.card-title p{font-size:0.9rem;color:var(--text-secondary)}.card-body{padding:1.5rem}
-        .text-box{width:100%;min-height:150px;padding:1rem;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:0.95rem;line-height:1.7;resize:vertical;background:var(--bg-primary)}.text-box:focus{outline:none;border-color:var(--accent);background:var(--bg-secondary)}.text-box.output{background:var(--bg-tertiary);font-family:'Source Serif 4',serif;font-size:1.05rem}.text-box.json-output{font-family:monospace;font-size:0.85rem;background:#1a1a1a;color:#e0e0e0;border:none}.text-label{display:block;font-weight:500;margin-bottom:0.5rem;font-size:0.95rem}
+        .text-box{width:100%;min-height:150px;padding:1rem;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:0.95rem;line-height:1.7;resize:vertical;background:var(--bg-primary)}.text-box:focus{outline:none;border-color:var(--accent);background:var(--bg-secondary)}.text-box.output{background:var(--bg-tertiary);font-family:'Source Serif 4',serif;font-size:1.05rem}.text-box.json-output{font-family:monospace;font-size:0.85rem;background:#1a1a1a;color:#e0e0e0;border:none}.text-box.editable{background:var(--bg-secondary);border:2px solid var(--accent)}.text-label{display:block;font-weight:500;margin-bottom:0.5rem;font-size:0.95rem}
         .btn{padding:0.75rem 1.5rem;border:none;border-radius:var(--radius);font-size:1rem;font-weight:500;cursor:pointer;transition:all 0.2s ease;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem}.btn-large{padding:1rem 2rem;font-size:1.1rem;border-radius:var(--radius-lg)}.btn-primary{background:var(--accent);color:white}.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:var(--shadow-md)}.btn-secondary{background:var(--bg-tertiary);color:var(--text-primary);border:1px solid var(--border)}.btn-secondary:hover{background:var(--border)}.btn-success{background:var(--success);color:white}.btn-success:hover{background:#14532d}.btn-small{padding:0.5rem 1rem;font-size:0.85rem}.button-row{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1.5rem}.button-row-center{justify-content:center}
-        .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem;gap:1rem}.spinner{width:48px;height:48px;border:4px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.loading-text{font-size:1.1rem;color:var(--text-secondary)}.message{padding:1rem 1.25rem;border-radius:var(--radius);margin-bottom:1rem;font-size:0.95rem}.message-error{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B}.message-success{background:var(--success-bg);border:1px solid #86EFAC;color:var(--success)}.hidden{display:none !important}footer{text-align:center;padding:1.5rem 0;color:var(--text-muted);font-size:0.85rem}
-        .studio-tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:1.5rem}.studio-tab{padding:0.875rem 1.5rem;border:none;background:var(--bg-tertiary);color:var(--text-secondary);font-weight:600;cursor:pointer;border-radius:var(--radius) var(--radius) 0 0;margin-right:0.5rem;transition:all 0.2s;font-size:1rem}.studio-tab.active{color:white}.studio-tab.validator-tab.active{background:var(--validator-primary)}.studio-tab.mentor-tab.active{background:var(--mentor-primary)}.studio-tab:hover:not(.active){background:var(--border)}.studio-view{display:none}.studio-view.active{display:block}
-        .approval-panel{background:linear-gradient(135deg,#f7fafc,#edf2f7);border:2px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:1.5rem}.approval-badges{display:flex;gap:1rem;flex-wrap:wrap}.approval-badge{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;border-radius:20px;font-size:0.85rem;font-weight:600}.approval-badge.pending{background:#fed7d7;color:#c53030}.approval-badge.active{background:#fef3c7;color:#c05621}.approval-badge.approved{background:#c6f6d5;color:#276749}.approval-badge.waiting{background:#e2e8f0;color:#718096}
+        .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem;gap:1rem}.spinner{width:48px;height:48px;border:4px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.loading-text{font-size:1.1rem;color:var(--text-secondary)}.message{padding:1rem 1.25rem;border-radius:var(--radius);margin-bottom:1rem;font-size:0.95rem}.message-error{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B}.message-success{background:var(--success-bg);border:1px solid #86EFAC;color:var(--success)}.message-info{background:#EBF8FF;border:1px solid #90CDF4;color:#2B6CB0}.hidden{display:none !important}footer{text-align:center;padding:1.5rem 0;color:var(--text-muted);font-size:0.85rem}
         .validator-audio-panel{background:var(--validator-bg);border:2px solid var(--validator-border);border-radius:var(--radius-lg);padding:2rem;text-align:center}.main-play-btn{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--validator-primary),#285e61);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:2rem auto;box-shadow:var(--shadow-lg);transition:all 0.3s ease}.main-play-btn:hover{transform:scale(1.05);box-shadow:0 15px 30px rgba(49,151,149,0.4)}.main-play-btn:active{transform:scale(0.98)}.main-play-btn svg{width:50px;height:50px;fill:white}.main-play-btn.playing{background:linear-gradient(135deg,#e53e3e,#c53030)}
-        .segment-nav{display:flex;height:60px;border-radius:var(--radius-lg);overflow:hidden;margin:1.5rem 0;border:2px solid var(--validator-border);background:white}.segment-block{cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem;transition:all 0.2s;position:relative}.segment-block:hover{filter:brightness(0.92)}.segment-block.playing::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:8px;height:8px;background:currentColor;border-radius:50%;animation:pulse 1s ease-in-out infinite}.segment-block.selected{box-shadow:inset 0 0 0 3px rgba(0,0,0,0.3)}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+        .segment-nav{display:flex;height:60px;border-radius:var(--radius-lg);overflow:hidden;margin:1.5rem 0;border:2px solid var(--validator-border);background:white}.segment-block{cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem;transition:all 0.2s;position:relative}.segment-block:hover{filter:brightness(0.92)}.segment-block.playing::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:8px;height:8px;background:currentColor;border-radius:50%;animation:pulse 1s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
         .audio-progress{height:10px;background:#b2f5ea;border-radius:5px;cursor:pointer;margin:1rem 0;overflow:hidden}.audio-progress-fill{height:100%;background:var(--validator-primary);border-radius:5px;width:0%;transition:width 0.1s}
-        .recording-panel{background:linear-gradient(135deg,var(--mentor-bg),#E9D8FD);border:2px solid var(--mentor-border);border-radius:var(--radius-lg);padding:2rem;margin-top:1.5rem;text-align:center}.record-btn{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#805AD5,#553C9A);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:1.5rem auto;box-shadow:var(--shadow-lg);transition:all 0.3s ease}.record-btn:hover{transform:scale(1.05)}.record-btn.recording{background:linear-gradient(135deg,#e53e3e,#c53030);animation:recording-pulse 1.5s ease-in-out infinite}.record-btn svg{width:40px;height:40px;fill:white}@keyframes recording-pulse{0%,100%{box-shadow:0 0 0 0 rgba(229,62,62,0.7)}50%{box-shadow:0 0 0 20px rgba(229,62,62,0)}}
         .status-indicator{font-size:1.1rem;font-weight:600;margin:1rem 0;min-height:2rem}.time-display{font-family:'DM Sans',monospace;font-size:2rem;font-weight:600;color:var(--validator-primary);margin:1rem 0}
-        .mentor-text-panel{background:var(--mentor-bg);border:2px solid var(--mentor-border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem}.mentor-text-display{background:white;border:1px solid var(--mentor-border);border-radius:var(--radius);padding:1.5rem;font-family:'Source Serif 4',serif;font-size:1.1rem;line-height:1.8;min-height:150px}
-        .faithfulness-result{border-radius:var(--radius);padding:1rem;margin-bottom:0.75rem}.faithfulness-result.pass{background:#f0fff4;border:2px solid #68d391}.faithfulness-result.warning{background:#fffbeb;border:2px solid #f6ad55}.faithfulness-result.fail{background:#fff5f5;border:2px solid #fc8181}
-        .edit-history{background:#f7fafc;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;max-height:300px;overflow-y:auto;font-size:0.9rem}.edit-item{padding:0.75rem;border-bottom:1px solid var(--border)}.edit-item:last-child{border-bottom:none}
-        .mentor-voice-panel{background:linear-gradient(135deg,#E9D8FD,#D6BCFA);border:2px solid var(--mentor-primary);border-radius:var(--radius-lg);padding:1.5rem;margin-top:1.5rem;text-align:center}.mentor-record-btn{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#805AD5,#553C9A);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:1rem auto;box-shadow:var(--shadow-md);transition:all 0.3s ease}.mentor-record-btn:hover{transform:scale(1.05)}.mentor-record-btn.recording{background:linear-gradient(135deg,#e53e3e,#c53030);animation:recording-pulse 1.5s ease-in-out infinite}.mentor-record-btn svg{width:32px;height:32px;fill:white}
-        .response-options{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+        .analysis-section{background:#F0FFF4;border:2px solid #9AE6B4;border-radius:var(--radius-lg);padding:1.5rem;margin:1.5rem 0}.analysis-item{background:white;border:1px solid #C6F6D5;border-radius:var(--radius);padding:1rem;margin:0.75rem 0}.analysis-item.warning{background:#FFFBEB;border-color:#FCD34D}.analysis-item.issue{background:#FEF2F2;border-color:#FECACA}.analysis-score{display:inline-block;padding:0.25rem 0.75rem;border-radius:20px;font-weight:600;font-size:0.85rem;margin-right:0.5rem}.score-good{background:#C6F6D5;color:#166534}.score-ok{background:#FEF3C7;color:#92400E}.score-low{background:#FECACA;color:#991B1B}
+        .edit-section{background:var(--accent-light);border:2px solid var(--accent);border-radius:var(--radius-lg);padding:1.5rem;margin-top:1.5rem}
+        .edit-history{background:#f7fafc;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;max-height:200px;overflow-y:auto;font-size:0.9rem;margin-top:1rem}.edit-item{padding:0.5rem;border-bottom:1px solid var(--border);font-size:0.85rem}.edit-item:last-child{border-bottom:none}
         @media(max-width:768px){.container{padding:1rem}h1{font-size:1.5rem}.setup-row{flex-direction:column}.input-group{width:100%}.step{padding:0.5rem 0.75rem;font-size:0.8rem}.main-play-btn{width:100px;height:100px}.main-play-btn svg{width:40px;height:40px}}
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><h1>Oral Bridge OBT</h1></div>
-            <p class="subtitle">AI-Assisted Bible Translation</p>
+            <div class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><h1>Oral Bridge</h1></div>
+            <p class="subtitle">Hindi Team - AI-Assisted Bible Translation</p>
         </header>
         <div class="setup-section">
             <div class="setup-row">
@@ -45,19 +40,19 @@
             </div>
             <div class="setup-row" style="margin-top:1rem">
                 <div class="input-group"><label for="biblicalRef">Biblical Reference</label><input type="text" id="biblicalRef" placeholder="e.g., Ruth 1:1-5"></div>
-                <div class="input-group"><label for="targetLang">Target Language</label><select id="targetLang"><option value="english">English (Oral)</option><option value="portuguese_sertanejo">Portuguese (Sertanejo)</option><option value="hindi">Hindi (बोलचाल)</option><option value="spanish">Spanish (Coloquial)</option><option value="korean">Korean (구어체)</option><option value="indonesian">Bahasa Indonesia</option></select></div>
+                <div class="input-group"><label for="targetLang">Target Language</label><select id="targetLang"><option value="hindi">Hindi (बोलचाल)</option><option value="english">English (Oral)</option><option value="portuguese_sertanejo">Portuguese (Sertanejo)</option><option value="spanish">Spanish (Coloquial)</option><option value="korean">Korean (구어체)</option><option value="indonesian">Bahasa Indonesia</option></select></div>
                 <div class="input-group"><label for="targetAudience">Target Audience</label><input type="text" id="targetAudience" placeholder="e.g., Rural farmers"></div>
             </div>
-            <div class="button-row button-row-center" style="margin-top:1.5rem"><button class="btn btn-primary btn-large" onclick="startStep1()">▶️ Start Meaning Map</button></div>
+            <div class="button-row button-row-center" style="margin-top:1.5rem"><button class="btn btn-primary btn-large" onclick="startStep1()">▶️ Start Translation</button></div>
         </div>
         <div id="progressSteps" class="progress-steps hidden">
             <div class="step" id="step1Ind" onclick="goToStep(1)"><span class="step-number">1</span><span>Map the Events</span></div>
             <div class="step" id="step2Ind" onclick="goToStep(2)"><span class="step-number">2</span><span>Map the Discourse</span></div>
-            <div class="step" id="step3Ind" onclick="goToStep(3)"><span class="step-number">3</span><span>Draft the Translation</span></div>
-            <div class="step" id="step4Ind" onclick="goToStep(4)"><span class="step-number">4</span><span>Review the Draft</span></div>
+            <div class="step" id="step3Ind" onclick="goToStep(3)"><span class="step-number">3</span><span>Review the Draft</span></div>
+            <div class="step" id="step4Ind" onclick="goToStep(4)"><span class="step-number">4</span><span>Review the Performance</span></div>
         </div>
         <div id="workArea" class="main-card hidden"></div>
-        <footer><p>Ready Vessels Project • Tripod Method v5.3</p></footer>
+        <footer><p>Ready Vessels Project • Oral Bridge</p></footer>
     </div>
     <div id="voiceModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center">
         <div style="background:white;padding:2rem;border-radius:12px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto">
@@ -66,9 +61,17 @@
             <div class="button-row" style="justify-content:flex-end"><button class="btn btn-secondary" onclick="hideVoiceModal()">Cancel</button><button class="btn btn-primary" onclick="saveVoiceConfig()">Save</button></div>
         </div>
     </div>
+    <div id="sendReportModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center">
+        <div style="background:white;padding:2rem;border-radius:12px;max-width:500px;width:90%">
+            <h3 style="margin-bottom:1rem">📤 Send to Reviewer</h3>
+            <div class="input-group" style="margin-bottom:1rem"><label>Reviewer Email</label><input type="email" id="reviewerEmail" placeholder="reviewer@example.com" style="width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:var(--radius)"></div>
+            <div class="input-group" style="margin-bottom:1rem"><label>Your Notes (optional)</label><textarea id="reviewerNotes" rows="3" placeholder="Any notes for the reviewer..." style="width:100%;padding:0.75rem;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit"></textarea></div>
+            <div class="button-row" style="justify-content:flex-end"><button class="btn btn-secondary" onclick="hideSendModal()">Cancel</button><button class="btn btn-primary" onclick="sendToReviewer()">📧 Send Report</button></div>
+        </div>
+    </div>
 <script>
-let currentStep=0,outputs={},studio={text:'',segments:[],selectedIdx:-1,playingIdx:-1,isPlaying:false,approval:{validator:false,mentor:false,community:false},faithfulness:[],editHistory:[],fullAudioUrl:null,mentorQuestion:''},voiceConfig={},speechRecognition=null,mentorSpeechRecognition=null,isRecording=false,isMentorRecording=false,recordedFeedback='';
-const LANGS={english:{name:"English (Oral)",instruction:"Generate in natural, spoken English using oral storytelling register. Include oral markers: 'Now listen...', 'Then...'. Avoid formal Bible-speak.",speechLang:'en-US'},portuguese_sertanejo:{name:"Portuguese (Sertanejo)",instruction:"Gere em português do Sertão Nordestino, registro oral. Use marcadores: 'Escuta só...', 'Aí...'.",speechLang:'pt-BR'},hindi:{name:"Hindi (बोलचाल)",instruction:"हिंदी की बोलचाल की भाषा में लिखें। मौखिक चिह्नक उपयोग करें।",speechLang:'hi-IN'},spanish:{name:"Spanish (Coloquial)",instruction:"Genera en español coloquial hablado. Usa marcadores orales.",speechLang:'es-ES'},korean:{name:"Korean (구어체)",instruction:"한국어 구어체로 생성하세요. 구술 표지를 사용하세요.",speechLang:'ko-KR'},indonesian:{name:"Bahasa Indonesia",instruction:"Tulis dalam Bahasa Indonesia lisan sehari-hari.",speechLang:'id-ID'}};
+let currentStep=0,outputs={},studio={text:'',firstDraft:'',editedDraft:'',segments:[],playingIdx:-1,isPlaying:false,analysis:null,editHistory:[],fullAudioUrl:null,approved:false},voiceConfig={};
+const LANGS={hindi:{name:"Hindi (बोलचाल)",instruction:"हिंदी की बोलचाल की भाषा में लिखें। मौखिक चिह्नक उपयोग करें।",speechLang:'hi-IN'},english:{name:"English (Oral)",instruction:"Generate in natural, spoken English using oral storytelling register. Include oral markers: 'Now listen...', 'Then...'. Avoid formal Bible-speak.",speechLang:'en-US'},portuguese_sertanejo:{name:"Portuguese (Sertanejo)",instruction:"Gere em português do Sertão Nordestino, registro oral. Use marcadores: 'Escuta só...', 'Aí...'.",speechLang:'pt-BR'},spanish:{name:"Spanish (Coloquial)",instruction:"Genera en español coloquial hablado. Usa marcadores orales.",speechLang:'es-ES'},korean:{name:"Korean (구어체)",instruction:"한국어 구어체로 생성하세요. 구술 표지를 사용하세요.",speechLang:'ko-KR'},indonesian:{name:"Bahasa Indonesia",instruction:"Tulis dalam Bahasa Indonesia lisan sehari-hari.",speechLang:'id-ID'}};
 const PROMPTS={1:`You are the Event Architect. Convert the biblical passage into a Meaning Map JSON with: meta, frames, participants, events. Use closed Event Cores, semantic roles, and modifiers. Return ONLY valid JSON.`,2:`You are the Discourse Weaver. Add discourse structure to the Meaning Map: functional_genre, literary_form, thematic_spine, peak_event_id, and for each event add discourse_function (SET/BG/MAIN/EVAL), peak flag, and discourse_logic relations. Return the enhanced JSON only.`,3:`You are the Oral Storyteller. Transform the Meaning Map into natural oral narrative.
 
 === FIDELITY CONSTRAINTS (ABSOLUTE) ===
@@ -110,66 +113,209 @@ Test every addition: If removing it loses NO theological/narrative facts but onl
 
 === OUTPUT ===
 Generate natural oral narrative. Sound like spoken storytelling, not written text. Use the target language's oral register. Output ONLY the narrative.`};
+
+const ANALYSIS_PROMPT=`You are a translation quality analyst. Analyze the draft translation against the Meaning Map for:
+
+1. ACCURACY (1-5): Does it preserve all events, participants, and relationships from the Meaning Map?
+2. NATURALNESS (1-5): Does it sound like natural spoken language, not written text?
+3. INTELLIGIBILITY (1-5): Would the target audience easily understand this?
+4. ORALNESS (1-5): Does it use appropriate oral markers, rhythm, and storytelling patterns?
+5. STYLE/REGISTER (1-5): Is the register appropriate for oral Bible storytelling?
+
+For each criterion, provide:
+- Score (1-5)
+- Brief explanation
+- Specific recommendations for improvement (if any)
+
+Also list any:
+- Missing elements from the Meaning Map
+- Unauthorized additions
+- Awkward phrasings that need revision
+
+Return as JSON:
+{
+  "scores": {
+    "accuracy": {"score": N, "comment": "...", "recommendations": []},
+    "naturalness": {"score": N, "comment": "...", "recommendations": []},
+    "intelligibility": {"score": N, "comment": "...", "recommendations": []},
+    "oralness": {"score": N, "comment": "...", "recommendations": []},
+    "style": {"score": N, "comment": "...", "recommendations": []}
+  },
+  "missing_elements": [],
+  "unauthorized_additions": [],
+  "awkward_phrasings": [],
+  "overall_score": N,
+  "summary": "..."
+}`;
+
 const SEGMENT_COLORS=[{bg:'#bee3f8',color:'#2b6cb0'},{bg:'#c6f6d5',color:'#22543d'},{bg:'#fefcbf',color:'#744210'},{bg:'#fed7d7',color:'#c53030'},{bg:'#e9d8fd',color:'#553c9a'},{bg:'#b2f5ea',color:'#234e52'}];
 
 function startStep1(){const apiKey=document.getElementById('apiKey').value,ref=document.getElementById('biblicalRef').value;if(!apiKey)return alert('Please enter your API key.');if(!ref)return alert('Please enter a biblical reference.');localStorage.setItem('anthropic_api_key',apiKey);const el=document.getElementById('elevenLabsKey');if(el.value)localStorage.setItem('elevenlabs_api_key',el.value);currentStep=1;document.getElementById('progressSteps').classList.remove('hidden');document.getElementById('workArea').classList.remove('hidden');updateProgress(1);showStep(1);runStep(1);}
-function updateProgress(step){for(let i=1;i<=4;i++){const ind=document.getElementById('step'+i+'Ind');ind.classList.remove('active','completed');if(i<step&&(i<4?outputs[i]:true))ind.classList.add('completed');else if(i===step)ind.classList.add('active');}}
-function showStep(step){const workArea=document.getElementById('workArea'),ref=document.getElementById('biblicalRef').value,lang=document.getElementById('targetLang').value,langName=LANGS[lang]?.name||lang;if(step===1)workArea.innerHTML='<div class="card-header step-1"><div class="step-badge">1</div><div class="card-title"><h2>Map the Events</h2><p>'+ref+'</p></div></div><div class="card-body"><div id="output1"></div></div>';else if(step===2)workArea.innerHTML='<div class="card-header step-2"><div class="step-badge">2</div><div class="card-title"><h2>Map the Discourse</h2><p>Narrative flow</p></div></div><div class="card-body"><textarea class="text-box json-output" id="input2" rows="4" style="display:none">'+(outputs[1]||'')+'</textarea><div id="output2"></div></div>';else if(step===3)workArea.innerHTML='<div class="card-header step-3"><div class="step-badge">3</div><div class="card-title"><h2>Draft the Translation</h2><p>'+langName+'</p></div></div><div class="card-body"><textarea class="text-box json-output" id="input3" rows="4" style="display:none">'+(outputs[2]||'')+'</textarea><div id="output3"></div></div>';else if(step===4){workArea.innerHTML=buildStudioUI();initStudio();}}
-function buildStudioUI(){return '<div class="card-header step-4"><div class="step-badge">4</div><div class="card-title"><h2>🎬 Review Draft</h2><p>Listen & Validate</p></div></div><div class="card-body"><div class="approval-panel"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem"><strong>📋 Approval</strong><div class="approval-badges"><div id="valBadge" class="approval-badge pending">⏳ Validator</div><div id="menBadge" class="approval-badge waiting">⏸️ Mentor</div><div id="comBadge" class="approval-badge waiting">⏸️ Community</div></div></div></div><div class="studio-tabs"><button id="tabVal" class="studio-tab validator-tab active" onclick="switchTab(\'validator\')">🎧 Validator</button><button id="tabMen" class="studio-tab mentor-tab" onclick="switchTab(\'mentor\')">📝 Mentor</button></div><div id="validatorView" class="studio-view active"><div style="background:#f0fff4;border:1px solid #9ae6b4;border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem"><div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:center"><select id="studioLang" style="padding:0.75rem;border:2px solid #9ae6b4;border-radius:var(--radius);min-width:200px">'+Object.entries(LANGS).map(([k,v])=>'<option value="'+k+'">'+v.name+'</option>').join('')+'</select><button class="btn btn-secondary" onclick="showVoiceModal()">⚙️ Select the Voice</button><button class="btn btn-success btn-large" onclick="listenToDraft()">🔊 Generate the Oral Performance</button></div></div><div id="audioPanel" class="validator-audio-panel" style="display:none"><h3 style="color:var(--validator-primary);margin-bottom:1rem">🔊 Draft Audio</h3><div id="segmentNav" class="segment-nav"><div style="flex:1;display:flex;align-items:center;justify-content:center;color:#666">Loading...</div></div><button id="mainPlayBtn" class="main-play-btn" onclick="toggleMainPlay()"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button><div class="time-display"><span id="currentTime">0:00</span> / <span id="totalTime">0:00</span></div><div class="audio-progress" onclick="seekAudio(event)"><div id="progressFill" class="audio-progress-fill"></div></div><div style="display:flex;gap:0.75rem;justify-content:center;margin-top:1rem"><button class="btn btn-secondary btn-small" onclick="skipSegment(-1)">⏮️</button><button class="btn btn-secondary btn-small" onclick="restartAudio()">🔄</button><button class="btn btn-secondary btn-small" onclick="skipSegment(1)">⏭️</button></div><div id="audioStatus" style="margin-top:1rem;font-size:0.9rem;color:var(--text-secondary)"></div><audio id="audioPlayer" style="display:none"></audio></div><div id="feedbackPanel" class="recording-panel" style="display:none"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem"><h4 style="color:var(--mentor-primary)">🎯 <span id="selectedSegLabel">Segment 1</span></h4><button class="btn btn-secondary btn-small" onclick="playSelectedSegment()">▶️ Replay</button></div><button id="recordBtn" class="record-btn" onclick="toggleRecording()"><svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg></button><div id="recordStatus" class="status-indicator"></div><div id="feedbackActions" style="display:none;margin-top:1.5rem"><button class="btn btn-primary btn-large" onclick="applyVoiceFeedback()">✨ Apply Change</button><button class="btn btn-secondary" onclick="cancelFeedback()" style="margin-left:0.5rem">Cancel</button></div><button class="btn btn-secondary" onclick="closeFeedbackPanel()" style="margin-top:1rem">✖️ Close</button></div><div style="margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,#c6f6d5,#9ae6b4);border:2px solid #38a169;border-radius:var(--radius-lg)"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem"><h4 style="color:#276749">✅ Validator Approval</h4><button id="valApproveBtn" class="btn btn-success btn-large" onclick="toggleValidator()">☐ Approve</button></div></div></div><div id="mentorView" class="studio-view"><div class="mentor-text-panel"><h3 style="color:var(--mentor-primary);margin-bottom:0.75rem">📜 Draft Text</h3><div id="mentorText" class="mentor-text-display"><span style="color:#999">Generate audio first...</span></div><div class="button-row"><button class="btn btn-secondary btn-small" onclick="copyMentorText()">📋 Copy</button></div></div><div id="editHistorySection" style="display:none;margin-bottom:1.5rem"><h4 style="color:var(--mentor-primary);margin-bottom:0.75rem">📝 Changes</h4><div id="editHistoryList" class="edit-history"><span style="color:#999">No changes yet.</span></div></div><div class="mentor-voice-panel"><h4 style="color:var(--mentor-primary);margin-bottom:0.5rem">🎤 Ask the Validator</h4><button id="mentorRecordBtn" class="mentor-record-btn" onclick="toggleMentorRecording()"><svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg></button><div id="mentorRecordStatus" class="status-indicator"></div><div id="mentorFeedbackActions" style="display:none;margin-top:1rem"><p style="font-size:0.9rem;margin-bottom:1rem;color:#553c9a"><strong>Your question:</strong> "<span id="mentorQuestionText"></span>"</p><button class="btn btn-primary" onclick="sendToValidator()">📤 Send to Validator</button><button class="btn btn-secondary" onclick="cancelMentorFeedback()">Cancel</button></div><div id="validatorResponseSection" style="display:none;margin-top:1.5rem;padding:1rem;background:white;border-radius:var(--radius);border:2px solid var(--validator-border)"><h5 style="color:var(--validator-primary);margin-bottom:0.5rem">📨 Validator Response</h5><p id="validatorResponseText" style="font-style:italic;color:#666"></p><div class="response-options"><button class="btn btn-success btn-small" onclick="acceptValidatorResponse()">✅ Accept</button><button class="btn btn-secondary btn-small" onclick="rejectValidatorResponse()">❌ Decline</button></div></div></div><div id="faithSection" style="display:none"><div style="background:#ebf8ff;border:2px solid #90cdf4;border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem;margin-top:1.5rem"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem"><h4 style="color:#2b6cb0">🔍 Faithfulness Check</h4><button class="btn btn-primary btn-large" onclick="runAnalysis()">🤖 Analyze</button></div><div id="analysisStatus" style="margin-top:0.75rem;font-size:0.9em"></div></div><div id="resultsSection" style="display:none"><div style="display:flex;justify-content:space-between;margin-bottom:1rem"><h4>📊 Results</h4><div id="analysisStats"></div></div><div id="resultsList" style="max-height:400px;overflow-y:auto"></div></div><div id="mentorApproveSection" style="display:none;background:linear-gradient(135deg,#c6f6d5,#9ae6b4);border:2px solid #38a169;border-radius:var(--radius-lg);padding:1.5rem;margin-top:1.5rem"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem"><h4 style="color:#276749">✅ Mentor Approval</h4><button id="menApproveBtn" class="btn btn-success btn-large" onclick="toggleMentor()">☐ Approve</button></div></div><div id="comApproveSection" style="display:none;background:linear-gradient(135deg,#faf5ff,#e9d8fd);border:2px solid #805ad5;border-radius:var(--radius-lg);padding:1.5rem;margin-top:1rem"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem"><h4 style="color:#553c9a">👥 Community Approval</h4><button id="comApproveBtn" class="btn btn-large" style="background:#805ad5;color:white" onclick="toggleCommunity()">☐ Approve</button></div></div></div></div></div><div id="sessionSummarySection" style="display:none;margin-top:2rem;padding:1.5rem;background:linear-gradient(135deg,#FEF3C7,#FDE68A);border:2px solid #F59E0B;border-radius:var(--radius-lg)"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1rem"><h3 style="color:#92400E">📦 Session Complete</h3><div style="display:flex;gap:0.75rem;flex-wrap:wrap"><button class="btn btn-primary btn-large" onclick="downloadSessionSummary()">📄 Download Summary (HTML)</button><button class="btn btn-secondary" onclick="downloadAudioFile()">🔊 Download Audio (MP3)</button></div></div><p style="color:#92400E;font-size:0.95rem">All approvals complete. Save your session summary and final audio file for your records.</p></div>';}
-function initStudio(){const mainLang=document.getElementById('targetLang').value;document.getElementById('studioLang').value=mainLang;if(outputs[3]){studio.text=outputs[3];document.getElementById('mentorText').textContent=outputs[3];document.getElementById('audioPanel').style.display='block';segmentText();}loadVoiceConfig();updateApprovalUI();initSpeechRecognition();initMentorSpeechRecognition();}
-function switchTab(tab){document.querySelectorAll('.studio-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.studio-view').forEach(v=>v.classList.remove('active'));if(tab==='validator'){document.getElementById('tabVal').classList.add('active');document.getElementById('validatorView').classList.add('active');}else{document.getElementById('tabMen').classList.add('active');document.getElementById('mentorView').classList.add('active');if(studio.text)document.getElementById('mentorText').textContent=studio.text;}}
-async function listenToDraft(){if(!outputs[3]){alert('Complete the translation steps first.');return;}studio.text=outputs[3];document.getElementById('mentorText').textContent=studio.text;document.getElementById('audioPanel').style.display='block';segmentText();document.getElementById('audioStatus').textContent='⏳ Generating audio...';await generateAudio();}
+
+function updateProgress(step){for(let i=1;i<=4;i++){const ind=document.getElementById('step'+i+'Ind');ind.classList.remove('active','completed');if(i<step&&outputs[i])ind.classList.add('completed');else if(i===step)ind.classList.add('active');}}
+
+function showStep(step){const workArea=document.getElementById('workArea'),ref=document.getElementById('biblicalRef').value,lang=document.getElementById('targetLang').value,langName=LANGS[lang]?.name||lang;
+if(step===1){workArea.innerHTML='<div class="card-header step-1"><div class="step-badge">1</div><div class="card-title"><h2>Map the Events</h2><p>'+ref+'</p></div></div><div class="card-body"><div id="output1">'+(outputs[1]?'<div class="message message-success">✓ Step 1 complete</div><label class="text-label">Result:</label><textarea class="text-box json-output" rows="6" readonly>'+outputs[1]+'</textarea><div class="button-row"><button class="btn btn-secondary" onclick="navigator.clipboard.writeText(outputs[1]).then(()=>alert(\'Copied!\'))">📋 Copy</button><button class="btn btn-primary btn-large" onclick="goToStep(2)">▶️ Continue to Step 2</button></div>':'')+'</div></div>';}
+else if(step===2){workArea.innerHTML='<div class="card-header step-2"><div class="step-badge">2</div><div class="card-title"><h2>Map the Discourse</h2><p>Narrative flow</p></div></div><div class="card-body"><textarea class="text-box json-output" id="input2" rows="4" style="display:none">'+(outputs[1]||'')+'</textarea><div id="output2">'+(outputs[2]?'<div class="message message-success">✓ Step 2 complete</div><label class="text-label">Result:</label><textarea class="text-box json-output" rows="6" readonly>'+outputs[2]+'</textarea><div class="button-row"><button class="btn btn-secondary" onclick="goToStep(1)">← Back</button><button class="btn btn-secondary" onclick="navigator.clipboard.writeText(outputs[2]).then(()=>alert(\'Copied!\'))">📋 Copy</button><button class="btn btn-primary btn-large" onclick="goToStep(3)">▶️ Continue to Step 3</button></div>':'')+'</div></div>';}
+else if(step===3){workArea.innerHTML=buildStep3UI();}
+else if(step===4){workArea.innerHTML=buildStep4UI();initStep4();}}
+
+function buildStep3UI(){const langName=LANGS[document.getElementById('targetLang').value]?.name||'Target Language';
+let html='<div class="card-header step-3"><div class="step-badge">3</div><div class="card-title"><h2>Review the Draft</h2><p>'+langName+'</p></div></div><div class="card-body">';
+html+='<textarea class="text-box json-output" id="input3" rows="4" style="display:none">'+(outputs[2]||'')+'</textarea>';
+html+='<div id="step3Content">';
+if(!studio.firstDraft){html+='<div class="button-row button-row-center"><button class="btn btn-primary btn-large" onclick="generateAndAnalyzeDraft()">🤖 Generate Draft</button></div>';}
+else{
+html+='<div class="message message-success">✓ Draft generated</div>';
+html+='<label class="text-label">Generated Draft (read-only):</label>';
+html+='<textarea class="text-box output" rows="6" readonly>'+escapeHtml(studio.firstDraft)+'</textarea>';
+if(studio.analysis){
+html+='<div class="analysis-section"><h3 style="color:#166534;margin-bottom:1rem">📊 Quality Analysis</h3>';
+html+=renderAnalysis(studio.analysis);
+html+='</div>';
+}
+html+='<div class="edit-section"><h3 style="color:var(--accent);margin-bottom:1rem">✏️ Edit the Draft</h3>';
+html+='<p style="margin-bottom:1rem;color:var(--text-secondary)">Review the analysis above and make any necessary changes to the draft below:</p>';
+html+='<textarea class="text-box editable" id="editableDraft" rows="8">'+escapeHtml(studio.editedDraft||studio.firstDraft)+'</textarea>';
+if(studio.editHistory.length>0){
+html+='<div class="edit-history"><strong>Edit History:</strong>';
+studio.editHistory.forEach((e,i)=>{html+='<div class="edit-item">'+new Date(e.timestamp).toLocaleTimeString()+': Saved edit #'+(i+1)+'</div>';});
+html+='</div>';}
+html+='<div class="button-row"><button class="btn btn-secondary" onclick="goToStep(2)">← Back to Step 2</button><button class="btn btn-secondary" onclick="saveDraftEdits()">💾 Save Edits</button><button class="btn btn-success btn-large" onclick="saveDraftEdits();goToStep(4)">🔊 Continue to Performance →</button></div>';
+html+='</div>';}
+html+='</div></div>';
+return html;}
+
+function renderAnalysis(analysis){let html='<div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem">';
+const criteria=['accuracy','naturalness','intelligibility','oralness','style'];
+criteria.forEach(c=>{const s=analysis.scores[c];const scoreClass=s.score>=4?'score-good':s.score>=3?'score-ok':'score-low';
+html+='<span class="analysis-score '+scoreClass+'">'+c.charAt(0).toUpperCase()+c.slice(1)+': '+s.score+'/5</span>';});
+html+='<span class="analysis-score '+(analysis.overall_score>=4?'score-good':analysis.overall_score>=3?'score-ok':'score-low')+'">Overall: '+analysis.overall_score+'/5</span></div>';
+html+='<p style="margin-bottom:1rem;font-style:italic">'+escapeHtml(analysis.summary)+'</p>';
+criteria.forEach(c=>{const s=analysis.scores[c];if(s.recommendations&&s.recommendations.length>0){
+html+='<div class="analysis-item'+(s.score<3?' issue':s.score<4?' warning':'')+'"><strong>'+c.charAt(0).toUpperCase()+c.slice(1)+':</strong> '+escapeHtml(s.comment);
+html+='<ul style="margin:0.5rem 0 0 1.5rem">';s.recommendations.forEach(r=>{html+='<li>'+escapeHtml(r)+'</li>';});html+='</ul></div>';}});
+if(analysis.missing_elements&&analysis.missing_elements.length>0){html+='<div class="analysis-item issue"><strong>⚠️ Missing Elements:</strong><ul style="margin:0.5rem 0 0 1.5rem">';analysis.missing_elements.forEach(m=>{html+='<li>'+escapeHtml(m)+'</li>';});html+='</ul></div>';}
+if(analysis.unauthorized_additions&&analysis.unauthorized_additions.length>0){html+='<div class="analysis-item issue"><strong>⚠️ Unauthorized Additions:</strong><ul style="margin:0.5rem 0 0 1.5rem">';analysis.unauthorized_additions.forEach(a=>{html+='<li>'+escapeHtml(a)+'</li>';});html+='</ul></div>';}
+if(analysis.awkward_phrasings&&analysis.awkward_phrasings.length>0){html+='<div class="analysis-item warning"><strong>📝 Awkward Phrasings:</strong><ul style="margin:0.5rem 0 0 1.5rem">';analysis.awkward_phrasings.forEach(p=>{html+='<li>'+escapeHtml(p)+'</li>';});html+='</ul></div>';}
+return html;}
+
+async function generateAndAnalyzeDraft(){const apiKey=document.getElementById('apiKey').value||localStorage.getItem('anthropic_api_key'),model=document.getElementById('modelSelect').value,lang=document.getElementById('targetLang').value,aud=document.getElementById('targetAudience').value;
+const content=document.getElementById('step3Content');
+content.innerHTML='<div class="loading"><div class="spinner"></div><div class="loading-text">Generating draft...</div></div>';
+try{
+const msg='Target: '+(LANGS[lang]?.name||lang)+'\nAudience: '+aud+'\nInstruction: '+(LANGS[lang]?.instruction||'')+'\n\n'+(outputs[2]||outputs[1]);
+const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:model,max_tokens:8192,system:PROMPTS[3],messages:[{role:'user',content:msg}]})});
+if(!resp.ok)throw new Error('API error');
+const data=await resp.json();
+studio.firstDraft=data.content?.[0]?.text||'';
+studio.editedDraft=studio.firstDraft;
+outputs[3]=studio.firstDraft;
+content.innerHTML='<div class="loading"><div class="spinner"></div><div class="loading-text">Analyzing quality...</div></div>';
+const analysisResp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:model,max_tokens:4000,system:ANALYSIS_PROMPT,messages:[{role:'user',content:'MEANING MAP:\n'+(outputs[2]||outputs[1])+'\n\nDRAFT TRANSLATION:\n'+studio.firstDraft}]})});
+if(analysisResp.ok){const analysisData=await analysisResp.json();const analysisText=analysisData.content?.[0]?.text||'';const match=analysisText.match(/\{[\s\S]*\}/);if(match){try{studio.analysis=JSON.parse(match[0]);}catch(e){console.error('Analysis parse error',e);}}}
+updateProgress(4);
+showStep(3);
+}catch(e){content.innerHTML='<div class="message message-error">Error: '+e.message+'</div><div class="button-row"><button class="btn btn-primary" onclick="generateAndAnalyzeDraft()">Retry</button></div>';}}
+
+function saveDraftEdits(){const textarea=document.getElementById('editableDraft');if(textarea){const newText=textarea.value;if(newText!==studio.editedDraft){studio.editHistory.push({timestamp:new Date().toISOString(),previous:studio.editedDraft,current:newText});studio.editedDraft=newText;outputs[3]=newText;}}}
+
+function buildStep4UI(){const langName=LANGS[document.getElementById('targetLang').value]?.name||'Target Language';
+let html='<div class="card-header step-4"><div class="step-badge">4</div><div class="card-title"><h2>Review the Performance</h2><p>'+langName+'</p></div></div><div class="card-body">';
+html+='<div style="background:#f0fff4;border:1px solid #9ae6b4;border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem">';
+html+='<div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:center">';
+html+='<select id="studioLang" style="padding:0.75rem;border:2px solid #9ae6b4;border-radius:var(--radius);min-width:200px">'+Object.entries(LANGS).map(([k,v])=>'<option value="'+k+'"'+(k===document.getElementById('targetLang').value?' selected':'')+'>'+v.name+'</option>').join('')+'</select>';
+html+='<button class="btn btn-secondary" onclick="showVoiceModal()">⚙️ Select the Voice</button>';
+html+='<button class="btn btn-success btn-large" onclick="generatePerformance()">🔊 Generate the Oral Performance</button>';
+html+='</div></div>';
+html+='<div id="audioPanel" class="validator-audio-panel" style="display:none">';
+html+='<h3 style="color:var(--validator-primary);margin-bottom:1rem">🔊 Oral Performance</h3>';
+html+='<div id="segmentNav" class="segment-nav"><div style="flex:1;display:flex;align-items:center;justify-content:center;color:#666">Loading...</div></div>';
+html+='<button id="mainPlayBtn" class="main-play-btn" onclick="toggleMainPlay()"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>';
+html+='<div class="time-display"><span id="currentTime">0:00</span> / <span id="totalTime">0:00</span></div>';
+html+='<div class="audio-progress" onclick="seekAudio(event)"><div id="progressFill" class="audio-progress-fill"></div></div>';
+html+='<div style="display:flex;gap:0.75rem;justify-content:center;margin-top:1rem">';
+html+='<button class="btn btn-secondary btn-small" onclick="skipSegment(-1)">⏮️</button>';
+html+='<button class="btn btn-secondary btn-small" onclick="restartAudio()">🔄</button>';
+html+='<button class="btn btn-secondary btn-small" onclick="skipSegment(1)">⏭️</button>';
+html+='</div>';
+html+='<div id="audioStatus" style="margin-top:1rem;font-size:0.9rem;color:var(--text-secondary)"></div>';
+html+='<audio id="audioPlayer" style="display:none"></audio>';
+html+='</div>';
+html+='<div class="message message-info" style="margin-top:1.5rem"><strong>💡 Need to make changes?</strong> Go back to Step 3 to edit the text, then return here to generate a new performance.</div>';
+html+='<div class="button-row"><button class="btn btn-secondary" onclick="goToStep(3)">← Back to Edit Draft</button></div>';
+html+='<div id="approvalSection" style="display:none;margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,#c6f6d5,#9ae6b4);border:2px solid #38a169;border-radius:var(--radius-lg)">';
+html+='<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">';
+html+='<h4 style="color:#276749">✅ Approve Translation</h4>';
+html+='<button id="approveBtn" class="btn btn-success btn-large" onclick="toggleApproval()">☐ Approve</button>';
+html+='</div></div>';
+html+='<div id="sessionSummarySection" style="display:none;margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,#FEF3C7,#FDE68A);border:2px solid #F59E0B;border-radius:var(--radius-lg)">';
+html+='<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1rem">';
+html+='<h3 style="color:#92400E">📦 Session Complete</h3>';
+html+='<div style="display:flex;gap:0.75rem;flex-wrap:wrap">';
+html+='<button class="btn btn-primary" onclick="downloadSessionSummary()">📄 Download Summary</button>';
+html+='<button class="btn btn-secondary" onclick="downloadAudioFile()">🔊 Download Audio</button>';
+html+='<button class="btn btn-success" onclick="showSendModal()">📤 Send to Reviewer</button>';
+html+='</div></div>';
+html+='<p style="color:#92400E;font-size:0.95rem">Your work is complete. Download your files or send the session report to a reviewer for feedback.</p>';
+html+='</div>';
+html+='</div>';
+return html;}
+
+function initStep4(){studio.text=studio.editedDraft||studio.firstDraft||outputs[3]||'';if(studio.fullAudioUrl){document.getElementById('audioPanel').style.display='block';document.getElementById('approvalSection').style.display='block';segmentText();}}
+
+async function generatePerformance(){studio.text=studio.editedDraft||studio.firstDraft||outputs[3]||'';if(!studio.text){alert('No draft text available. Go back to Step 3.');return;}
+const key=document.getElementById('elevenLabsKey').value||localStorage.getItem('elevenlabs_api_key');if(!key){alert('Please enter your ElevenLabs API key.');return;}
+const langKey=document.getElementById('studioLang').value;loadVoiceConfig();const voiceId=voiceConfig[langKey];if(!voiceId){alert('Please configure a voice for '+LANGS[langKey].name+' first.');showVoiceModal();return;}
+document.getElementById('audioPanel').style.display='block';document.getElementById('audioStatus').textContent='⏳ Generating audio...';segmentText();
+try{const resp=await fetch('https://api.elevenlabs.io/v1/text-to-speech/'+voiceId,{method:'POST',headers:{'Accept':'audio/mpeg','Content-Type':'application/json','xi-api-key':key},body:JSON.stringify({text:studio.text,model_id:'eleven_multilingual_v2',voice_settings:{stability:0.5,similarity_boost:0.75}})});
+if(!resp.ok)throw new Error('ElevenLabs error');
+const blob=await resp.blob();studio.fullAudioUrl=URL.createObjectURL(blob);
+const player=document.getElementById('audioPlayer');player.src=studio.fullAudioUrl;
+player.onloadedmetadata=()=>{calcSegmentTimings(player.duration);document.getElementById('totalTime').textContent=formatTime(player.duration);setupPlayerEvents();document.getElementById('audioStatus').textContent='✅ Ready!';document.getElementById('approvalSection').style.display='block';};
+}catch(e){document.getElementById('audioStatus').textContent='❌ Error: '+e.message;}}
+
 function segmentText(){const text=studio.text,parts=text.split(/(?<=[.!?:;])\s+/).filter(s=>s.trim());studio.segments=[];let buf='';for(let i=0;i<parts.length;i++){buf+=(buf?' ':'')+parts[i].trim();if(buf.length>=50||i===parts.length-1){studio.segments.push({id:studio.segments.length,text:buf.trim()});buf='';}}if(!studio.segments.length)studio.segments=[{id:0,text:text.trim()}];renderSegmentNav();}
-function renderSegmentNav(){const nav=document.getElementById('segmentNav');if(!studio.segments.length){nav.innerHTML='<div style="flex:1;display:flex;align-items:center;justify-content:center;color:#666">No segments</div>';return;}const total=studio.segments.reduce((s,seg)=>s+seg.text.length,0);nav.innerHTML=studio.segments.map((seg,i)=>{const w=(seg.text.length/total)*100,c=SEGMENT_COLORS[i%SEGMENT_COLORS.length];return '<div class="segment-block '+(i===studio.playingIdx?'playing':'')+' '+(i===studio.selectedIdx?'selected':'')+'" style="flex:0 0 '+w+'%;background:'+c.bg+';color:'+c.color+'" onclick="selectSegment('+i+')">'+(i+1)+'</div>';}).join('');}
-async function generateAudio(){const key=document.getElementById('elevenLabsKey').value||localStorage.getItem('elevenlabs_api_key');if(!key){document.getElementById('audioStatus').textContent='⚠️ Enter ElevenLabs API key';return;}const langKey=document.getElementById('studioLang').value;loadVoiceConfig();const voiceId=voiceConfig[langKey];if(!voiceId){document.getElementById('audioStatus').textContent='⚠️ Configure voice first';return;}if(!studio.text)return;document.getElementById('audioStatus').textContent='⏳ Generating audio...';try{const resp=await fetch('https://api.elevenlabs.io/v1/text-to-speech/'+voiceId,{method:'POST',headers:{'Accept':'audio/mpeg','Content-Type':'application/json','xi-api-key':key},body:JSON.stringify({text:studio.text,model_id:'eleven_multilingual_v2',voice_settings:{stability:0.5,similarity_boost:0.75}})});if(!resp.ok)throw new Error('ElevenLabs error');const blob=await resp.blob();studio.fullAudioUrl=URL.createObjectURL(blob);const player=document.getElementById('audioPlayer');player.src=studio.fullAudioUrl;player.onloadedmetadata=()=>{calcSegmentTimings(player.duration);document.getElementById('totalTime').textContent=formatTime(player.duration);setupPlayerEvents();document.getElementById('audioStatus').textContent='✅ Ready!';};}catch(e){document.getElementById('audioStatus').textContent='❌ Error: '+e.message;}}
+
+function renderSegmentNav(){const nav=document.getElementById('segmentNav');if(!nav)return;if(!studio.segments.length){nav.innerHTML='<div style="flex:1;display:flex;align-items:center;justify-content:center;color:#666">No segments</div>';return;}const total=studio.segments.reduce((s,seg)=>s+seg.text.length,0);nav.innerHTML=studio.segments.map((seg,i)=>{const w=(seg.text.length/total)*100,c=SEGMENT_COLORS[i%SEGMENT_COLORS.length];return '<div class="segment-block '+(i===studio.playingIdx?'playing':'')+'" style="flex:0 0 '+w+'%;background:'+c.bg+';color:'+c.color+'" title="'+escapeHtml(seg.text.substring(0,50))+'...">'+(i+1)+'</div>';}).join('');}
+
 function calcSegmentTimings(duration){const total=studio.segments.reduce((s,seg)=>s+seg.text.length,0);let t=0;studio.segments.forEach(seg=>{const dur=duration*(seg.text.length/total);seg.start=t;seg.end=t+dur;t+=dur;});}
+
 function setupPlayerEvents(){const player=document.getElementById('audioPlayer');player.ontimeupdate=()=>{document.getElementById('progressFill').style.width=(player.currentTime/player.duration)*100+'%';document.getElementById('currentTime').textContent=formatTime(player.currentTime);const idx=studio.segments.findIndex(s=>player.currentTime>=s.start&&player.currentTime<s.end);if(idx!==studio.playingIdx){studio.playingIdx=idx;renderSegmentNav();}};player.onplay=()=>{studio.isPlaying=true;updatePlayButton();};player.onpause=()=>{studio.isPlaying=false;updatePlayButton();};player.onended=()=>{studio.isPlaying=false;studio.playingIdx=-1;updatePlayButton();renderSegmentNav();};}
-function updatePlayButton(){const btn=document.getElementById('mainPlayBtn');if(studio.isPlaying){btn.classList.add('playing');btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';}else{btn.classList.remove('playing');btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';}}
+
+function updatePlayButton(){const btn=document.getElementById('mainPlayBtn');if(!btn)return;if(studio.isPlaying){btn.classList.add('playing');btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';}else{btn.classList.remove('playing');btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';}}
+
 function formatTime(s){if(isNaN(s))return'0:00';return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');}
 function toggleMainPlay(){const player=document.getElementById('audioPlayer');if(!player.src){document.getElementById('audioStatus').textContent='⚠️ Generate audio first';return;}if(studio.isPlaying)player.pause();else player.play();}
 function restartAudio(){const player=document.getElementById('audioPlayer');player.currentTime=0;player.play();}
 function seekAudio(e){const player=document.getElementById('audioPlayer'),rect=e.target.getBoundingClientRect();player.currentTime=((e.clientX-rect.left)/rect.width)*player.duration;}
 function skipSegment(delta){const current=studio.playingIdx>=0?studio.playingIdx:0,next=Math.max(0,Math.min(studio.segments.length-1,current+delta));if(studio.segments[next]){const player=document.getElementById('audioPlayer');player.currentTime=studio.segments[next].start;player.play();}}
-function selectSegment(idx){studio.selectedIdx=idx;renderSegmentNav();const player=document.getElementById('audioPlayer');if(studio.segments[idx]&&player.src){player.currentTime=studio.segments[idx].start;player.play();}document.getElementById('feedbackPanel').style.display='block';document.getElementById('selectedSegLabel').innerHTML='<span style="background:'+SEGMENT_COLORS[idx%SEGMENT_COLORS.length].bg+';padding:4px 12px;border-radius:6px;color:'+SEGMENT_COLORS[idx%SEGMENT_COLORS.length].color+'">Segment '+(idx+1)+'</span>';recordedFeedback='';document.getElementById('recordStatus').innerHTML='';document.getElementById('feedbackActions').style.display='none';}
-function playSelectedSegment(){if(studio.selectedIdx<0)return;const player=document.getElementById('audioPlayer'),seg=studio.segments[studio.selectedIdx];if(seg&&player.src){player.currentTime=seg.start;player.play();}}
-function closeFeedbackPanel(){studio.selectedIdx=-1;document.getElementById('feedbackPanel').style.display='none';renderSegmentNav();}
-function initSpeechRecognition(){if(!('webkitSpeechRecognition' in window)&&!('SpeechRecognition' in window))return;const SR=window.SpeechRecognition||window.webkitSpeechRecognition;speechRecognition=new SR();speechRecognition.continuous=true;speechRecognition.interimResults=true;let finalTranscript='';speechRecognition.onresult=(event)=>{let interim='';for(let i=event.resultIndex;i<event.results.length;i++){if(event.results[i].isFinal)finalTranscript+=event.results[i][0].transcript+' ';else interim+=event.results[i][0].transcript;}recordedFeedback=finalTranscript+interim;document.getElementById('recordStatus').innerHTML='<span style="color:#e53e3e">🔴 '+(recordedFeedback||'Listening...')+'</span>';};speechRecognition.onend=()=>{isRecording=false;updateRecordButton();if(recordedFeedback.trim()){document.getElementById('recordStatus').innerHTML='<span style="color:#38a169">✅ "'+recordedFeedback.trim()+'"</span>';document.getElementById('feedbackActions').style.display='block';}else document.getElementById('recordStatus').innerHTML='<span style="color:#718096">No speech detected.</span>';};speechRecognition.onerror=()=>{isRecording=false;updateRecordButton();document.getElementById('recordStatus').innerHTML='<span style="color:#e53e3e">⚠️ Error</span>';};}
-function toggleRecording(){if(!speechRecognition){alert('Speech not supported. Use Chrome.');return;}if(isRecording)speechRecognition.stop();else{document.getElementById('audioPlayer').pause();speechRecognition.lang=LANGS[document.getElementById('studioLang').value]?.speechLang||'en-US';recordedFeedback='';document.getElementById('feedbackActions').style.display='none';speechRecognition.start();isRecording=true;updateRecordButton();document.getElementById('recordStatus').innerHTML='<span style="color:#e53e3e">🔴 Listening...</span>';}}
-function updateRecordButton(){const btn=document.getElementById('recordBtn');if(isRecording){btn.classList.add('recording');btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>';}else{btn.classList.remove('recording');btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg>';}}
-function cancelFeedback(){recordedFeedback='';document.getElementById('recordStatus').innerHTML='';document.getElementById('feedbackActions').style.display='none';}
-async function applyVoiceFeedback(){if(!recordedFeedback.trim()||studio.selectedIdx<0)return;const apiKey=document.getElementById('apiKey').value||localStorage.getItem('anthropic_api_key'),seg=studio.segments[studio.selectedIdx],lang=LANGS[document.getElementById('studioLang').value];document.getElementById('recordStatus').innerHTML='<span style="color:var(--validator-primary)">⏳ Revising...</span>';document.getElementById('feedbackActions').style.display='none';try{const prompt='Edit segment '+(studio.selectedIdx+1)+': "'+seg.text+'"\nFeedback: '+recordedFeedback.trim()+'\nLanguage: '+lang.name+'\n'+lang.instruction+'\nReturn ONLY revised segment.';const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:document.getElementById('modelSelect').value,max_tokens:500,messages:[{role:'user',content:prompt}]})});const data=await resp.json(),revised=data.content[0].text.trim();studio.editHistory.push({segmentIndex:studio.selectedIdx+1,original:seg.text,revised:revised,feedback:recordedFeedback.trim(),timestamp:new Date().toISOString()});studio.segments[studio.selectedIdx].text=revised;studio.text=studio.segments.map(s=>s.text).join(' ');document.getElementById('mentorText').textContent=studio.text;updateEditHistory();document.getElementById('recordStatus').innerHTML='<span style="color:#38a169">✅ Done!</span>';await generateAudio();closeFeedbackPanel();}catch(e){document.getElementById('recordStatus').innerHTML='<span style="color:#e53e3e">❌ Error</span>';document.getElementById('feedbackActions').style.display='block';}}
-function updateEditHistory(){const section=document.getElementById('editHistorySection'),list=document.getElementById('editHistoryList');if(!studio.editHistory.length){section.style.display='none';return;}section.style.display='block';list.innerHTML=studio.editHistory.map(e=>'<div class="edit-item"><strong style="color:var(--mentor-primary)">Seg '+e.segmentIndex+'</strong><br><span style="color:#c53030">Before:</span> "'+e.original.substring(0,50)+'..."<br><span style="color:#38a169">After:</span> "'+e.revised.substring(0,50)+'..."</div>').reverse().join('');}
-function initMentorSpeechRecognition(){if(!('webkitSpeechRecognition' in window)&&!('SpeechRecognition' in window))return;const SR=window.SpeechRecognition||window.webkitSpeechRecognition;mentorSpeechRecognition=new SR();mentorSpeechRecognition.continuous=true;mentorSpeechRecognition.interimResults=true;let finalTranscript='';mentorSpeechRecognition.onresult=(event)=>{let interim='';for(let i=event.resultIndex;i<event.results.length;i++){if(event.results[i].isFinal)finalTranscript+=event.results[i][0].transcript+' ';else interim+=event.results[i][0].transcript;}studio.mentorQuestion=finalTranscript+interim;document.getElementById('mentorRecordStatus').innerHTML='<span style="color:#e53e3e">🔴 '+(studio.mentorQuestion||'Listening...')+'</span>';};mentorSpeechRecognition.onend=()=>{isMentorRecording=false;updateMentorRecordButton();if(studio.mentorQuestion.trim()){document.getElementById('mentorRecordStatus').innerHTML='';document.getElementById('mentorQuestionText').textContent=studio.mentorQuestion.trim();document.getElementById('mentorFeedbackActions').style.display='block';}else document.getElementById('mentorRecordStatus').innerHTML='<span style="color:#718096">No speech.</span>';};mentorSpeechRecognition.onerror=()=>{isMentorRecording=false;updateMentorRecordButton();};}
-function toggleMentorRecording(){if(!mentorSpeechRecognition){alert('Speech not supported.');return;}if(isMentorRecording)mentorSpeechRecognition.stop();else{mentorSpeechRecognition.lang=LANGS[document.getElementById('studioLang').value]?.speechLang||'en-US';studio.mentorQuestion='';document.getElementById('mentorFeedbackActions').style.display='none';mentorSpeechRecognition.start();isMentorRecording=true;updateMentorRecordButton();document.getElementById('mentorRecordStatus').innerHTML='<span style="color:#e53e3e">🔴 Listening...</span>';}}
-function updateMentorRecordButton(){const btn=document.getElementById('mentorRecordBtn');if(isMentorRecording){btn.classList.add('recording');btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>';}else{btn.classList.remove('recording');btn.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg>';}}
-function cancelMentorFeedback(){studio.mentorQuestion='';document.getElementById('mentorRecordStatus').innerHTML='';document.getElementById('mentorFeedbackActions').style.display='none';}
-function sendToValidator(){document.getElementById('mentorFeedbackActions').style.display='none';document.getElementById('mentorRecordStatus').innerHTML='<span style="color:#38a169">✅ Sent!</span>';studio.editHistory.push({segmentIndex:'Mentor',original:'Question',revised:studio.mentorQuestion.trim(),feedback:'Awaiting response',timestamp:new Date().toISOString()});updateEditHistory();setTimeout(()=>{document.getElementById('validatorResponseSection').style.display='block';document.getElementById('validatorResponseText').textContent='Waiting for validator response...';},500);studio.mentorQuestion='';}
-function acceptValidatorResponse(){document.getElementById('validatorResponseSection').style.display='none';document.getElementById('mentorRecordStatus').innerHTML='<span style="color:#38a169">✅ Accepted</span>';setTimeout(()=>{document.getElementById('mentorRecordStatus').innerHTML='';},2000);}
-function rejectValidatorResponse(){document.getElementById('validatorResponseSection').style.display='none';document.getElementById('mentorRecordStatus').innerHTML='<span style="color:#718096">Declined</span>';setTimeout(()=>{document.getElementById('mentorRecordStatus').innerHTML='';},2000);}
+
+function toggleApproval(){studio.approved=!studio.approved;document.getElementById('approveBtn').innerHTML=studio.approved?'✅ Approved':'☐ Approve';document.getElementById('sessionSummarySection').style.display=studio.approved?'block':'none';}
+
+async function runStep(step){const apiKey=document.getElementById('apiKey').value||localStorage.getItem('anthropic_api_key'),model=document.getElementById('modelSelect').value,ref=document.getElementById('biblicalRef').value,out=document.getElementById('output'+step);out.innerHTML='<div class="loading"><div class="spinner"></div><div class="loading-text">Processing...</div></div>';let msg='';if(step===1)msg='Biblical Reference: '+ref+'\n\nCreate the Meaning Map JSON.';else if(step===2)msg=document.getElementById('input2').value;
+try{const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:model,max_tokens:8192,system:PROMPTS[step],messages:[{role:'user',content:msg}]})});if(!resp.ok)throw new Error('API error');const data=await resp.json(),result=data.content?.[0]?.text||'';outputs[step]=result;currentStep=step;updateProgress(step+1);
+let nextBtn='';if(step===1)nextBtn='<button class="btn btn-primary btn-large" onclick="goToStep(2);runStep(2)">▶️ Map the Discourse</button>';else if(step===2)nextBtn='<button class="btn btn-primary btn-large" onclick="goToStep(3)">▶️ Review the Draft</button>';
+out.innerHTML='<div class="message message-success">✓ Step '+step+' complete</div><label class="text-label">Result:</label><textarea class="text-box json-output" rows="6" readonly>'+result+'</textarea><div class="button-row">'+(step>1?'<button class="btn btn-secondary" onclick="goToStep('+(step-1)+')">← Back</button>':'')+'<button class="btn btn-secondary" onclick="navigator.clipboard.writeText(outputs['+step+']).then(()=>alert(\'Copied!\'))">📋 Copy</button>'+nextBtn+'</div>';}catch(e){out.innerHTML='<div class="message message-error">Error: '+e.message+'</div><div class="button-row"><button class="btn btn-primary" onclick="runStep('+step+')">Retry</button></div>';}}
+
+function goToStep(step){if(step===3&&document.getElementById('editableDraft')){saveDraftEdits();}currentStep=step;updateProgress(step);showStep(step);window.scrollTo({top:0,behavior:'smooth'});}
+
 function showVoiceModal(){document.getElementById('voiceModal').style.display='flex';loadVoiceConfig();document.getElementById('voiceConfigList').innerHTML=Object.entries(LANGS).map(([k,v])=>'<div style="margin-bottom:1rem"><label style="font-weight:600">'+v.name+'</label><input type="text" class="voice-input" data-lang="'+k+'" value="'+(voiceConfig[k]||'')+'" placeholder="ElevenLabs Voice ID" style="width:100%;padding:0.5rem;margin-top:0.25rem;border:1px solid var(--border);border-radius:var(--radius)"></div>').join('')+'<p style="font-size:0.85em;color:#666">Get Voice IDs from <a href="https://elevenlabs.io" target="_blank">ElevenLabs</a></p>';}
 function hideVoiceModal(){document.getElementById('voiceModal').style.display='none';}
 function loadVoiceConfig(){const s=localStorage.getItem('voice_config');if(s)voiceConfig=JSON.parse(s);}
 function saveVoiceConfig(){document.querySelectorAll('.voice-input').forEach(inp=>{if(inp.value.trim())voiceConfig[inp.dataset.lang]=inp.value.trim();else delete voiceConfig[inp.dataset.lang];});localStorage.setItem('voice_config',JSON.stringify(voiceConfig));hideVoiceModal();alert('Saved!');}
-function copyMentorText(){if(studio.text)navigator.clipboard.writeText(studio.text).then(()=>alert('Copied!'));}
-function updateApprovalUI(){const{validator,mentor,community}=studio.approval,vb=document.getElementById('valBadge'),mb=document.getElementById('menBadge'),cb=document.getElementById('comBadge');if(vb){vb.className='approval-badge '+(validator?'approved':'pending');vb.innerHTML=(validator?'✅':'⏳')+' Validator';}if(mb){mb.className='approval-badge '+(mentor?'approved':validator?'active':'waiting');mb.innerHTML=(mentor?'✅':validator?'🔍':'⏸️')+' Mentor';}if(cb){cb.className='approval-badge '+(community?'approved':mentor?'active':'waiting');cb.innerHTML=(community?'✅':mentor?'👥':'⏸️')+' Community';}const fs=document.getElementById('faithSection');if(fs)fs.style.display=validator?'block':'none';const cs=document.getElementById('comApproveSection');if(cs)cs.style.display=mentor?'block':'none';}
-function toggleValidator(){studio.approval.validator=!studio.approval.validator;document.getElementById('valApproveBtn').innerHTML=studio.approval.validator?'✅ Approved':'☐ Approve';updateApprovalUI();}
-function toggleMentor(){studio.approval.mentor=!studio.approval.mentor;document.getElementById('menApproveBtn').innerHTML=studio.approval.mentor?'✅ Approved':'☐ Approve';updateApprovalUI();}
-function toggleCommunity(){studio.approval.community=!studio.approval.community;document.getElementById('comApproveBtn').innerHTML=studio.approval.community?'✅ Approved':'☐ Approve';updateApprovalUI();checkSessionComplete();}
-function checkSessionComplete(){const ss=document.getElementById('sessionSummarySection');if(ss){ss.style.display=(studio.approval.validator&&studio.approval.mentor&&studio.approval.community)?'block':'none';}}
-async function runAnalysis(){const apiKey=document.getElementById('apiKey').value||localStorage.getItem('anthropic_api_key');if(!apiKey||!studio.text)return alert('Need API key and draft.');const mapJson=outputs[2]||outputs[1];if(!mapJson)return alert('Need Meaning Map.');document.getElementById('analysisStatus').innerHTML='⏳ Analyzing...';try{const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:document.getElementById('modelSelect').value,max_tokens:4000,messages:[{role:'user',content:'Analyze faithfulness:\nMAP: '+mapJson+'\nTRANSLATION: '+studio.text+'\nReturn JSON array: [{"idx":0,"text":"...","status":"pass|warning|fail","score":1-5,"comment":"...","issues":[]}]'}]})});const data=await resp.json(),match=data.content[0].text.match(/\[[\s\S]*\]/);if(match){studio.faithfulness=JSON.parse(match[0]);document.getElementById('analysisStatus').innerHTML='✅ Done';document.getElementById('resultsSection').style.display='block';renderResults();}else throw new Error('Invalid format');}catch(e){document.getElementById('analysisStatus').innerHTML='❌ Error';}}
-function renderResults(){const pass=studio.faithfulness.filter(r=>r.status==='pass').length,warn=studio.faithfulness.filter(r=>r.status==='warning').length,fail=studio.faithfulness.filter(r=>r.status==='fail').length;document.getElementById('analysisStats').innerHTML='<span style="color:#38a169">✅'+pass+'</span> · <span style="color:#d69e2e">⚠️'+warn+'</span> · <span style="color:#e53e3e">❌'+fail+'</span>';document.getElementById('resultsList').innerHTML=studio.faithfulness.map((r,i)=>'<div class="faithfulness-result '+r.status+'" style="'+(r.validated?'opacity:0.7':'')+'">'+'<div style="display:flex;justify-content:space-between"><span>'+{pass:'✅',warning:'⚠️',fail:'❌'}[r.status]+' <strong>Seg '+(r.idx+1)+'</strong></span><span>'+r.score+'/5</span></div>'+'<div style="background:white;padding:0.5rem;border-radius:4px;font-size:0.9em;margin:0.5rem 0">"'+r.text+'"</div>'+'<div style="font-size:0.85em;color:#666">'+r.comment+'</div>'+'<div style="margin-top:0.5rem">'+(r.validated?'<button class="btn btn-small btn-secondary" onclick="unvalidate('+i+')">↩ Undo</button>':'<button class="btn btn-small btn-success" onclick="validate('+i+')">✓ Validate</button>')+'</div></div>').join('');}
-function validate(i){studio.faithfulness[i].validated=true;renderResults();checkMentorReady();}
-function unvalidate(i){studio.faithfulness[i].validated=false;renderResults();checkMentorReady();}
-function checkMentorReady(){document.getElementById('mentorApproveSection').style.display=(studio.faithfulness.length>0&&studio.faithfulness.every(r=>r.validated))?'block':'none';}
-async function runStep(step){const apiKey=document.getElementById('apiKey').value||localStorage.getItem('anthropic_api_key'),model=document.getElementById('modelSelect').value,ref=document.getElementById('biblicalRef').value,lang=document.getElementById('targetLang').value,aud=document.getElementById('targetAudience').value,out=document.getElementById('output'+step);out.innerHTML='<div class="loading"><div class="spinner"></div><div class="loading-text">Processing...</div></div>';let msg='';if(step===1)msg='Biblical Reference: '+ref+'\n\nCreate the Meaning Map JSON.';else if(step===2)msg=document.getElementById('input2').value;else if(step===3)msg='Target: '+(LANGS[lang]?.name||lang)+'\nAudience: '+aud+'\nInstruction: '+(LANGS[lang]?.instruction||'')+'\n\n'+document.getElementById('input3').value;try{const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:model,max_tokens:8192,system:PROMPTS[step],messages:[{role:'user',content:msg}]})});if(!resp.ok)throw new Error('API error');const data=await resp.json(),result=data.content?.[0]?.text||'';outputs[step]=result;currentStep=step;updateProgress(step+1);const isJson=step<=2;let html=isJson?'<textarea class="text-box json-output" rows="6" readonly>'+result+'</textarea>':'<textarea class="text-box output" id="draftText" rows="6">'+result+'</textarea>';let nextBtn='';if(step===1)nextBtn='<button class="btn btn-primary btn-large" onclick="goToStep(2);runStep(2)">▶️ Complete Meaning Map</button>';else if(step===2)nextBtn='<button class="btn btn-primary btn-large" onclick="goToStep(3);runStep(3)">▶️ Draft the Translation</button>';else if(step===3)nextBtn='<button class="btn btn-secondary" onclick="saveDraftEdits()" style="margin-right:0.5rem">💾 Save Edits</button><button class="btn btn-success btn-large" onclick="saveDraftEdits();goToStep(4)">🔊 Review the Draft</button>';out.innerHTML='<div class="message message-success">✓ Step '+step+' complete</div><label class="text-label">Result:</label>'+html+'<div class="button-row"><button class="btn btn-secondary" onclick="navigator.clipboard.writeText(outputs['+step+']).then(()=>alert(\'Copied!\'))">📋 Copy</button>'+nextBtn+'</div>';}catch(e){out.innerHTML='<div class="message message-error">Error: '+e.message+'</div><div class="button-row"><button class="btn btn-primary" onclick="runStep('+step+')">Retry</button></div>';}}
-function goToStep(step){currentStep=step;updateProgress(step);showStep(step);window.scrollTo({top:0,behavior:'smooth'});}
-function saveDraftEdits(){const draftText=document.getElementById('draftText');if(draftText){outputs[3]=draftText.value;document.getElementById('output3').querySelector('.message').textContent='✓ Step 3 complete (edits saved)';}}
-function downloadSessionSummary(){const ref=document.getElementById('biblicalRef').value||'Unknown Reference';const lang=LANGS[document.getElementById('targetLang').value]?.name||'Unknown';const aud=document.getElementById('targetAudience').value||'General';const now=new Date().toLocaleString();const firstDraft=outputs[3]||'';const finalDraft=studio.text||firstDraft;const draftChanged=firstDraft!==finalDraft;const html=`<!DOCTYPE html>
+
+function showSendModal(){document.getElementById('sendReportModal').style.display='flex';}
+function hideSendModal(){document.getElementById('sendReportModal').style.display='none';}
+function sendToReviewer(){const email=document.getElementById('reviewerEmail').value;if(!email){alert('Please enter reviewer email.');return;}const notes=document.getElementById('reviewerNotes').value;const summary=generateSummaryHTML(notes,email);const blob=new Blob([summary],{type:'text/html'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href='mailto:'+email+'?subject=Translation Review Request: '+encodeURIComponent(document.getElementById('biblicalRef').value)+'&body='+encodeURIComponent('Please find the attached session report for review.\n\nNotes: '+(notes||'None')+'\n\nThe full HTML report is attached separately.');a.click();downloadSessionSummary();hideSendModal();alert('Email client opened and report downloaded. Please attach the downloaded HTML file to your email.');}
+
+function generateSummaryHTML(notes,reviewer){const ref=document.getElementById('biblicalRef').value||'Unknown Reference';const lang=LANGS[document.getElementById('targetLang').value]?.name||'Unknown';const aud=document.getElementById('targetAudience').value||'General';const now=new Date().toLocaleString();
+return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Session Summary - ${ref}</title>
+<title>Session Report - ${escapeHtml(ref)}</title>
 <style>
 body{font-family:'Segoe UI',system-ui,sans-serif;max-width:900px;margin:0 auto;padding:2rem;line-height:1.7;color:#1a1a1a;background:#faf9f7}
 h1{color:#92400E;border-bottom:3px solid #F59E0B;padding-bottom:0.5rem}
@@ -181,83 +327,89 @@ h3{color:#166534;margin-top:1.5rem}
 .section{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:1.5rem;margin:1rem 0}
 .json-block{background:#1f2937;color:#e5e7eb;padding:1rem;border-radius:8px;overflow-x:auto;font-family:monospace;font-size:0.85rem;white-space:pre-wrap;max-height:400px;overflow-y:auto}
 .text-block{background:#f0fdf4;border:1px solid #86efac;padding:1rem;border-radius:8px;font-size:1.05rem}
+.analysis-block{background:#ebf8ff;border:1px solid #90cdf4;padding:1rem;border-radius:8px;margin:1rem 0}
+.score-badge{display:inline-block;padding:0.25rem 0.5rem;border-radius:4px;font-weight:600;font-size:0.85rem;margin-right:0.5rem}
+.score-good{background:#c6f6d5;color:#166534}
+.score-ok{background:#fef3c7;color:#92400e}
+.score-low{background:#fecaca;color:#991b1b}
 .edit-item{background:#fef3c7;border-left:4px solid #f59e0b;padding:0.75rem 1rem;margin:0.5rem 0;border-radius:0 8px 8px 0}
-.edit-original{color:#991b1b;font-size:0.9rem}
-.edit-revised{color:#166534;font-size:0.9rem}
-.edit-feedback{color:#6b7280;font-style:italic;font-size:0.85rem;margin-top:0.5rem}
-.approval-status{display:inline-block;padding:0.25rem 0.75rem;border-radius:20px;font-weight:600;font-size:0.85rem}
-.approved{background:#dcfce7;color:#166534}
-.changed{background:#fef3c7;color:#92400e}
-.unchanged{background:#f3f4f6;color:#6b7280}
+.reviewer-notes{background:#e0e7ff;border:2px solid #818cf8;padding:1rem;border-radius:8px;margin:1rem 0}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #e5e7eb;color:#6b7280;font-size:0.85rem;text-align:center}
 </style>
 </head>
 <body>
-<h1>📦 Translation Session Summary</h1>
+<h1>📋 Translation Session Report</h1>
 
 <div class="meta">
-<div class="meta-item"><span class="meta-label">Biblical Reference:</span> ${ref}</div>
-<div class="meta-item"><span class="meta-label">Target Language:</span> ${lang}</div>
-<div class="meta-item"><span class="meta-label">Target Audience:</span> ${aud}</div>
+<div class="meta-item"><span class="meta-label">Biblical Reference:</span> ${escapeHtml(ref)}</div>
+<div class="meta-item"><span class="meta-label">Target Language:</span> ${escapeHtml(lang)}</div>
+<div class="meta-item"><span class="meta-label">Target Audience:</span> ${escapeHtml(aud)}</div>
 <div class="meta-item"><span class="meta-label">Session Date:</span> ${now}</div>
-<div class="meta-item"><span class="meta-label">Approvals:</span> 
-<span class="approval-status approved">✅ Validator</span>
-<span class="approval-status approved">✅ Mentor</span>
-<span class="approval-status approved">✅ Community</span>
+<div class="meta-item"><span class="meta-label">Status:</span> <span style="background:#c6f6d5;color:#166534;padding:0.25rem 0.75rem;border-radius:20px;font-weight:600">✅ Approved</span></div>
+${reviewer?'<div class="meta-item"><span class="meta-label">Sent to:</span> '+escapeHtml(reviewer)+'</div>':''}
 </div>
-</div>
+
+${notes?'<div class="reviewer-notes"><strong>📝 Notes for Reviewer:</strong><p>'+escapeHtml(notes)+'</p></div>':''}
 
 <h2>1. Meaning Map (Events)</h2>
 <div class="section">
-<p>Semantic structure extracted from the biblical text:</p>
 <div class="json-block">${escapeHtml(outputs[1]||'Not generated')}</div>
 </div>
 
 <h2>2. Discourse Structure</h2>
 <div class="section">
-<p>Narrative flow and discourse features:</p>
 <div class="json-block">${escapeHtml(outputs[2]||'Not generated')}</div>
 </div>
 
-<h2>3. Translation Drafts</h2>
+<h2>3. Translation Draft</h2>
 <div class="section">
-<h3>First Draft (AI Generated)</h3>
-<div class="text-block">${escapeHtml(firstDraft)||'<em>Not generated</em>'}</div>
+<h3>AI-Generated Draft</h3>
+<div class="text-block">${escapeHtml(studio.firstDraft)||'<em>Not generated</em>'}</div>
 
-${draftChanged?`<h3>Final Draft <span class="approval-status changed">Edited</span></h3>
-<div class="text-block">${escapeHtml(finalDraft)}</div>`:`<p><span class="approval-status unchanged">No manual edits to initial draft</span></p>`}
+${studio.analysis?`<h3>Quality Analysis</h3>
+<div class="analysis-block">
+<div style="margin-bottom:1rem">
+<span class="score-badge ${studio.analysis.scores.accuracy.score>=4?'score-good':studio.analysis.scores.accuracy.score>=3?'score-ok':'score-low'}">Accuracy: ${studio.analysis.scores.accuracy.score}/5</span>
+<span class="score-badge ${studio.analysis.scores.naturalness.score>=4?'score-good':studio.analysis.scores.naturalness.score>=3?'score-ok':'score-low'}">Naturalness: ${studio.analysis.scores.naturalness.score}/5</span>
+<span class="score-badge ${studio.analysis.scores.intelligibility.score>=4?'score-good':studio.analysis.scores.intelligibility.score>=3?'score-ok':'score-low'}">Intelligibility: ${studio.analysis.scores.intelligibility.score}/5</span>
+<span class="score-badge ${studio.analysis.scores.oralness.score>=4?'score-good':studio.analysis.scores.oralness.score>=3?'score-ok':'score-low'}">Oralness: ${studio.analysis.scores.oralness.score}/5</span>
+<span class="score-badge ${studio.analysis.scores.style.score>=4?'score-good':studio.analysis.scores.style.score>=3?'score-ok':'score-low'}">Style: ${studio.analysis.scores.style.score}/5</span>
+<span class="score-badge ${studio.analysis.overall_score>=4?'score-good':studio.analysis.overall_score>=3?'score-ok':'score-low'}"><strong>Overall: ${studio.analysis.overall_score}/5</strong></span>
+</div>
+<p><strong>Summary:</strong> ${escapeHtml(studio.analysis.summary)}</p>
+</div>`:''}
+
+${studio.editedDraft&&studio.editedDraft!==studio.firstDraft?`<h3>Edited Draft (Final)</h3>
+<div class="text-block" style="background:#dcfce7;border-color:#22c55e">${escapeHtml(studio.editedDraft)}</div>`:'<p><em>No manual edits were made to the draft.</em></p>'}
+
+${studio.editHistory.length>0?`<h3>Edit History</h3>
+${studio.editHistory.map((e,i)=>'<div class="edit-item"><strong>Edit #'+(i+1)+'</strong> - '+new Date(e.timestamp).toLocaleString()+'</div>').join('')}`:''}
 </div>
 
-<h2>4. Performance Revisions</h2>
+<h2>4. Final Approved Text</h2>
 <div class="section">
-${studio.editHistory.length>0?studio.editHistory.map((e,i)=>`<div class="edit-item">
-<strong>Revision ${i+1} - Segment ${e.segmentIndex}</strong>
-<div class="edit-original"><strong>Before:</strong> "${escapeHtml(e.original)}"</div>
-<div class="edit-revised"><strong>After:</strong> "${escapeHtml(e.revised)}"</div>
-<div class="edit-feedback"><strong>Feedback:</strong> ${escapeHtml(e.feedback)}</div>
-</div>`).join(''):`<p style="color:#6b7280"><em>No revisions made during review session.</em></p>`}
+<div class="text-block" style="background:#dcfce7;border-color:#22c55e;font-size:1.1rem">${escapeHtml(studio.editedDraft||studio.firstDraft)||'<em>Not available</em>'}</div>
 </div>
 
-<h2>5. Final Approved Text</h2>
-<div class="section">
-<div class="text-block" style="background:#dcfce7;border-color:#22c55e;font-size:1.1rem">${escapeHtml(finalDraft)||'<em>Not available</em>'}</div>
-</div>
-
-<h2>6. Audio Performance</h2>
+<h2>5. Audio Performance</h2>
 <div class="section">
 <p><strong>Status:</strong> ${studio.fullAudioUrl?'✅ Audio generated and approved':'⏳ No audio generated'}</p>
-<p><em>Use the "Download Audio" button in the app to save the MP3 file separately.</em></p>
+<p><em>The audio file should be downloaded separately using the app.</em></p>
 </div>
 
 <footer>
-<p>Generated by Oral Bridge OBT - Tripod Studio v3</p>
-<p>Ready Vessels Project • Tripod Method</p>
+<p>Generated by Oral Bridge - Hindi Team</p>
+<p>Ready Vessels Project</p>
 </footer>
 </body>
-</html>`;
-const blob=new Blob([html],{type:'text/html'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='session_summary_'+ref.replace(/[^a-z0-9]/gi,'_')+'_'+new Date().toISOString().slice(0,10)+'.html';a.click();URL.revokeObjectURL(url);}
-function escapeHtml(text){if(!text)return'';return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
+</html>`;}
+
+function downloadSessionSummary(){const html=generateSummaryHTML();const blob=new Blob([html],{type:'text/html'});const url=URL.createObjectURL(blob);const a=document.createElement('a');const ref=document.getElementById('biblicalRef').value||'session';a.href=url;a.download='session_report_'+ref.replace(/[^a-z0-9]/gi,'_')+'_'+new Date().toISOString().slice(0,10)+'.html';a.click();URL.revokeObjectURL(url);}
+
 function downloadAudioFile(){if(!studio.fullAudioUrl){alert('No audio file available. Generate the oral performance first.');return;}const ref=document.getElementById('biblicalRef').value||'audio';const a=document.createElement('a');a.href=studio.fullAudioUrl;a.download='oral_performance_'+ref.replace(/[^a-z0-9]/gi,'_')+'_'+new Date().toISOString().slice(0,10)+'.mp3';a.click();}
+
+function escapeHtml(text){if(!text)return'';return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
+
 document.addEventListener('DOMContentLoaded',()=>{const k1=localStorage.getItem('anthropic_api_key'),k2=localStorage.getItem('elevenlabs_api_key');if(k1)document.getElementById('apiKey').value=k1;if(k2)document.getElementById('elevenLabsKey').value=k2;loadVoiceConfig();});
 </script>
 </body>
