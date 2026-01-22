@@ -20,7 +20,25 @@
         .segment-nav{display:flex;height:60px;border-radius:var(--radius-lg);overflow:hidden;margin:1.5rem 0;border:2px solid var(--validator-border);background:white}.segment-block{cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem;transition:all 0.2s;position:relative}.segment-block:hover{filter:brightness(0.92)}.segment-block.playing::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:8px;height:8px;background:currentColor;border-radius:50%;animation:pulse 1s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
         .audio-progress{height:10px;background:#b2f5ea;border-radius:5px;cursor:pointer;margin:1rem 0;overflow:hidden}.audio-progress-fill{height:100%;background:var(--validator-primary);border-radius:5px;width:0%;transition:width 0.1s}
         .status-indicator{font-size:1.1rem;font-weight:600;margin:1rem 0;min-height:2rem}.time-display{font-family:'DM Sans',monospace;font-size:2rem;font-weight:600;color:var(--validator-primary);margin:1rem 0}
-        .analysis-section{background:#F0FFF4;border:2px solid #9AE6B4;border-radius:var(--radius-lg);padding:1.5rem;margin:1.5rem 0}.analysis-item{background:white;border:1px solid #C6F6D5;border-radius:var(--radius);padding:1rem;margin:0.75rem 0}.analysis-item.warning{background:#FFFBEB;border-color:#FCD34D}.analysis-item.issue{background:#FEF2F2;border-color:#FECACA}.analysis-score{display:inline-block;padding:0.25rem 0.75rem;border-radius:20px;font-weight:600;font-size:0.85rem;margin-right:0.5rem}.score-good{background:#C6F6D5;color:#166534}.score-ok{background:#FEF3C7;color:#92400E}.score-low{background:#FECACA;color:#991B1B}
+        .analysis-section{background:linear-gradient(135deg,#EBF8FF,#E0F2FE);border:2px solid #0EA5E9;border-radius:var(--radius-lg);padding:1.5rem;margin:1.5rem 0}
+        .analysis-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid #7DD3FC}
+        .analysis-header h3{color:#0369A1;margin:0}
+        .executive-summary{background:white;border:1px solid #7DD3FC;border-radius:var(--radius);padding:1rem;margin-bottom:1rem;font-style:italic;color:var(--text-secondary)}
+        .analysis-category{background:white;border:1px solid #BAE6FD;border-radius:var(--radius);padding:1rem;margin:0.75rem 0}
+        .analysis-category h4{color:#0369A1;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem}
+        .analysis-category.exegetical{border-left:4px solid #7C3AED}
+        .analysis-category.style{border-left:4px solid #0891B2}
+        .analysis-category.issues{border-left:4px solid #DC2626}
+        .analysis-category.praise{border-left:4px solid #16A34A}
+        .analysis-item{background:#F8FAFC;border-radius:6px;padding:0.75rem;margin:0.5rem 0;font-size:0.9rem}
+        .analysis-item.warning{background:#FEF3C7;border-left:3px solid #F59E0B}
+        .analysis-item.issue{background:#FEE2E2;border-left:3px solid #DC2626}
+        .analysis-item.good{background:#DCFCE7;border-left:3px solid #16A34A}
+        .analysis-label{font-weight:600;color:var(--text-primary);display:block;margin-bottom:0.25rem}
+        .analysis-detail{color:var(--text-secondary);font-size:0.85rem}
+        .recommendation-box{background:#F0FDF4;border:1px solid #86EFAC;border-radius:var(--radius);padding:1rem;margin-top:1rem}
+        .recommendation-box h5{color:#166534;margin-bottom:0.5rem}
+        .suggested-revision{background:#ECFDF5;border:2px dashed #10B981;border-radius:var(--radius);padding:1rem;margin-top:1rem;font-family:'Source Serif 4',serif}
         .edit-section{background:var(--accent-light);border:2px solid var(--accent);border-radius:var(--radius-lg);padding:1.5rem;margin-top:1.5rem}
         .edit-history{background:#f7fafc;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;max-height:200px;overflow-y:auto;font-size:0.9rem;margin-top:1rem}.edit-item{padding:0.5rem;border-bottom:1px solid var(--border);font-size:0.85rem}.edit-item:last-child{border-bottom:none}
         @media(max-width:768px){.container{padding:1rem}h1{font-size:1.5rem}.setup-row{flex-direction:column}.input-group{width:100%}.step{padding:0.5rem 0.75rem;font-size:0.8rem}.main-play-btn{width:100px;height:100px}.main-play-btn svg{width:40px;height:40px}}
@@ -32,7 +50,7 @@
             <div class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><h1>Oral Bridge</h1></div>
             <p class="subtitle">Hindi Team - AI-Assisted Bible Translation</p>
         </header>
-        <div class="setup-section">
+        <div id="setupSection" class="setup-section">
             <div class="setup-row">
                 <div class="input-group"><label for="apiKey">Anthropic API Key</label><input type="password" id="apiKey" placeholder="sk-ant-..."></div>
                 <div class="input-group"><label for="elevenLabsKey">ElevenLabs API Key</label><input type="password" id="elevenLabsKey" placeholder="For audio"></div>
@@ -40,7 +58,7 @@
             </div>
             <div class="setup-row" style="margin-top:1rem">
                 <div class="input-group"><label for="biblicalRef">Biblical Reference</label><input type="text" id="biblicalRef" placeholder="e.g., Ruth 1:1-5"></div>
-                <div class="input-group"><label for="targetLang">Target Language</label><select id="targetLang"><option value="hindi">Hindi (बोलचाल)</option><option value="english">English (Oral)</option><option value="portuguese_sertanejo">Portuguese (Sertanejo)</option><option value="spanish">Spanish (Coloquial)</option><option value="korean">Korean (구어체)</option><option value="indonesian">Bahasa Indonesia</option></select></div>
+                <div class="input-group"><label for="targetLang">Target Language</label><select id="targetLang"><option value="hindi">Hindi (बोलचाल)</option><option value="indian_english">Indian English (Oral)</option></select></div>
                 <div class="input-group"><label for="targetAudience">Target Audience</label><input type="text" id="targetAudience" placeholder="e.g., Rural farmers"></div>
             </div>
             <div class="button-row button-row-center" style="margin-top:1.5rem"><button class="btn btn-primary btn-large" onclick="startStep1()">▶️ Start Translation</button></div>
@@ -71,7 +89,12 @@
     </div>
 <script>
 let currentStep=0,outputs={},studio={text:'',firstDraft:'',editedDraft:'',segments:[],playingIdx:-1,isPlaying:false,analysis:null,editHistory:[],fullAudioUrl:null,approved:false},voiceConfig={};
-const LANGS={hindi:{name:"Hindi (बोलचाल)",instruction:"हिंदी की बोलचाल की भाषा में लिखें। मौखिक चिह्नक उपयोग करें।",speechLang:'hi-IN'},english:{name:"English (Oral)",instruction:"Generate in natural, spoken English using oral storytelling register. Include oral markers: 'Now listen...', 'Then...'. Avoid formal Bible-speak.",speechLang:'en-US'},portuguese_sertanejo:{name:"Portuguese (Sertanejo)",instruction:"Gere em português do Sertão Nordestino, registro oral. Use marcadores: 'Escuta só...', 'Aí...'.",speechLang:'pt-BR'},spanish:{name:"Spanish (Coloquial)",instruction:"Genera en español coloquial hablado. Usa marcadores orales.",speechLang:'es-ES'},korean:{name:"Korean (구어체)",instruction:"한국어 구어체로 생성하세요. 구술 표지를 사용하세요.",speechLang:'ko-KR'},indonesian:{name:"Bahasa Indonesia",instruction:"Tulis dalam Bahasa Indonesia lisan sehari-hari.",speechLang:'id-ID'}};
+
+const LANGS={
+    hindi:{name:"Hindi (बोलचाल)",instruction:"हिंदी की बोलचाल की भाषा में लिखें। मौखिक चिह्नक उपयोग करें। Use natural Hindi storytelling patterns with appropriate oral markers like 'सुनो...', 'फिर...', 'तब...'",speechLang:'hi-IN'},
+    indian_english:{name:"Indian English (Oral)",instruction:"Generate in natural Indian English oral storytelling register. Use patterns familiar to Indian audiences: 'Listen now...', 'So then...', 'After that only...'. Include appropriate discourse markers. Avoid formal Western Bible-speak.",speechLang:'en-IN'}
+};
+
 const PROMPTS={1:`You are the Event Architect. Convert the biblical passage into a Meaning Map JSON with: meta, frames, participants, events. Use closed Event Cores, semantic roles, and modifiers. Return ONLY valid JSON.`,2:`You are the Discourse Weaver. Add discourse structure to the Meaning Map: functional_genre, literary_form, thematic_spine, peak_event_id, and for each event add discourse_function (SET/BG/MAIN/EVAL), peak flag, and discourse_logic relations. Return the enhanced JSON only.`,3:`You are the Oral Storyteller. Transform the Meaning Map into natural oral narrative.
 
 === FIDELITY CONSTRAINTS (ABSOLUTE) ===
@@ -114,43 +137,101 @@ Test every addition: If removing it loses NO theological/narrative facts but onl
 === OUTPUT ===
 Generate natural oral narrative. Sound like spoken storytelling, not written text. Use the target language's oral register. Output ONLY the narrative.`};
 
-const ANALYSIS_PROMPT=`You are a translation quality analyst. Analyze the draft translation against the Meaning Map for:
+const ANALYSIS_PROMPT=`You are an expert Bible Translation Consultant specializing in Oral Bible Translation (OBT). You possess deep proficiency in Biblical Hebrew (Masoretic Text) and Biblical Greek (Nestle-Aland), as well as principles of missiology, linguistics, and oral storytelling traditions.
 
-1. ACCURACY (1-5): Does it preserve all events, participants, and relationships from the Meaning Map?
-2. NATURALNESS (1-5): Does it sound like natural spoken language, not written text?
-3. INTELLIGIBILITY (1-5): Would the target audience easily understand this?
-4. ORALNESS (1-5): Does it use appropriate oral markers, rhythm, and storytelling patterns?
-5. STYLE/REGISTER (1-5): Is the register appropriate for oral Bible storytelling?
+=== YOUR MINDSET ===
+You are a partner to the human reviewer. Do NOT issue final verdicts (e.g., "This is wrong"). Instead, provide observations, risk assessments, and constructive recommendations. You value Dynamic Equivalence (meaning-based translation) over Formal Equivalence (word-for-word), provided the original intent is preserved.
 
-For each criterion, provide:
-- Score (1-5)
-- Brief explanation
-- Specific recommendations for improvement (if any)
+=== ANALYSIS PROTOCOL ===
 
-Also list any:
-- Missing elements from the Meaning Map
-- Unauthorized additions
-- Awkward phrasings that need revision
+**1. EXEGETICAL & THEOLOGICAL CHECK (The Source)**
+- Compare the draft against the original Hebrew/Greek text concepts represented in the Meaning Map
+- Does the draft convey the communicative intent of the original author?
+- Are major theological terms (Sin, Covenant, Redemption, Grace, YHWH/God) handled correctly?
+- Note: In OBT, complex terms often require descriptive phrases. Ensure these descriptions are accurate.
+- Flag any UNWARRANTED ADDITIONS (ideas not present or implied in the text)
+- Flag any HARMFUL OMISSIONS (dropping details that alter the plot or theology)
+- EXCEPTION: Do NOT flag "Implicit Information made Explicit" as an error - this is necessary for OBT
 
-Return as JSON:
+**2. CULTURAL & STYLISTIC CHECK (The Audience)**
+- REGISTER: Does the language fit the requested oral storytelling style?
+- ORALITY: Is the text "ear-friendly"?
+  - Look for visual markers that need to be audible (e.g., "He nodded" should become "He agreed")
+  - Check for connectives that help flow ("So then," "After that")
+- IDIOMS: Are idioms natural for the target audience?
+- TRANSLATIONESE: Flag any unnatural phrasing that sounds like translated text rather than natural speech
+- TRANSLITERATION WARNING: Be hyper-vigilant about Hebrew/Greek words being transliterated instead of translated
+
+**3. ORAL METADISCOURSE CHECK (Performance Framing)**
+Evaluate the use of navigational cues according to the three permitted categories:
+- ATTENTIONAL MARKERS (phatic): Do they manage listener focus without adding evaluation?
+- STRUCTURAL MARKERS (discursive): Do they orient the listener without adding interpretation?
+- TURN-TAKING MARKERS (deictic): Do they clarify speakers without adding characterization?
+Apply the SUBTRACTION RULE: If removing a cue loses NO theological/narrative facts but only causes structural confusion, it is legitimate.
+
+=== OUTPUT FORMAT ===
+Return as JSON with this structure:
 {
-  "scores": {
-    "accuracy": {"score": N, "comment": "...", "recommendations": []},
-    "naturalness": {"score": N, "comment": "...", "recommendations": []},
-    "intelligibility": {"score": N, "comment": "...", "recommendations": []},
-    "oralness": {"score": N, "comment": "...", "recommendations": []},
-    "style": {"score": N, "comment": "...", "recommendations": []}
+  "executive_summary": "2-3 sentence overview of the draft's quality and key concerns",
+  "exegetical_analysis": {
+    "theological_accuracy": "assessment of how well key concepts are preserved",
+    "issues": [
+      {
+        "segment": "the problematic text",
+        "hebrew_greek_concept": "original term/meaning if applicable",
+        "draft_rendering": "what the draft says",
+        "analysis": "explain the gap - is it a loss of meaning? theological risk?",
+        "severity": "high|medium|low",
+        "recommendation": "suggested fix or question for reviewer"
+      }
+    ],
+    "implicit_made_explicit": ["list of acceptable clarifications that aid comprehension"]
   },
-  "missing_elements": [],
-  "unauthorized_additions": [],
-  "awkward_phrasings": [],
-  "overall_score": N,
-  "summary": "..."
+  "style_analysis": {
+    "register_fit": "assessment of whether language fits oral storytelling",
+    "orality_score": "1-5 rating of ear-friendliness",
+    "praise": ["excellent cultural adaptations or natural phrasings"],
+    "critiques": [
+      {
+        "segment": "problematic phrase",
+        "issue": "what's wrong - translationese, awkward phrasing, etc.",
+        "suggestion": "how to improve"
+      }
+    ],
+    "transliteration_warnings": ["any Hebrew/Greek terms left untranslated"]
+  },
+  "oral_metadiscourse": {
+    "attentional_markers": {"examples": [], "assessment": ""},
+    "structural_markers": {"examples": [], "assessment": ""},
+    "turn_taking_markers": {"examples": [], "assessment": ""},
+    "illegitimate_additions": ["any cues that add content rather than manage process"]
+  },
+  "suggested_revision": "A rewritten version incorporating key recommendations while maintaining the oral style",
+  "overall_assessment": {
+    "ready_for_performance": true/false,
+    "priority_fixes": ["list of most important changes needed"],
+    "strengths": ["what the draft does well"]
+  }
 }`;
 
 const SEGMENT_COLORS=[{bg:'#bee3f8',color:'#2b6cb0'},{bg:'#c6f6d5',color:'#22543d'},{bg:'#fefcbf',color:'#744210'},{bg:'#fed7d7',color:'#c53030'},{bg:'#e9d8fd',color:'#553c9a'},{bg:'#b2f5ea',color:'#234e52'}];
 
-function startStep1(){const apiKey=document.getElementById('apiKey').value,ref=document.getElementById('biblicalRef').value;if(!apiKey)return alert('Please enter your API key.');if(!ref)return alert('Please enter a biblical reference.');localStorage.setItem('anthropic_api_key',apiKey);const el=document.getElementById('elevenLabsKey');if(el.value)localStorage.setItem('elevenlabs_api_key',el.value);currentStep=1;document.getElementById('progressSteps').classList.remove('hidden');document.getElementById('workArea').classList.remove('hidden');updateProgress(1);showStep(1);runStep(1);}
+function startStep1(){
+    const apiKey=document.getElementById('apiKey').value,ref=document.getElementById('biblicalRef').value;
+    if(!apiKey)return alert('Please enter your API key.');
+    if(!ref)return alert('Please enter a biblical reference.');
+    localStorage.setItem('anthropic_api_key',apiKey);
+    const el=document.getElementById('elevenLabsKey');
+    if(el.value)localStorage.setItem('elevenlabs_api_key',el.value);
+    // Hide the setup section
+    document.getElementById('setupSection').classList.add('hidden');
+    currentStep=1;
+    document.getElementById('progressSteps').classList.remove('hidden');
+    document.getElementById('workArea').classList.remove('hidden');
+    updateProgress(1);
+    showStep(1);
+    runStep(1);
+}
 
 function updateProgress(step){for(let i=1;i<=4;i++){const ind=document.getElementById('step'+i+'Ind');ind.classList.remove('active','completed');if(i<step&&outputs[i])ind.classList.add('completed');else if(i===step)ind.classList.add('active');}}
 
@@ -164,16 +245,12 @@ function buildStep3UI(){const langName=LANGS[document.getElementById('targetLang
 let html='<div class="card-header step-3"><div class="step-badge">3</div><div class="card-title"><h2>Review the Draft</h2><p>'+langName+'</p></div></div><div class="card-body">';
 html+='<textarea class="text-box json-output" id="input3" rows="4" style="display:none">'+(outputs[2]||'')+'</textarea>';
 html+='<div id="step3Content">';
-if(!studio.firstDraft){html+='<div class="button-row button-row-center"><button class="btn btn-primary btn-large" onclick="generateAndAnalyzeDraft()">🤖 Generate Draft</button></div>';}
+if(!studio.firstDraft){html+='<div class="button-row button-row-center"><button class="btn btn-primary btn-large" onclick="generateAndAnalyzeDraft()">🤖 Generate Draft</button><button class="btn btn-secondary" onclick="goToStep(2)" style="margin-left:0.5rem">← Back to Step 2</button></div>';}
 else{
 html+='<div class="message message-success">✓ Draft generated</div>';
 html+='<label class="text-label">Generated Draft (read-only):</label>';
 html+='<textarea class="text-box output" rows="6" readonly>'+escapeHtml(studio.firstDraft)+'</textarea>';
-if(studio.analysis){
-html+='<div class="analysis-section"><h3 style="color:#166534;margin-bottom:1rem">📊 Quality Analysis</h3>';
-html+=renderAnalysis(studio.analysis);
-html+='</div>';
-}
+if(studio.analysis){html+=renderAnalysis(studio.analysis);}
 html+='<div class="edit-section"><h3 style="color:var(--accent);margin-bottom:1rem">✏️ Edit the Draft</h3>';
 html+='<p style="margin-bottom:1rem;color:var(--text-secondary)">Review the analysis above and make any necessary changes to the draft below:</p>';
 html+='<textarea class="text-box editable" id="editableDraft" rows="8">'+escapeHtml(studio.editedDraft||studio.firstDraft)+'</textarea>';
@@ -186,21 +263,102 @@ html+='</div>';}
 html+='</div></div>';
 return html;}
 
-function renderAnalysis(analysis){let html='<div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem">';
-const criteria=['accuracy','naturalness','intelligibility','oralness','style'];
-criteria.forEach(c=>{const s=analysis.scores[c];const scoreClass=s.score>=4?'score-good':s.score>=3?'score-ok':'score-low';
-html+='<span class="analysis-score '+scoreClass+'">'+c.charAt(0).toUpperCase()+c.slice(1)+': '+s.score+'/5</span>';});
-html+='<span class="analysis-score '+(analysis.overall_score>=4?'score-good':analysis.overall_score>=3?'score-ok':'score-low')+'">Overall: '+analysis.overall_score+'/5</span></div>';
-html+='<p style="margin-bottom:1rem;font-style:italic">'+escapeHtml(analysis.summary)+'</p>';
-criteria.forEach(c=>{const s=analysis.scores[c];if(s.recommendations&&s.recommendations.length>0){
-html+='<div class="analysis-item'+(s.score<3?' issue':s.score<4?' warning':'')+'"><strong>'+c.charAt(0).toUpperCase()+c.slice(1)+':</strong> '+escapeHtml(s.comment);
-html+='<ul style="margin:0.5rem 0 0 1.5rem">';s.recommendations.forEach(r=>{html+='<li>'+escapeHtml(r)+'</li>';});html+='</ul></div>';}});
-if(analysis.missing_elements&&analysis.missing_elements.length>0){html+='<div class="analysis-item issue"><strong>⚠️ Missing Elements:</strong><ul style="margin:0.5rem 0 0 1.5rem">';analysis.missing_elements.forEach(m=>{html+='<li>'+escapeHtml(m)+'</li>';});html+='</ul></div>';}
-if(analysis.unauthorized_additions&&analysis.unauthorized_additions.length>0){html+='<div class="analysis-item issue"><strong>⚠️ Unauthorized Additions:</strong><ul style="margin:0.5rem 0 0 1.5rem">';analysis.unauthorized_additions.forEach(a=>{html+='<li>'+escapeHtml(a)+'</li>';});html+='</ul></div>';}
-if(analysis.awkward_phrasings&&analysis.awkward_phrasings.length>0){html+='<div class="analysis-item warning"><strong>📝 Awkward Phrasings:</strong><ul style="margin:0.5rem 0 0 1.5rem">';analysis.awkward_phrasings.forEach(p=>{html+='<li>'+escapeHtml(p)+'</li>';});html+='</ul></div>';}
+function renderAnalysis(analysis){
+let html='<div class="analysis-section">';
+html+='<div class="analysis-header"><span style="font-size:1.5rem">📋</span><h3>Translation Consultant Analysis</h3></div>';
+
+// Executive Summary
+if(analysis.executive_summary){
+html+='<div class="executive-summary"><strong>Executive Summary:</strong> '+escapeHtml(analysis.executive_summary)+'</div>';}
+
+// Exegetical Analysis
+if(analysis.exegetical_analysis){
+html+='<div class="analysis-category exegetical"><h4>📖 Exegetical & Theological Check</h4>';
+if(analysis.exegetical_analysis.theological_accuracy){
+html+='<div class="analysis-item good"><span class="analysis-label">Theological Accuracy</span><span class="analysis-detail">'+escapeHtml(analysis.exegetical_analysis.theological_accuracy)+'</span></div>';}
+if(analysis.exegetical_analysis.issues&&analysis.exegetical_analysis.issues.length>0){
+analysis.exegetical_analysis.issues.forEach(issue=>{
+const cls=issue.severity==='high'?'issue':issue.severity==='medium'?'warning':'';
+html+='<div class="analysis-item '+cls+'">';
+html+='<span class="analysis-label">'+(issue.severity==='high'?'⚠️ ':'')+'Issue: "'+escapeHtml(issue.segment)+'"</span>';
+if(issue.hebrew_greek_concept)html+='<div class="analysis-detail"><strong>Hebrew/Greek:</strong> '+escapeHtml(issue.hebrew_greek_concept)+'</div>';
+if(issue.draft_rendering)html+='<div class="analysis-detail"><strong>Draft says:</strong> '+escapeHtml(issue.draft_rendering)+'</div>';
+html+='<div class="analysis-detail"><strong>Analysis:</strong> '+escapeHtml(issue.analysis)+'</div>';
+if(issue.recommendation)html+='<div class="analysis-detail" style="color:#166534"><strong>Recommendation:</strong> '+escapeHtml(issue.recommendation)+'</div>';
+html+='</div>';});}
+if(analysis.exegetical_analysis.implicit_made_explicit&&analysis.exegetical_analysis.implicit_made_explicit.length>0){
+html+='<div class="analysis-item good"><span class="analysis-label">✓ Acceptable Implicit→Explicit Clarifications</span>';
+html+='<ul style="margin:0.5rem 0 0 1.5rem;font-size:0.85rem">';
+analysis.exegetical_analysis.implicit_made_explicit.forEach(item=>{html+='<li>'+escapeHtml(item)+'</li>';});
+html+='</ul></div>';}
+html+='</div>';}
+
+// Style Analysis
+if(analysis.style_analysis){
+html+='<div class="analysis-category style"><h4>🎭 Style & Naturalness Check</h4>';
+if(analysis.style_analysis.register_fit){
+html+='<div class="analysis-item"><span class="analysis-label">Register Fit</span><span class="analysis-detail">'+escapeHtml(analysis.style_analysis.register_fit)+'</span></div>';}
+if(analysis.style_analysis.orality_score){
+const score=parseInt(analysis.style_analysis.orality_score)||3;
+const scoreClass=score>=4?'good':score>=3?'':'warning';
+html+='<div class="analysis-item '+scoreClass+'"><span class="analysis-label">Orality Score: '+score+'/5</span></div>';}
+if(analysis.style_analysis.praise&&analysis.style_analysis.praise.length>0){
+html+='<div class="analysis-item good"><span class="analysis-label">✓ Excellent Adaptations</span><ul style="margin:0.5rem 0 0 1.5rem;font-size:0.85rem">';
+analysis.style_analysis.praise.forEach(p=>{html+='<li>'+escapeHtml(p)+'</li>';});
+html+='</ul></div>';}
+if(analysis.style_analysis.critiques&&analysis.style_analysis.critiques.length>0){
+analysis.style_analysis.critiques.forEach(c=>{
+html+='<div class="analysis-item warning"><span class="analysis-label">Style Issue: "'+escapeHtml(c.segment)+'"</span>';
+html+='<div class="analysis-detail"><strong>Problem:</strong> '+escapeHtml(c.issue)+'</div>';
+if(c.suggestion)html+='<div class="analysis-detail" style="color:#166534"><strong>Suggestion:</strong> '+escapeHtml(c.suggestion)+'</div>';
+html+='</div>';});}
+if(analysis.style_analysis.transliteration_warnings&&analysis.style_analysis.transliteration_warnings.length>0){
+html+='<div class="analysis-item issue"><span class="analysis-label">⚠️ Transliteration Warnings</span><ul style="margin:0.5rem 0 0 1.5rem;font-size:0.85rem">';
+analysis.style_analysis.transliteration_warnings.forEach(w=>{html+='<li>'+escapeHtml(w)+'</li>';});
+html+='</ul></div>';}
+html+='</div>';}
+
+// Oral Metadiscourse
+if(analysis.oral_metadiscourse){
+html+='<div class="analysis-category"><h4>🎤 Oral Performance Framing</h4>';
+['attentional_markers','structural_markers','turn_taking_markers'].forEach(type=>{
+const data=analysis.oral_metadiscourse[type];
+if(data&&(data.examples?.length>0||data.assessment)){
+const label=type.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
+html+='<div class="analysis-item"><span class="analysis-label">'+label+'</span>';
+if(data.examples&&data.examples.length>0){
+html+='<div class="analysis-detail">Examples: '+data.examples.map(e=>'"'+escapeHtml(e)+'"').join(', ')+'</div>';}
+if(data.assessment)html+='<div class="analysis-detail">'+escapeHtml(data.assessment)+'</div>';
+html+='</div>';}});
+if(analysis.oral_metadiscourse.illegitimate_additions&&analysis.oral_metadiscourse.illegitimate_additions.length>0){
+html+='<div class="analysis-item issue"><span class="analysis-label">⚠️ Illegitimate Additions (add content, not just manage process)</span><ul style="margin:0.5rem 0 0 1.5rem;font-size:0.85rem">';
+analysis.oral_metadiscourse.illegitimate_additions.forEach(a=>{html+='<li>'+escapeHtml(a)+'</li>';});
+html+='</ul></div>';}
+html+='</div>';}
+
+// Overall Assessment
+if(analysis.overall_assessment){
+html+='<div class="recommendation-box"><h5>📊 Overall Assessment</h5>';
+if(typeof analysis.overall_assessment.ready_for_performance==='boolean'){
+html+='<div style="margin-bottom:0.5rem"><strong>Ready for Performance:</strong> '+(analysis.overall_assessment.ready_for_performance?'<span style="color:#166534">✅ Yes</span>':'<span style="color:#991B1B">❌ Not yet</span>')+'</div>';}
+if(analysis.overall_assessment.strengths&&analysis.overall_assessment.strengths.length>0){
+html+='<div style="margin-bottom:0.5rem"><strong>Strengths:</strong><ul style="margin:0.25rem 0 0 1.5rem">';
+analysis.overall_assessment.strengths.forEach(s=>{html+='<li style="color:#166534">'+escapeHtml(s)+'</li>';});
+html+='</ul></div>';}
+if(analysis.overall_assessment.priority_fixes&&analysis.overall_assessment.priority_fixes.length>0){
+html+='<div><strong>Priority Fixes:</strong><ol style="margin:0.25rem 0 0 1.5rem">';
+analysis.overall_assessment.priority_fixes.forEach(f=>{html+='<li style="color:#991B1B">'+escapeHtml(f)+'</li>';});
+html+='</ol></div>';}
+html+='</div>';}
+
+// Suggested Revision
+if(analysis.suggested_revision){
+html+='<div class="suggested-revision"><strong>📝 Suggested Revision:</strong><p style="margin-top:0.5rem;white-space:pre-wrap">'+escapeHtml(analysis.suggested_revision)+'</p></div>';}
+
+html+='</div>';
 return html;}
 
-async function generateAndAnalyzeDraft(){const apiKey=document.getElementById('apiKey').value||localStorage.getItem('anthropic_api_key'),model=document.getElementById('modelSelect').value,lang=document.getElementById('targetLang').value,aud=document.getElementById('targetAudience').value;
+async function generateAndAnalyzeDraft(){const apiKey=document.getElementById('apiKey').value||localStorage.getItem('anthropic_api_key'),model=document.getElementById('modelSelect').value,lang=document.getElementById('targetLang').value,aud=document.getElementById('targetAudience').value,ref=document.getElementById('biblicalRef').value;
 const content=document.getElementById('step3Content');
 content.innerHTML='<div class="loading"><div class="spinner"></div><div class="loading-text">Generating draft...</div></div>';
 try{
@@ -211,12 +369,12 @@ const data=await resp.json();
 studio.firstDraft=data.content?.[0]?.text||'';
 studio.editedDraft=studio.firstDraft;
 outputs[3]=studio.firstDraft;
-content.innerHTML='<div class="loading"><div class="spinner"></div><div class="loading-text">Analyzing quality...</div></div>';
-const analysisResp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:model,max_tokens:4000,system:ANALYSIS_PROMPT,messages:[{role:'user',content:'MEANING MAP:\n'+(outputs[2]||outputs[1])+'\n\nDRAFT TRANSLATION:\n'+studio.firstDraft}]})});
+content.innerHTML='<div class="loading"><div class="spinner"></div><div class="loading-text">Analyzing quality with Translation Consultant...</div></div>';
+const analysisResp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:model,max_tokens:8000,system:ANALYSIS_PROMPT,messages:[{role:'user',content:'BIBLICAL REFERENCE: '+ref+'\n\nTARGET LANGUAGE: '+(LANGS[lang]?.name||lang)+'\n\nTARGET AUDIENCE: '+aud+'\n\nMEANING MAP:\n'+(outputs[2]||outputs[1])+'\n\nDRAFT TRANSLATION:\n'+studio.firstDraft}]})});
 if(analysisResp.ok){const analysisData=await analysisResp.json();const analysisText=analysisData.content?.[0]?.text||'';const match=analysisText.match(/\{[\s\S]*\}/);if(match){try{studio.analysis=JSON.parse(match[0]);}catch(e){console.error('Analysis parse error',e);}}}
 updateProgress(4);
 showStep(3);
-}catch(e){content.innerHTML='<div class="message message-error">Error: '+e.message+'</div><div class="button-row"><button class="btn btn-primary" onclick="generateAndAnalyzeDraft()">Retry</button></div>';}}
+}catch(e){content.innerHTML='<div class="message message-error">Error: '+e.message+'</div><div class="button-row"><button class="btn btn-primary" onclick="generateAndAnalyzeDraft()">Retry</button><button class="btn btn-secondary" onclick="goToStep(2)">← Back</button></div>';}}
 
 function saveDraftEdits(){const textarea=document.getElementById('editableDraft');if(textarea){const newText=textarea.value;if(newText!==studio.editedDraft){studio.editHistory.push({timestamp:new Date().toISOString(),previous:studio.editedDraft,current:newText});studio.editedDraft=newText;outputs[3]=newText;}}}
 
@@ -328,10 +486,6 @@ h3{color:#166534;margin-top:1.5rem}
 .json-block{background:#1f2937;color:#e5e7eb;padding:1rem;border-radius:8px;overflow-x:auto;font-family:monospace;font-size:0.85rem;white-space:pre-wrap;max-height:400px;overflow-y:auto}
 .text-block{background:#f0fdf4;border:1px solid #86efac;padding:1rem;border-radius:8px;font-size:1.05rem}
 .analysis-block{background:#ebf8ff;border:1px solid #90cdf4;padding:1rem;border-radius:8px;margin:1rem 0}
-.score-badge{display:inline-block;padding:0.25rem 0.5rem;border-radius:4px;font-weight:600;font-size:0.85rem;margin-right:0.5rem}
-.score-good{background:#c6f6d5;color:#166534}
-.score-ok{background:#fef3c7;color:#92400e}
-.score-low{background:#fecaca;color:#991b1b}
 .edit-item{background:#fef3c7;border-left:4px solid #f59e0b;padding:0.75rem 1rem;margin:0.5rem 0;border-radius:0 8px 8px 0}
 .reviewer-notes{background:#e0e7ff;border:2px solid #818cf8;padding:1rem;border-radius:8px;margin:1rem 0}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #e5e7eb;color:#6b7280;font-size:0.85rem;text-align:center}
@@ -366,17 +520,10 @@ ${notes?'<div class="reviewer-notes"><strong>📝 Notes for Reviewer:</strong><p
 <h3>AI-Generated Draft</h3>
 <div class="text-block">${escapeHtml(studio.firstDraft)||'<em>Not generated</em>'}</div>
 
-${studio.analysis?`<h3>Quality Analysis</h3>
+${studio.analysis?`<h3>Translation Consultant Analysis</h3>
 <div class="analysis-block">
-<div style="margin-bottom:1rem">
-<span class="score-badge ${studio.analysis.scores.accuracy.score>=4?'score-good':studio.analysis.scores.accuracy.score>=3?'score-ok':'score-low'}">Accuracy: ${studio.analysis.scores.accuracy.score}/5</span>
-<span class="score-badge ${studio.analysis.scores.naturalness.score>=4?'score-good':studio.analysis.scores.naturalness.score>=3?'score-ok':'score-low'}">Naturalness: ${studio.analysis.scores.naturalness.score}/5</span>
-<span class="score-badge ${studio.analysis.scores.intelligibility.score>=4?'score-good':studio.analysis.scores.intelligibility.score>=3?'score-ok':'score-low'}">Intelligibility: ${studio.analysis.scores.intelligibility.score}/5</span>
-<span class="score-badge ${studio.analysis.scores.oralness.score>=4?'score-good':studio.analysis.scores.oralness.score>=3?'score-ok':'score-low'}">Oralness: ${studio.analysis.scores.oralness.score}/5</span>
-<span class="score-badge ${studio.analysis.scores.style.score>=4?'score-good':studio.analysis.scores.style.score>=3?'score-ok':'score-low'}">Style: ${studio.analysis.scores.style.score}/5</span>
-<span class="score-badge ${studio.analysis.overall_score>=4?'score-good':studio.analysis.overall_score>=3?'score-ok':'score-low'}"><strong>Overall: ${studio.analysis.overall_score}/5</strong></span>
-</div>
-<p><strong>Summary:</strong> ${escapeHtml(studio.analysis.summary)}</p>
+${studio.analysis.executive_summary?'<p><strong>Summary:</strong> '+escapeHtml(studio.analysis.executive_summary)+'</p>':''}
+${studio.analysis.overall_assessment?.ready_for_performance!==undefined?'<p><strong>Ready for Performance:</strong> '+(studio.analysis.overall_assessment.ready_for_performance?'Yes':'No')+'</p>':''}
 </div>`:''}
 
 ${studio.editedDraft&&studio.editedDraft!==studio.firstDraft?`<h3>Edited Draft (Final)</h3>
