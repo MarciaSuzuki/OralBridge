@@ -8,37 +8,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root{--bg-primary:#FAF9F7;--bg-secondary:#FFFFFF;--bg-tertiary:#F3F1ED;--text-primary:#1A1A1A;--text-secondary:#5A5A5A;--text-muted:#8A8A8A;--accent:#B45309;--accent-light:#FEF3C7;--accent-hover:#92400E;--border:#E5E2DC;--success:#166534;--success-bg:#DCFCE7;--agent1:#7C3AED;--agent2:#0891B2;--agent3:#059669;--agent4:#6B21A8;--validator-primary:#319795;--validator-bg:#E6FFFA;--validator-border:#81E6D9;--shadow-sm:0 1px 2px rgba(0,0,0,0.05);--shadow-md:0 4px 6px -1px rgba(0,0,0,0.07),0 2px 4px -1px rgba(0,0,0,0.04);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);--radius:8px;--radius-lg:12px}
-        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6;min-height:100vh}.container{max-width:1000px;margin:0 auto;padding:2rem}header{text-align:center;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}.logo{display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:0.5rem}.logo-icon{width:48px;height:48px;background:var(--accent);border-radius:12px;display:flex;align-items:center;justify-content:center}.logo-icon svg{width:28px;height:28px;fill:white}h1{font-family:'Source Serif 4',serif;font-size:2rem;font-weight:600}.subtitle{color:var(--text-secondary);font-size:1rem;margin-top:0.25rem}
+        :root{--bg-primary:#F6F5EB;--bg-secondary:#FFFFFF;--bg-tertiary:#C5C29F;--text-primary:#0A0703;--text-secondary:#3F3E20;--text-muted:#777D45;--accent:#BE4A01;--accent-light:#F6F5EB;--accent-hover:#8a3601;--border:#C5C29F;--success:#777D45;--success-bg:#e8e9d9;--agent1:#BE4A01;--agent2:#89AAA3;--agent3:#777D45;--agent4:#3F3E20;--validator-primary:#89AAA3;--validator-bg:#e8f2f0;--validator-border:#89AAA3;--shadow-sm:0 1px 2px rgba(10,7,3,0.08);--shadow-md:0 4px 6px -1px rgba(10,7,3,0.1),0 2px 4px -1px rgba(10,7,3,0.06);--shadow-lg:0 10px 15px -3px rgba(10,7,3,0.12),0 4px 6px -2px rgba(10,7,3,0.07);--radius:8px;--radius-lg:12px}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6;min-height:100vh}.container{max-width:1000px;margin:0 auto;padding:2rem}header{text-align:center;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}.logo{display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:0.5rem}.logo-icon{width:48px;height:48px;background:transparent;border-radius:12px;display:flex;align-items:center;justify-content:center}.logo-icon svg{width:48px;height:48px}h1{font-family:'Source Serif 4',serif;font-size:2rem;font-weight:600}.subtitle{color:var(--text-secondary);font-size:1rem;margin-top:0.25rem}
         .setup-section{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem;box-shadow:var(--shadow-sm)}.setup-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end}.input-group{flex:1;min-width:180px}.input-group label{display:block;font-weight:500;margin-bottom:0.5rem;font-size:0.95rem}.input-group input,.input-group select{width:100%;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius);font-size:1rem;font-family:inherit;background:var(--bg-primary)}.input-group input:focus,.input-group select:focus{outline:none;border-color:var(--accent);background:var(--bg-secondary)}
         .progress-steps{display:flex;justify-content:center;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap}.step{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.875rem;background:var(--bg-secondary);border:2px solid var(--border);border-radius:25px;font-size:0.85rem;font-weight:500;color:var(--text-muted);transition:all 0.3s ease;cursor:pointer}.step:hover{background:var(--bg-tertiary)}.step-number{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:600}.step.active{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}.step.active .step-number{background:var(--accent);color:white}.step.completed{border-color:var(--success);color:var(--success);background:var(--success-bg)}.step.completed .step-number{background:var(--success);color:white}
         .main-card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:1.5rem}.card-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.75rem}.step-badge{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:1rem;color:white}.step-1 .step-badge{background:var(--agent1)}.step-2 .step-badge{background:var(--agent2)}.step-3 .step-badge{background:var(--agent3)}.step-4 .step-badge{background:var(--agent4)}.card-title h2{font-size:1.1rem;font-weight:600;margin-bottom:0.125rem}.card-title p{font-size:0.9rem;color:var(--text-secondary)}.card-body{padding:1.5rem}
         .text-box{width:100%;min-height:150px;padding:1rem;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:0.95rem;line-height:1.7;resize:vertical;background:var(--bg-primary)}.text-box:focus{outline:none;border-color:var(--accent);background:var(--bg-secondary)}.text-box.output{background:var(--bg-tertiary);font-family:'Source Serif 4',serif;font-size:1.05rem}.text-box.json-output{font-family:monospace;font-size:0.85rem;background:#1a1a1a;color:#e0e0e0;border:none}.text-box.editable{background:var(--bg-secondary);border:2px solid var(--accent)}.text-label{display:block;font-weight:500;margin-bottom:0.5rem;font-size:0.95rem}
         .btn{padding:0.75rem 1.5rem;border:none;border-radius:var(--radius);font-size:1rem;font-weight:500;cursor:pointer;transition:all 0.2s ease;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem}.btn-large{padding:1rem 2rem;font-size:1.1rem;border-radius:var(--radius-lg)}.btn-primary{background:var(--accent);color:white}.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:var(--shadow-md)}.btn-secondary{background:var(--bg-tertiary);color:var(--text-primary);border:1px solid var(--border)}.btn-secondary:hover{background:var(--border)}.btn-success{background:var(--success);color:white}.btn-success:hover{background:#14532d}.btn-small{padding:0.5rem 1rem;font-size:0.85rem}.button-row{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1.5rem}.button-row-center{justify-content:center}
         .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem;gap:1rem}.spinner{width:48px;height:48px;border:4px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.loading-text{font-size:1.1rem;color:var(--text-secondary)}.message{padding:1rem 1.25rem;border-radius:var(--radius);margin-bottom:1rem;font-size:0.95rem}.message-error{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B}.message-success{background:var(--success-bg);border:1px solid #86EFAC;color:var(--success)}.message-info{background:#EBF8FF;border:1px solid #90CDF4;color:#2B6CB0}.hidden{display:none !important}footer{text-align:center;padding:1.5rem 0;color:var(--text-muted);font-size:0.85rem}
-        .validator-audio-panel{background:var(--validator-bg);border:2px solid var(--validator-border);border-radius:var(--radius-lg);padding:2rem;text-align:center}.main-play-btn{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--validator-primary),#285e61);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:2rem auto;box-shadow:var(--shadow-lg);transition:all 0.3s ease}.main-play-btn:hover{transform:scale(1.05);box-shadow:0 15px 30px rgba(49,151,149,0.4)}.main-play-btn:active{transform:scale(0.98)}.main-play-btn svg{width:50px;height:50px;fill:white}.main-play-btn.playing{background:linear-gradient(135deg,#e53e3e,#c53030)}
-        .segment-nav{display:flex;height:60px;border-radius:var(--radius-lg);overflow:hidden;margin:1.5rem 0;border:2px solid var(--validator-border);background:white}.segment-block{cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem;transition:all 0.2s;position:relative}.segment-block:hover{filter:brightness(0.92)}.segment-block.playing::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:8px;height:8px;background:currentColor;border-radius:50%;animation:pulse 1s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-        .audio-progress{height:10px;background:#b2f5ea;border-radius:5px;cursor:pointer;margin:1rem 0;overflow:hidden}.audio-progress-fill{height:100%;background:var(--validator-primary);border-radius:5px;width:0%;transition:width 0.1s}
-        .status-indicator{font-size:1.1rem;font-weight:600;margin:1rem 0;min-height:2rem}.time-display{font-family:'DM Sans',monospace;font-size:2rem;font-weight:600;color:var(--validator-primary);margin:1rem 0}
-        .analysis-section{background:linear-gradient(135deg,#EBF8FF,#E0F2FE);border:2px solid #0EA5E9;border-radius:var(--radius-lg);padding:1.5rem;margin:1.5rem 0}
-        .analysis-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid #7DD3FC}
-        .analysis-header h3{color:#0369A1;margin:0}
-        .executive-summary{background:white;border:1px solid #7DD3FC;border-radius:var(--radius);padding:1rem;margin-bottom:1rem;font-style:italic;color:var(--text-secondary)}
-        .analysis-category{background:white;border:1px solid #BAE6FD;border-radius:var(--radius);padding:1rem;margin:0.75rem 0}
-        .analysis-category h4{color:#0369A1;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem}
-        .analysis-category.exegetical{border-left:4px solid #7C3AED}
-        .analysis-category.style{border-left:4px solid #0891B2}
-        .analysis-category.issues{border-left:4px solid #DC2626}
-        .analysis-category.praise{border-left:4px solid #16A34A}
-        .analysis-item{background:#F8FAFC;border-radius:6px;padding:0.75rem;margin:0.5rem 0;font-size:0.9rem}
-        .analysis-item.warning{background:#FEF3C7;border-left:3px solid #F59E0B}
-        .analysis-item.issue{background:#FEE2E2;border-left:3px solid #DC2626}
-        .analysis-item.good{background:#DCFCE7;border-left:3px solid #16A34A}
+        .validator-audio-panel{background:#e8f2f0;border:2px solid #89AAA3;border-radius:var(--radius-lg);padding:2rem;text-align:center}.main-play-btn{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#89AAA3,#6a8a84);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:2rem auto;box-shadow:var(--shadow-lg);transition:all 0.3s ease}.main-play-btn:hover{transform:scale(1.05);box-shadow:0 15px 30px rgba(137,170,163,0.4)}.main-play-btn:active{transform:scale(0.98)}.main-play-btn svg{width:50px;height:50px;fill:white}.main-play-btn.playing{background:linear-gradient(135deg,#BE4A01,#8a3601)}
+        .segment-nav{display:flex;height:60px;border-radius:var(--radius-lg);overflow:hidden;margin:1.5rem 0;border:2px solid #89AAA3;background:white}.segment-block{cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem;transition:all 0.2s;position:relative}.segment-block:hover{filter:brightness(0.92)}.segment-block.playing::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:8px;height:8px;background:currentColor;border-radius:50%;animation:pulse 1s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+        .audio-progress{height:10px;background:#C5C29F;border-radius:5px;cursor:pointer;margin:1rem 0;overflow:hidden}.audio-progress-fill{height:100%;background:#89AAA3;border-radius:5px;width:0%;transition:width 0.1s}
+        .status-indicator{font-size:1.1rem;font-weight:600;margin:1rem 0;min-height:2rem}.time-display{font-family:'DM Sans',monospace;font-size:2rem;font-weight:600;color:#89AAA3;margin:1rem 0}
+        .analysis-section{background:linear-gradient(135deg,#F6F5EB,#e8e9d9);border:2px solid #89AAA3;border-radius:var(--radius-lg);padding:1.5rem;margin:1.5rem 0}
+        .analysis-header{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid #89AAA3}
+        .analysis-header h3{color:#3F3E20;margin:0}
+        .executive-summary{background:white;border:1px solid #89AAA3;border-radius:var(--radius);padding:1rem;margin-bottom:1rem;font-style:italic;color:var(--text-secondary)}
+        .analysis-category{background:white;border:1px solid #C5C29F;border-radius:var(--radius);padding:1rem;margin:0.75rem 0}
+        .analysis-category h4{color:#3F3E20;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem}
+        .analysis-category.exegetical{border-left:4px solid #BE4A01}
+        .analysis-category.style{border-left:4px solid #89AAA3}
+        .analysis-category.issues{border-left:4px solid #BE4A01}
+        .analysis-category.praise{border-left:4px solid #777D45}
+        .analysis-item{background:#F6F5EB;border-radius:6px;padding:0.75rem;margin:0.5rem 0;font-size:0.9rem}
+        .analysis-item.warning{background:#fef3e2;border-left:3px solid #BE4A01}
+        .analysis-item.issue{background:#fde8e0;border-left:3px solid #BE4A01}
+        .analysis-item.good{background:#e8e9d9;border-left:3px solid #777D45}
         .analysis-label{font-weight:600;color:var(--text-primary);display:block;margin-bottom:0.25rem}
         .analysis-detail{color:var(--text-secondary);font-size:0.85rem}
-        .recommendation-box{background:#F0FDF4;border:1px solid #86EFAC;border-radius:var(--radius);padding:1rem;margin-top:1rem}
-        .recommendation-box h5{color:#166534;margin-bottom:0.5rem}
-        .suggested-revision{background:#ECFDF5;border:2px dashed #10B981;border-radius:var(--radius);padding:1rem;margin-top:1rem;font-family:'Source Serif 4',serif}
+        .recommendation-box{background:#e8e9d9;border:1px solid #777D45;border-radius:var(--radius);padding:1rem;margin-top:1rem}
+        .recommendation-box h5{color:#3F3E20;margin-bottom:0.5rem}
+        .suggested-revision{background:#F6F5EB;border:2px dashed #777D45;border-radius:var(--radius);padding:1rem;margin-top:1rem;font-family:'Source Serif 4',serif}
         .edit-section{background:var(--accent-light);border:2px solid var(--accent);border-radius:var(--radius-lg);padding:1.5rem;margin-top:1.5rem}
         .edit-history{background:#f7fafc;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;max-height:200px;overflow-y:auto;font-size:0.9rem;margin-top:1rem}.edit-item{padding:0.5rem;border-bottom:1px solid var(--border);font-size:0.85rem}.edit-item:last-child{border-bottom:none}
         @media(max-width:768px){.container{padding:1rem}h1{font-size:1.5rem}.setup-row{flex-direction:column}.input-group{width:100%}.step{padding:0.5rem 0.75rem;font-size:0.8rem}.main-play-btn{width:100px;height:100px}.main-play-btn svg{width:40px;height:40px}}
@@ -47,7 +47,7 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo"><div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><h1>Oral Bridge</h1></div>
+            <div class="logo"><div class="logo-icon"><svg viewBox="0 0 1000 1000"><path fill="#BE4A01" d="M900,451.61V151.07H700a278.79,278.79,0,0,0-83.83,12.66c-71,22.3-116.17,92-116.17,92h0s-45-69.59-116.17-92A278.79,278.79,0,0,0,300,151.07H100V749H300a279.12,279.12,0,0,1,83.83,12.65C455,784,500,848.93,500,848.93h0s39.71-57.16,103.18-82.68c-.33-5.73-.52-11.49-.52-17.31C602.66,585,736.05,451.61,900,451.61Z"/><path fill="#BE4A01" d="M827.11,748.94H900V675.57C859.81,675.57,827.11,708.49,827.11,748.94Z"/><path fill="#BE4A01" d="M734.56,748.94h53.22c0-62.14,50.34-112.71,112.22-112.71V583.5C808.77,583.5,734.56,657.72,734.56,748.94Z"/><path fill="#BE4A01" d="M642,748.94q0,3,.08,6A281.75,281.75,0,0,1,695.22,749v-.1C695.22,636,787.08,544.16,900,544.16V490.94C757.74,490.94,642,606.68,642,748.94Z"/></svg></div><h1>Oral Bridge</h1></div>
             <p class="subtitle">Hindi Team - AI-Assisted Bible Translation</p>
         </header>
         <div id="setupSection" class="setup-section">
@@ -70,7 +70,11 @@
             <div class="step" id="step4Ind" onclick="goToStep(4)"><span class="step-number">4</span><span>Review the Performance</span></div>
         </div>
         <div id="workArea" class="main-card hidden"></div>
-        <footer><p>Ready Vessels Project • Oral Bridge</p></footer>
+        <footer>
+            <div style="margin-bottom:0.5rem"><svg viewBox="0 0 1000 1000" style="width:32px;height:32px;vertical-align:middle;margin-right:0.5rem"><path fill="#777D45" d="M900,451.61V151.07H700a278.79,278.79,0,0,0-83.83,12.66c-71,22.3-116.17,92-116.17,92h0s-45-69.59-116.17-92A278.79,278.79,0,0,0,300,151.07H100V749H300a279.12,279.12,0,0,1,83.83,12.65C455,784,500,848.93,500,848.93h0s39.71-57.16,103.18-82.68c-.33-5.73-.52-11.49-.52-17.31C602.66,585,736.05,451.61,900,451.61Z"/><path fill="#777D45" d="M827.11,748.94H900V675.57C859.81,675.57,827.11,708.49,827.11,748.94Z"/><path fill="#777D45" d="M734.56,748.94h53.22c0-62.14,50.34-112.71,112.22-112.71V583.5C808.77,583.5,734.56,657.72,734.56,748.94Z"/><path fill="#777D45" d="M642,748.94q0,3,.08,6A281.75,281.75,0,0,1,695.22,749v-.1C695.22,636,787.08,544.16,900,544.16V490.94C757.74,490.94,642,606.68,642,748.94Z"/></svg></div>
+            <p style="font-weight:600;color:var(--text-secondary)">Ready Vessels Project</p>
+            <p>Shema Bible Translation • University of the Nations</p>
+        </footer>
     </div>
     <div id="voiceModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center">
         <div style="background:white;padding:2rem;border-radius:12px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto">
@@ -91,7 +95,7 @@
 let currentStep=0,outputs={},studio={text:'',firstDraft:'',editedDraft:'',segments:[],playingIdx:-1,isPlaying:false,analysis:null,editHistory:[],fullAudioUrl:null,approved:false},voiceConfig={};
 
 const LANGS={
-    hindi:{name:"Hindi (बोलचाल)",instruction:"हिंदी की बोलचाल की भाषा में लिखें। मौखिक चिह्नक उपयोग करें। Use natural Hindi storytelling patterns with appropriate oral markers like 'सुनो...', 'फिर...', 'तब...'",speechLang:'hi-IN'},
+    hindi:{name:"Hindi (बोलचाल)",instruction:"हिंदी की बोलचाल की भाषा में लिखें। मौखिक चिह्नक उपयोग करें। Use natural Hindi storytelling patterns with appropriate oral markers like 'सुनो...', 'फिर...', 'तब...'. IMPORTANT: Use only pure Hindi (Shudh Hindi) vocabulary. Do NOT use any Urdu words or Perso-Arabic loanwords. Prefer Sanskrit-derived Hindi words. For example, use 'प्रेम' not 'मोहब्बत', 'धन्यवाद' not 'शुक्रिया', 'समय' not 'वक्त', 'कार्य' not 'काम' when formality is needed.",speechLang:'hi-IN'},
     indian_english:{name:"Indian English (Oral)",instruction:"Generate in natural Indian English oral storytelling register. Use patterns familiar to Indian audiences: 'Listen now...', 'So then...', 'After that only...'. Include appropriate discourse markers. Avoid formal Western Bible-speak.",speechLang:'en-IN'}
 };
 
@@ -214,7 +218,7 @@ Return as JSON with this structure:
   }
 }`;
 
-const SEGMENT_COLORS=[{bg:'#bee3f8',color:'#2b6cb0'},{bg:'#c6f6d5',color:'#22543d'},{bg:'#fefcbf',color:'#744210'},{bg:'#fed7d7',color:'#c53030'},{bg:'#e9d8fd',color:'#553c9a'},{bg:'#b2f5ea',color:'#234e52'}];
+const SEGMENT_COLORS=[{bg:'#e8f2f0',color:'#3F3E20'},{bg:'#e8e9d9',color:'#3F3E20'},{bg:'#F6F5EB',color:'#BE4A01'},{bg:'#C5C29F',color:'#0A0703'},{bg:'#d4e8e4',color:'#3F3E20'},{bg:'#f0ebe0',color:'#BE4A01'}];
 
 function startStep1(){
     const apiKey=document.getElementById('apiKey').value,ref=document.getElementById('biblicalRef').value;
@@ -340,14 +344,14 @@ html+='</div>';}
 if(analysis.overall_assessment){
 html+='<div class="recommendation-box"><h5>📊 Overall Assessment</h5>';
 if(typeof analysis.overall_assessment.ready_for_performance==='boolean'){
-html+='<div style="margin-bottom:0.5rem"><strong>Ready for Performance:</strong> '+(analysis.overall_assessment.ready_for_performance?'<span style="color:#166534">✅ Yes</span>':'<span style="color:#991B1B">❌ Not yet</span>')+'</div>';}
+html+='<div style="margin-bottom:0.5rem"><strong>Ready for Performance:</strong> '+(analysis.overall_assessment.ready_for_performance?'<span style="color:#777D45">✅ Yes</span>':'<span style="color:#BE4A01">❌ Not yet</span>')+'</div>';}
 if(analysis.overall_assessment.strengths&&analysis.overall_assessment.strengths.length>0){
 html+='<div style="margin-bottom:0.5rem"><strong>Strengths:</strong><ul style="margin:0.25rem 0 0 1.5rem">';
-analysis.overall_assessment.strengths.forEach(s=>{html+='<li style="color:#166534">'+escapeHtml(s)+'</li>';});
+analysis.overall_assessment.strengths.forEach(s=>{html+='<li style="color:#777D45">'+escapeHtml(s)+'</li>';});
 html+='</ul></div>';}
 if(analysis.overall_assessment.priority_fixes&&analysis.overall_assessment.priority_fixes.length>0){
 html+='<div><strong>Priority Fixes:</strong><ol style="margin:0.25rem 0 0 1.5rem">';
-analysis.overall_assessment.priority_fixes.forEach(f=>{html+='<li style="color:#991B1B">'+escapeHtml(f)+'</li>';});
+analysis.overall_assessment.priority_fixes.forEach(f=>{html+='<li style="color:#BE4A01">'+escapeHtml(f)+'</li>';});
 html+='</ol></div>';}
 html+='</div>';}
 
@@ -380,15 +384,15 @@ function saveDraftEdits(){const textarea=document.getElementById('editableDraft'
 
 function buildStep4UI(){const langName=LANGS[document.getElementById('targetLang').value]?.name||'Target Language';
 let html='<div class="card-header step-4"><div class="step-badge">4</div><div class="card-title"><h2>Review the Performance</h2><p>'+langName+'</p></div></div><div class="card-body">';
-html+='<div style="background:#f0fff4;border:1px solid #9ae6b4;border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem">';
+html+='<div style="background:#e8f2f0;border:1px solid #89AAA3;border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem">';
 html+='<div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:center">';
-html+='<select id="studioLang" style="padding:0.75rem;border:2px solid #9ae6b4;border-radius:var(--radius);min-width:200px">'+Object.entries(LANGS).map(([k,v])=>'<option value="'+k+'"'+(k===document.getElementById('targetLang').value?' selected':'')+'>'+v.name+'</option>').join('')+'</select>';
+html+='<select id="studioLang" style="padding:0.75rem;border:2px solid #89AAA3;border-radius:var(--radius);min-width:200px">'+Object.entries(LANGS).map(([k,v])=>'<option value="'+k+'"'+(k===document.getElementById('targetLang').value?' selected':'')+'>'+v.name+'</option>').join('')+'</select>';
 html+='<button class="btn btn-secondary" onclick="showVoiceModal()">⚙️ Select the Voice</button>';
 html+='<button class="btn btn-success btn-large" onclick="generatePerformance()">🔊 Generate the Oral Performance</button>';
 html+='</div></div>';
 html+='<div id="audioPanel" class="validator-audio-panel" style="display:none">';
 html+='<h3 style="color:var(--validator-primary);margin-bottom:1rem">🔊 Oral Performance</h3>';
-html+='<div id="segmentNav" class="segment-nav"><div style="flex:1;display:flex;align-items:center;justify-content:center;color:#666">Loading...</div></div>';
+html+='<div id="segmentNav" class="segment-nav"><div style="flex:1;display:flex;align-items:center;justify-content:center;color:#3F3E20">Loading...</div></div>';
 html+='<button id="mainPlayBtn" class="main-play-btn" onclick="toggleMainPlay()"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>';
 html+='<div class="time-display"><span id="currentTime">0:00</span> / <span id="totalTime">0:00</span></div>';
 html+='<div class="audio-progress" onclick="seekAudio(event)"><div id="progressFill" class="audio-progress-fill"></div></div>';
@@ -402,20 +406,20 @@ html+='<audio id="audioPlayer" style="display:none"></audio>';
 html+='</div>';
 html+='<div class="message message-info" style="margin-top:1.5rem"><strong>💡 Need to make changes?</strong> Go back to Step 3 to edit the text, then return here to generate a new performance.</div>';
 html+='<div class="button-row"><button class="btn btn-secondary" onclick="goToStep(3)">← Back to Edit Draft</button></div>';
-html+='<div id="approvalSection" style="display:none;margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,#c6f6d5,#9ae6b4);border:2px solid #38a169;border-radius:var(--radius-lg)">';
+html+='<div id="approvalSection" style="display:none;margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,#e8e9d9,#C5C29F);border:2px solid #777D45;border-radius:var(--radius-lg)">';
 html+='<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">';
-html+='<h4 style="color:#276749">✅ Approve Translation</h4>';
+html+='<h4 style="color:#3F3E20">✅ Approve Translation</h4>';
 html+='<button id="approveBtn" class="btn btn-success btn-large" onclick="toggleApproval()">☐ Approve</button>';
 html+='</div></div>';
-html+='<div id="sessionSummarySection" style="display:none;margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,#FEF3C7,#FDE68A);border:2px solid #F59E0B;border-radius:var(--radius-lg)">';
+html+='<div id="sessionSummarySection" style="display:none;margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,#F6F5EB,#C5C29F);border:2px solid #BE4A01;border-radius:var(--radius-lg)">';
 html+='<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1rem">';
-html+='<h3 style="color:#92400E">📦 Session Complete</h3>';
+html+='<h3 style="color:#BE4A01">📦 Session Complete</h3>';
 html+='<div style="display:flex;gap:0.75rem;flex-wrap:wrap">';
 html+='<button class="btn btn-primary" onclick="downloadSessionSummary()">📄 Download Summary</button>';
 html+='<button class="btn btn-secondary" onclick="downloadAudioFile()">🔊 Download Audio</button>';
 html+='<button class="btn btn-success" onclick="showSendModal()">📤 Send to Reviewer</button>';
 html+='</div></div>';
-html+='<p style="color:#92400E;font-size:0.95rem">Your work is complete. Download your files or send the session report to a reviewer for feedback.</p>';
+html+='<p style="color:#3F3E20;font-size:0.95rem">Your work is complete. Download your files or send the session report to a reviewer for feedback.</p>';
 html+='</div>';
 html+='</div>';
 return html;}
@@ -475,20 +479,20 @@ return `<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Session Report - ${escapeHtml(ref)}</title>
 <style>
-body{font-family:'Segoe UI',system-ui,sans-serif;max-width:900px;margin:0 auto;padding:2rem;line-height:1.7;color:#1a1a1a;background:#faf9f7}
-h1{color:#92400E;border-bottom:3px solid #F59E0B;padding-bottom:0.5rem}
-h2{color:#1e40af;margin-top:2rem;border-left:4px solid #3b82f6;padding-left:1rem}
-h3{color:#166534;margin-top:1.5rem}
-.meta{background:#f3f4f6;padding:1rem;border-radius:8px;margin-bottom:2rem}
+body{font-family:'Segoe UI',system-ui,sans-serif;max-width:900px;margin:0 auto;padding:2rem;line-height:1.7;color:#0A0703;background:#F6F5EB}
+h1{color:#BE4A01;border-bottom:3px solid #BE4A01;padding-bottom:0.5rem}
+h2{color:#3F3E20;margin-top:2rem;border-left:4px solid #89AAA3;padding-left:1rem}
+h3{color:#777D45;margin-top:1.5rem}
+.meta{background:#C5C29F;padding:1rem;border-radius:8px;margin-bottom:2rem}
 .meta-item{margin:0.5rem 0}
-.meta-label{font-weight:600;color:#4b5563}
-.section{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:1.5rem;margin:1rem 0}
-.json-block{background:#1f2937;color:#e5e7eb;padding:1rem;border-radius:8px;overflow-x:auto;font-family:monospace;font-size:0.85rem;white-space:pre-wrap;max-height:400px;overflow-y:auto}
-.text-block{background:#f0fdf4;border:1px solid #86efac;padding:1rem;border-radius:8px;font-size:1.05rem}
-.analysis-block{background:#ebf8ff;border:1px solid #90cdf4;padding:1rem;border-radius:8px;margin:1rem 0}
-.edit-item{background:#fef3c7;border-left:4px solid #f59e0b;padding:0.75rem 1rem;margin:0.5rem 0;border-radius:0 8px 8px 0}
-.reviewer-notes{background:#e0e7ff;border:2px solid #818cf8;padding:1rem;border-radius:8px;margin:1rem 0}
-footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #e5e7eb;color:#6b7280;font-size:0.85rem;text-align:center}
+.meta-label{font-weight:600;color:#3F3E20}
+.section{background:white;border:1px solid #C5C29F;border-radius:8px;padding:1.5rem;margin:1rem 0}
+.json-block{background:#0A0703;color:#F6F5EB;padding:1rem;border-radius:8px;overflow-x:auto;font-family:monospace;font-size:0.85rem;white-space:pre-wrap;max-height:400px;overflow-y:auto}
+.text-block{background:#e8e9d9;border:1px solid #777D45;padding:1rem;border-radius:8px;font-size:1.05rem}
+.analysis-block{background:#e8f2f0;border:1px solid #89AAA3;padding:1rem;border-radius:8px;margin:1rem 0}
+.edit-item{background:#F6F5EB;border-left:4px solid #BE4A01;padding:0.75rem 1rem;margin:0.5rem 0;border-radius:0 8px 8px 0}
+.reviewer-notes{background:#e8f2f0;border:2px solid #89AAA3;padding:1rem;border-radius:8px;margin:1rem 0}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #C5C29F;color:#777D45;font-size:0.85rem;text-align:center}
 </style>
 </head>
 <body>
@@ -499,7 +503,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #e5e7eb;color:#6b72
 <div class="meta-item"><span class="meta-label">Target Language:</span> ${escapeHtml(lang)}</div>
 <div class="meta-item"><span class="meta-label">Target Audience:</span> ${escapeHtml(aud)}</div>
 <div class="meta-item"><span class="meta-label">Session Date:</span> ${now}</div>
-<div class="meta-item"><span class="meta-label">Status:</span> <span style="background:#c6f6d5;color:#166534;padding:0.25rem 0.75rem;border-radius:20px;font-weight:600">✅ Approved</span></div>
+<div class="meta-item"><span class="meta-label">Status:</span> <span style="background:#e8e9d9;color:#777D45;padding:0.25rem 0.75rem;border-radius:20px;font-weight:600">✅ Approved</span></div>
 ${reviewer?'<div class="meta-item"><span class="meta-label">Sent to:</span> '+escapeHtml(reviewer)+'</div>':''}
 </div>
 
@@ -527,7 +531,7 @@ ${studio.analysis.overall_assessment?.ready_for_performance!==undefined?'<p><str
 </div>`:''}
 
 ${studio.editedDraft&&studio.editedDraft!==studio.firstDraft?`<h3>Edited Draft (Final)</h3>
-<div class="text-block" style="background:#dcfce7;border-color:#22c55e">${escapeHtml(studio.editedDraft)}</div>`:'<p><em>No manual edits were made to the draft.</em></p>'}
+<div class="text-block" style="background:#e8e9d9;border-color:#777D45">${escapeHtml(studio.editedDraft)}</div>`:'<p><em>No manual edits were made to the draft.</em></p>'}
 
 ${studio.editHistory.length>0?`<h3>Edit History</h3>
 ${studio.editHistory.map((e,i)=>'<div class="edit-item"><strong>Edit #'+(i+1)+'</strong> - '+new Date(e.timestamp).toLocaleString()+'</div>').join('')}`:''}
@@ -535,7 +539,7 @@ ${studio.editHistory.map((e,i)=>'<div class="edit-item"><strong>Edit #'+(i+1)+'<
 
 <h2>4. Final Approved Text</h2>
 <div class="section">
-<div class="text-block" style="background:#dcfce7;border-color:#22c55e;font-size:1.1rem">${escapeHtml(studio.editedDraft||studio.firstDraft)||'<em>Not available</em>'}</div>
+<div class="text-block" style="background:#e8e9d9;border-color:#777D45;font-size:1.1rem">${escapeHtml(studio.editedDraft||studio.firstDraft)||'<em>Not available</em>'}</div>
 </div>
 
 <h2>5. Audio Performance</h2>
@@ -545,8 +549,8 @@ ${studio.editHistory.map((e,i)=>'<div class="edit-item"><strong>Edit #'+(i+1)+'<
 </div>
 
 <footer>
-<p>Generated by Oral Bridge - Hindi Team</p>
-<p>Ready Vessels Project</p>
+<p><strong>Ready Vessels Project</strong></p>
+<p>Shema Bible Translation • University of the Nations</p>
 </footer>
 </body>
 </html>`;}
